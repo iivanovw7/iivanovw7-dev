@@ -1,0 +1,27 @@
+{
+    "name": "iivanovw7-dev",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "cargo watch -x run",
+        "dev:css": "pnpm dlx tailwindcss -c ./tailwind.config.cjs -i styles/main.css -o assets/css/main.css --watch",
+        "build": "pnpm build:css && pnpm build:server",
+        "build:server": "cargo build --release",
+        "build:css": "pnpm dlx tailwindcss -c ./tailwind.config.cjs -i styles/main.css -o assets/css/main.css --minify",
+        "build:run": "cargo run",
+        "format": "prettier --write --ignore-unknown ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@tailwindcss/aspect-ratio": "0.4.2",
+        "@tailwindcss/typography": "0.5.10",
+        "autoprefixer": "10.4.17",
+        "postcss-100vh-fix": "1.0.2",
+        "prettier": "3.2.5",
+        "prettier-plugin-tailwindcss": "0.5.11",
+        "tailwindcss": "3.4.1"
+    }
+}

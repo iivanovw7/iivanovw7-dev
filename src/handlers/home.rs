@@ -10,7 +10,7 @@ pub async fn get() -> impl IntoResponse {
 }
 
 #[derive(Template)]
-#[template(path = "home.html")]
+#[template(path = "./pages/home.html")]
 struct HomeTemplate;
 
 struct HtmlTemplate<T>(T);

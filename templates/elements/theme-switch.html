@@ -1,0 +1,34 @@
+<div class="flex flex-col items-center justify-center ml-4">
+    <input type="checkbox" id="light-switch" name="light-switch" class="light-switch sr-only" />
+    <label class="relative cursor-pointer p-2 hover:text-white" for="light-switch">
+        <svg class="h-4 w-4 dark:hidden text-gray-500">
+            <use href="/assets/svg/sprite.svg#sun" />
+        </svg>
+        <svg class="h-4 w-4 hidden dark:block text-gray-500">
+            <use href="/assets/svg/sprite.svg#night" />
+        </svg>
+        <span class="sr-only">light / dark</span>
+    </label>
+</div>
+<script>
+    const lightSwitch = document.getElementById("light-switch");
+
+    if (localStorage.getItem("dark-mode") === "true") {
+        lightSwitch.checked = true;
+        document.documentElement.classList.add("dark");
+    }
+
+    lightSwitch.addEventListener("change", () => {
+        const { checked } = lightSwitch;
+
+        lightSwitch.checked = checked;
+
+        if (lightSwitch.checked) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("dark-mode", true);
+        } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("dark-mode", false);
+        }
+    });
+</script>

@@ -1,6 +1,7 @@
 use crate::config::CONFIG;
 use crate::handlers;
 use axum::{routing::get, Router};
+use tower_http::services::ServeDir;
 use tracing_subscriber::{fmt, layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
 pub async fn server() -> anyhow::Result<()> {
@@ -14,7 +15,14 @@ pub async fn server() -> anyhow::Result<()> {
 
     tracing::info!("initializing router and assets");
 
-    let router = Router::new().route("/", get(handlers::home::get));
+    let assets_path = std::env::current_dir().unwrap();
+    let router = Router::new()
+        .route("/", get(handlers::home::get))
+        .nest_service(
+            "/assets",
+            ServeDir::new(format!("{}/assets", assets_path.to_str().unwrap())),
+        );
+
     let listener = tokio::net::TcpListener::bind(&CONFIG.server).await.unwrap();
 
     tracing::debug!(

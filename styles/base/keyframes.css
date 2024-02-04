@@ -1,0 +1,29 @@
+@keyframes CardBackgroundAnimation {
+    0% {
+        background-position: 60% 0%;
+    }
+    50% {
+        background-position: 41% 100%;
+    }
+    100% {
+        background-position: 60% 0%;
+    }
+}
+
+@keyframes Print {
+    0% {
+        width: 0;
+    }
+    1% {
+        opacity: 1;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes Blink {
+    to {
+        opacity: 0;
+    }
+}
