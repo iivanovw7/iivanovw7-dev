@@ -1,4 +1,4 @@
-use crate::config::CONFIG;
+use crate::config::ENV;
 use crate::handlers;
 use axum::{routing::get, Router};
 use tower_http::services::ServeDir;
@@ -15,20 +15,28 @@ pub async fn server() -> anyhow::Result<()> {
 
     tracing::info!("initializing router and assets");
 
-    let assets_path = std::env::current_dir().unwrap();
+    let assets = std::env::current_dir().unwrap();
+    let assets_path = assets.to_str().unwrap();
+
     let router = Router::new()
         .route("/", get(handlers::home::get))
+        .nest_service("/assets", ServeDir::new(format!("{}/assets", assets_path)))
         .nest_service(
-            "/assets",
-            ServeDir::new(format!("{}/assets", assets_path.to_str().unwrap())),
+            "/htmx.org/dist",
+            ServeDir::new(format!("{}/node_modules/htmx.org/dist", assets_path)),
+        )
+        .nest_service(
+            "/alpinejs/dist",
+            ServeDir::new(format!("{}/node_modules/alpinejs/dist", assets_path)),
+        )
+        .nest_service(
+            "/@alpinejs/morph/dist",
+            ServeDir::new(format!("{}/node_modules/@alpinejs/morph/dist", assets_path)),
         );
 
-    let listener = tokio::net::TcpListener::bind(&CONFIG.server).await.unwrap();
+    let listener = tokio::net::TcpListener::bind(&ENV.server).await.unwrap();
 
-    tracing::debug!(
-        "Router initialized, now listening on port {}",
-        &CONFIG.server
-    );
+    tracing::debug!("Router initialized, now listening on port {}", &ENV.server);
 
     axum::serve(listener, router.into_make_service())
         .await

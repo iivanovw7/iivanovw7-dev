@@ -6,7 +6,13 @@ module.exports = {
         require("postcss-100vh-fix"),
         require("autoprefixer"),
     ],
-    theme: {},
+    theme: {
+        extend: {
+            screens: {
+                "hover-hover": { raw: "(hover: hover)" },
+            },
+        },
+    },
     content: ["./templates/**/*.html"],
     darkMode: "class",
 };

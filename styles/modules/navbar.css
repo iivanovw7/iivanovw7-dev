@@ -1,13 +1,15 @@
-.navbar-title {
-    width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: Print 2s steps(32, end) forwards;
-    margin: 0;
-}
+@layer components {
+    .navbar-title {
+        width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: Print 2s steps(32, end) forwards;
+        margin: 0;
+    }
 
-.navbar-title-cursor {
-    animation: Blink 1s infinite;
-    margin-left: 2px;
-    color: theme("colors.white");
+    .navbar-title-cursor {
+        animation: Blink 1s infinite;
+        margin-left: 2px;
+        color: theme("colors.white");
+    }
 }

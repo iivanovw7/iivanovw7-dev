@@ -4,14 +4,25 @@ use axum::{
     response::{Html, IntoResponse, Response},
 };
 
+use crate::config::{CardsConfig, MainConfig, SocialConfig, CONFIG};
+
 pub async fn get() -> impl IntoResponse {
-    let template = HomeTemplate {};
+    let template = HomeTemplate {
+        main: CONFIG.main.clone(),
+        social: CONFIG.social.clone(),
+        cards: CONFIG.cards.clone(),
+    };
+
     HtmlTemplate(template)
 }
 
 #[derive(Template)]
 #[template(path = "./pages/home.html")]
-struct HomeTemplate;
+struct HomeTemplate {
+    pub main: MainConfig,
+    pub social: SocialConfig,
+    pub cards: CardsConfig,
+}
 
 struct HtmlTemplate<T>(T);
 

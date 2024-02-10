@@ -6,9 +6,9 @@
             </svg>
             <div class="flex flex-row items-center">
                 <div class="navbar-title flex items-center">
-                    <h3 class="text-base text-gray-200 sm:text-2xl">Igor Ivanov</h3>
+                    <h3 class="text-base text-gray-200 sm:text-2xl">{{ main.title }}</h3>
                     <span class="text-base text-gray-500 sm:text-2xl ml-1 mr-2">,</span>
-                    <h3 class="text-base text-gray-500 sm:text-2xl">Frontend developer</h3>
+                    <h3 class="text-base text-gray-500 sm:text-2xl">{{ main.description }}</h3>
                 </div>
                 <span class="navbar-title-cursor text-sm sm:text-2xl ml-1">|</span>
             </div>
@@ -16,7 +16,7 @@
         <nav class="flex flex-row items-center justify-between">
             <ul class="flex gap-x-2 text-base font-medium sm:gap-x-8 sm:text-xl">
                 <li class="text-gray-500 transition-colors hover:text-white">
-                    <a class="flex flex-row gap-2" href="{resume}" rel="noreferrer" target="_blank">
+                    <a class="flex flex-row gap-2" href="{{ main.resume }}" rel="noreferrer" target="_blank">
                         <span>Resume</span>
                         <svg class="h-4 w-4">
                             <use href="/assets/svg/sprite.svg#external-link" />

@@ -15,7 +15,9 @@ envy = "0.4.2"
 lazy_static = "1.4.0"
 log = "0.4.20"
 serde = { version = "1.0.192", features = ["derive"] }
+serde_yaml = "0.9.31"
 tokio = { version = "1.35.1", features = ["full"] }
+toml = "0.8.10"
 tower = "0.4.13"
 tower-http = { version = "0.5.1", features = ["fs", "trace"] }
 tracing = "0.1.40"

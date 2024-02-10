@@ -4,3 +4,5 @@
 @import "./base/keyframes.css";
 
 @import "./modules/navbar.css";
+@import "./modules/cards.css";
+@import "./modules/footer.css";

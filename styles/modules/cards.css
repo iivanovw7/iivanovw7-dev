@@ -1,0 +1,72 @@
+@layer components {
+    .card-link {
+        @apply block max-w-sm p-2 shadow-md border;
+        @apply border-gray-400 bg-stone-100 hover-hover:hover:bg-stone-300 dark:border-gray-600;
+        @apply dark:bg-stone-900 dark:hover-hover:hover:bg-stone-800;
+        @apply transition-transform hover-hover:hover:-translate-y-2;
+    }
+
+    .contacts-card {
+        @apply relative h-48 bg-transparent order-6 col-start-9 col-end-13 p-0;
+    }
+
+    .skills-card {
+        @apply relative h-80;
+        @apply drop-shadow-md bg-stone-100 dark:bg-stone-950;
+        @apply order-1 col-start-1 col-end-9 p-4 md:p-10 border border-gray-300 dark:border-gray-900;
+    }
+
+    .card-title-chip {
+        width: max-content;
+        column-span: all;
+        clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+        background: theme("colors.purple.950");
+        padding: 0 16px;
+    }
+
+    .card-background-light {
+        background: linear-gradient(
+            45deg,
+            theme("colors.stone.100"),
+            theme("colors.stone.100"),
+            theme("colors.stone.500")
+        );
+        background-size: 250% 250%;
+        animation: CardBackgroundAnimation 30s ease infinite;
+    }
+
+    .card-background-dark {
+        background: linear-gradient(
+            20deg,
+            theme("colors.stone.950"),
+            theme("colors.stone.950"),
+            theme("colors.purple.950")
+        );
+        background-size: 250% 250%;
+        animation: CardBackgroundAnimation 30s ease infinite;
+    }
+
+    .card-frame::before {
+        border-radius: inherit;
+        content: "";
+        inset: 0;
+        mask:
+            linear-gradient(theme("colors.gray.200") 0, theme("colors.gray.950")) content-box,
+            linear-gradient(theme("colors.gray.200") 0, theme("colors.gray.950"));
+        mask-composite: exclude;
+        pointer-events: none;
+        position: absolute;
+        padding: 1px;
+        z-index: 10;
+    }
+
+    .card-frame-light::before {
+        background: linear-gradient(18.48deg, theme("colors.gray.400") 2.76%, rgba(255, 255, 255, 0) 17.23%),
+            linear-gradient(200.6deg, theme("colors.gray.400") 4.13%, rgba(255, 255, 255, 0) 20.54%);
+    }
+
+    .card-frame-dark::before {
+        background: linear-gradient(18.48deg, theme("colors.purple.900") 2.76%, rgba(255, 255, 255, 0) 17.23%),
+            linear-gradient(200.6deg, theme("colors.purple.900") 4.13%, rgba(255, 255, 255, 0) 20.54%);
+    }
+}
