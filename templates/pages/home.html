@@ -1,15 +1,15 @@
 <!-- prettier-ignore -->
 {% extends "layouts/base.html" %}
 
-{% block title %}{{ main.title }} | {{ main.description }}{% endblock %}
+{% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
 
 {% block content %}
     <div class="mx-auto flex max-w-screen-lg grow flex-col px-6">
         <div class="flex grow flex-col gap-6 mt-8 md:grid md:cols-[repeat(12,_1fr)]">
-            <div>Hello card</div>
-            <div>Jobs card</div>
-            {% include "components/skills-card.html" %}
-            {% include "components/contacts-card.html" %}
+            {% include "components/cards/hello.html" %}
+            {% include "components/cards/jobs.html" %}
+            {% include "components/cards/skills.html" %}
+            {% include "components/cards/contacts.html" %}
         </div>
     </div>
 {% endblock %}

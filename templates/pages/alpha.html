@@ -1,0 +1,10 @@
+<!-- prettier-ignore -->
+{% extends "layouts/base.html" %}
+
+{% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
+
+{% block content %}
+<div class="mx-auto flex max-w-screen-lg grow flex-col px-6 w-full">
+    <div class="flex grow flex-col gap-6 mt-8 w-full">{% include "components/alpha/alpha.html" %}</div>
+</div>
+{% endblock %}

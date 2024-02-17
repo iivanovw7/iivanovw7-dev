@@ -1,0 +1,45 @@
+<div calss="mx-auto w-full px-3 py-6">
+    <div class="mb-6 text-2xl font-bold">Просмотр отчетов &quot;ENERGY ALPHA&quot;</div>
+    <form
+        class="w-full flex flex-col gap-2"
+        id="report-form"
+        hx-swap="innerHTML"
+        hx-encoding="multipart/form-data"
+        hx-post="/samples/alpha/upload"
+        hx-indicator="#indicator"
+        hx-target="#report-result"
+    >
+        <div class="flex flex-col gap-2 w-full rounded-sm bg-stone-300 dark:bg-stone-800 p-4 sm:flex-row">
+            <div class="basis-3/4 flex flex-col justify-between gap-2">
+                <p>Для вывода отчета загрузите файл отчёта с расширением XML</p>
+                <label class="max-w-[360px] flex flex-col gap-2 overflow-hidden">
+                    <input class="text-clip overflow-hidden" type="file" name="file" />
+                </label>
+            </div>
+            <div class="mt-6 basis-1/4 sm:mt-0 flex w-full flex-col items-end justify-end gap-2">
+                <a
+                    class="flex items-center mb-0 mt-auto font-medium hover:underline"
+                    href="/assets/xml/80020_7706284124_20221031_9186767_7800013400.xml"
+                    download
+                >
+                    <svg class="h-4 w-4 mt-0 mr-2">
+                        <use href="/assets/svg/sprite.svg#download" />
+                    </svg>
+                    Скачать пример отчёта
+                </a>
+            </div>
+        </div>
+        <div class="flex flex-col gap-2 w-full items-end mt-2">
+            <div class="report-progress flex flex-row no-wrap gap-2">
+                <button id="report-submit-button" aria-label="Загрузить отчёт" type="submit">Загрузить</button>
+            </div>
+        </div>
+    </form>
+    <div id="report-result" class="flex flex-col gap-2 w-full items-end mt-4"></div>
+</div>
+
+<script>
+    // htmx.on("#report-submit-button", "click", function (evt) {
+    //     htmx.find("#report-form").submit();
+    // });
+</script>

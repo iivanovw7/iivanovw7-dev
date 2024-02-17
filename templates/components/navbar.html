@@ -1,14 +1,16 @@
-<header class="my-0 bg-stone-900 py-6 flex flex-col">
+<header class="header my-0 bg-stone-900 py-6 flex flex-col">
     <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-2 px-6 md:flex-row md:items-center md:justify-between">
         <div class="flex items-center gap-x-2">
-            <svg class="h-5 w-5 text-gray-200 sm:h-9 sm:w-9">
-                <use href="/assets/svg/sprite.svg#terminal" />
-            </svg>
+            <a href="/">
+                <svg class="h-5 w-5 text-gray-200 sm:h-9 sm:w-9">
+                    <use href="/assets/svg/sprite.svg#terminal" />
+                </svg>
+            </a>
             <div class="flex flex-row items-center">
                 <div class="navbar-title flex items-center">
-                    <h3 class="text-base text-gray-200 sm:text-2xl">{{ main.title }}</h3>
+                    <h3 class="text-base text-gray-200 sm:text-2xl">{{ main.name }}</h3>
                     <span class="text-base text-gray-500 sm:text-2xl ml-1 mr-2">,</span>
-                    <h3 class="text-base text-gray-500 sm:text-2xl">{{ main.description }}</h3>
+                    <h3 class="text-base text-gray-500 sm:text-2xl">{{ main.profession }}</h3>
                 </div>
                 <span class="navbar-title-cursor text-sm sm:text-2xl ml-1">|</span>
             </div>

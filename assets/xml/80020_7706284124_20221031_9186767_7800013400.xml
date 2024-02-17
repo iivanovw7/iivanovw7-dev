@@ -1,0 +1,1195 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<message class="80020" version="2" number="9186767">
+    <datetime>
+        <timestamp>20221101090946</timestamp>
+        <daylightsavingtime>0</daylightsavingtime>
+        <day>20221031</day>
+    </datetime>
+    <sender>
+        <name>Русэнергосбыт</name>
+        <inn>7706284124</inn>
+    </sender>
+    <area timezone="1">
+        <name>ООО &quot;РУСЭНЕРГОСБЫТ&quot; (ООО &quot;Хоккейный клуб СКА&quot;) &lt;&gt; АО &quot;Петербургская
+            сбытовая компания&quot; (ОАО &quot;Петербургская сбытовая компания&quot;) {PRUSG139-PLENENER}
+            20.09.2016
+        </name>
+        <inn>7800013400</inn>
+        <measuringpoint code="782130212218101" name="Хоккейный клуб СКА; Вв Т-1 0,4кВ">
+            <measuringchannel code="03" desc="RP">
+                <period start="0000" end="0030">
+                    <value>8</value>
+                </period>
+                <period start="0030" end="0100">
+                    <value>7</value>
+                </period>
+                <period start="0100" end="0130">
+                    <value>8</value>
+                </period>
+                <period start="0130" end="0200">
+                    <value>7</value>
+                </period>
+                <period start="0200" end="0230">
+                    <value>7</value>
+                </period>
+                <period start="0230" end="0300">
+                    <value>8</value>
+                </period>
+                <period start="0300" end="0330">
+                    <value>7</value>
+                </period>
+                <period start="0330" end="0400">
+                    <value>7</value>
+                </period>
+                <period start="0400" end="0430">
+                    <value>7</value>
+                </period>
+                <period start="0430" end="0500">
+                    <value>7</value>
+                </period>
+                <period start="0500" end="0530">
+                    <value>7</value>
+                </period>
+                <period start="0530" end="0600">
+                    <value>8</value>
+                </period>
+                <period start="0600" end="0630">
+                    <value>7</value>
+                </period>
+                <period start="0630" end="0700">
+                    <value>7</value>
+                </period>
+                <period start="0700" end="0730">
+                    <value>7</value>
+                </period>
+                <period start="0730" end="0800">
+                    <value>7</value>
+                </period>
+                <period start="0800" end="0830">
+                    <value>7</value>
+                </period>
+                <period start="0830" end="0900">
+                    <value>7</value>
+                </period>
+                <period start="0900" end="0930">
+                    <value>6</value>
+                </period>
+                <period start="0930" end="1000">
+                    <value>8</value>
+                </period>
+                <period start="1000" end="1030">
+                    <value>7</value>
+                </period>
+                <period start="1030" end="1100">
+                    <value>7</value>
+                </period>
+                <period start="1100" end="1130">
+                    <value>7</value>
+                </period>
+                <period start="1130" end="1200">
+                    <value>7</value>
+                </period>
+                <period start="1200" end="1230">
+                    <value>7</value>
+                </period>
+                <period start="1230" end="1300">
+                    <value>6</value>
+                </period>
+                <period start="1300" end="1330">
+                    <value>7</value>
+                </period>
+                <period start="1330" end="1400">
+                    <value>6</value>
+                </period>
+                <period start="1400" end="1430">
+                    <value>7</value>
+                </period>
+                <period start="1430" end="1500">
+                    <value>7</value>
+                </period>
+                <period start="1500" end="1530">
+                    <value>6</value>
+                </period>
+                <period start="1530" end="1600">
+                    <value>7</value>
+                </period>
+                <period start="1600" end="1630">
+                    <value>6</value>
+                </period>
+                <period start="1630" end="1700">
+                    <value>7</value>
+                </period>
+                <period start="1700" end="1730">
+                    <value>6</value>
+                </period>
+                <period start="1730" end="1800">
+                    <value>7</value>
+                </period>
+                <period start="1800" end="1830">
+                    <value>6</value>
+                </period>
+                <period start="1830" end="1900">
+                    <value>7</value>
+                </period>
+                <period start="1900" end="1930">
+                    <value>6</value>
+                </period>
+                <period start="1930" end="2000">
+                    <value>7</value>
+                </period>
+                <period start="2000" end="2030">
+                    <value>7</value>
+                </period>
+                <period start="2030" end="2100">
+                    <value>6</value>
+                </period>
+                <period start="2100" end="2130">
+                    <value>7</value>
+                </period>
+                <period start="2130" end="2200">
+                    <value>6</value>
+                </period>
+                <period start="2200" end="2230">
+                    <value>7</value>
+                </period>
+                <period start="2230" end="2300">
+                    <value>6</value>
+                </period>
+                <period start="2300" end="2330">
+                    <value>7</value>
+                </period>
+                <period start="2330" end="0000">
+                    <value>7</value>
+                </period>
+            </measuringchannel>
+            <measuringchannel code="01" desc="AP">
+                <period start="0000" end="0030">
+                    <value>67</value>
+                </period>
+                <period start="0030" end="0100">
+                    <value>67</value>
+                </period>
+                <period start="0100" end="0130">
+                    <value>67</value>
+                </period>
+                <period start="0130" end="0200">
+                    <value>66</value>
+                </period>
+                <period start="0200" end="0230">
+                    <value>67</value>
+                </period>
+                <period start="0230" end="0300">
+                    <value>66</value>
+                </period>
+                <period start="0300" end="0330">
+                    <value>65</value>
+                </period>
+                <period start="0330" end="0400">
+                    <value>66</value>
+                </period>
+                <period start="0400" end="0430">
+                    <value>65</value>
+                </period>
+                <period start="0430" end="0500">
+                    <value>66</value>
+                </period>
+                <period start="0500" end="0530">
+                    <value>65</value>
+                </period>
+                <period start="0530" end="0600">
+                    <value>67</value>
+                </period>
+                <period start="0600" end="0630">
+                    <value>65</value>
+                </period>
+                <period start="0630" end="0700">
+                    <value>67</value>
+                </period>
+                <period start="0700" end="0730">
+                    <value>77</value>
+                </period>
+                <period start="0730" end="0800">
+                    <value>78</value>
+                </period>
+                <period start="0800" end="0830">
+                    <value>72</value>
+                </period>
+                <period start="0830" end="0900">
+                    <value>70</value>
+                </period>
+                <period start="0900" end="0930">
+                    <value>75</value>
+                </period>
+                <period start="0930" end="1000">
+                    <value>80</value>
+                </period>
+                <period start="1000" end="1030">
+                    <value>80</value>
+                </period>
+                <period start="1030" end="1100">
+                    <value>91</value>
+                </period>
+                <period start="1100" end="1130">
+                    <value>92</value>
+                </period>
+                <period start="1130" end="1200">
+                    <value>91</value>
+                </period>
+                <period start="1200" end="1230">
+                    <value>91</value>
+                </period>
+                <period start="1230" end="1300">
+                    <value>93</value>
+                </period>
+                <period start="1300" end="1330">
+                    <value>92</value>
+                </period>
+                <period start="1330" end="1400">
+                    <value>92</value>
+                </period>
+                <period start="1400" end="1430">
+                    <value>92</value>
+                </period>
+                <period start="1430" end="1500">
+                    <value>93</value>
+                </period>
+                <period start="1500" end="1530">
+                    <value>92</value>
+                </period>
+                <period start="1530" end="1600">
+                    <value>93</value>
+                </period>
+                <period start="1600" end="1630">
+                    <value>93</value>
+                </period>
+                <period start="1630" end="1700">
+                    <value>96</value>
+                </period>
+                <period start="1700" end="1730">
+                    <value>98</value>
+                </period>
+                <period start="1730" end="1800">
+                    <value>100</value>
+                </period>
+                <period start="1800" end="1830">
+                    <value>99</value>
+                </period>
+                <period start="1830" end="1900">
+                    <value>98</value>
+                </period>
+                <period start="1900" end="1930">
+                    <value>97</value>
+                </period>
+                <period start="1930" end="2000">
+                    <value>98</value>
+                </period>
+                <period start="2000" end="2030">
+                    <value>98</value>
+                </period>
+                <period start="2030" end="2100">
+                    <value>96</value>
+                </period>
+                <period start="2100" end="2130">
+                    <value>96</value>
+                </period>
+                <period start="2130" end="2200">
+                    <value>95</value>
+                </period>
+                <period start="2200" end="2230">
+                    <value>95</value>
+                </period>
+                <period start="2230" end="2300">
+                    <value>95</value>
+                </period>
+                <period start="2300" end="2330">
+                    <value>94</value>
+                </period>
+                <period start="2330" end="0000">
+                    <value>91</value>
+                </period>
+            </measuringchannel>
+        </measuringpoint>
+        <measuringpoint code="782130212218401" name="Хоккейный клуб СКА; Вв Т-4 0,4кВ">
+            <measuringchannel code="01" desc="AP">
+                <period start="0000" end="0030">
+                    <value>156</value>
+                </period>
+                <period start="0030" end="0100">
+                    <value>111</value>
+                </period>
+                <period start="0100" end="0130">
+                    <value>93</value>
+                </period>
+                <period start="0130" end="0200">
+                    <value>91</value>
+                </period>
+                <period start="0200" end="0230">
+                    <value>91</value>
+                </period>
+                <period start="0230" end="0300">
+                    <value>90</value>
+                </period>
+                <period start="0300" end="0330">
+                    <value>92</value>
+                </period>
+                <period start="0330" end="0400">
+                    <value>97</value>
+                </period>
+                <period start="0400" end="0430">
+                    <value>105</value>
+                </period>
+                <period start="0430" end="0500">
+                    <value>105</value>
+                </period>
+                <period start="0500" end="0530">
+                    <value>104</value>
+                </period>
+                <period start="0530" end="0600">
+                    <value>103</value>
+                </period>
+                <period start="0600" end="0630">
+                    <value>101</value>
+                </period>
+                <period start="0630" end="0700">
+                    <value>101</value>
+                </period>
+                <period start="0700" end="0730">
+                    <value>106</value>
+                </period>
+                <period start="0730" end="0800">
+                    <value>139</value>
+                </period>
+                <period start="0800" end="0830">
+                    <value>118</value>
+                </period>
+                <period start="0830" end="0900">
+                    <value>130</value>
+                </period>
+                <period start="0900" end="0930">
+                    <value>151</value>
+                </period>
+                <period start="0930" end="1000">
+                    <value>158</value>
+                </period>
+                <period start="1000" end="1030">
+                    <value>173</value>
+                </period>
+                <period start="1030" end="1100">
+                    <value>182</value>
+                </period>
+                <period start="1100" end="1130">
+                    <value>144</value>
+                </period>
+                <period start="1130" end="1200">
+                    <value>125</value>
+                </period>
+                <period start="1200" end="1230">
+                    <value>149</value>
+                </period>
+                <period start="1230" end="1300">
+                    <value>215</value>
+                </period>
+                <period start="1300" end="1330">
+                    <value>189</value>
+                </period>
+                <period start="1330" end="1400">
+                    <value>212</value>
+                </period>
+                <period start="1400" end="1430">
+                    <value>126</value>
+                </period>
+                <period start="1430" end="1500">
+                    <value>135</value>
+                </period>
+                <period start="1500" end="1530">
+                    <value>206</value>
+                </period>
+                <period start="1530" end="1600">
+                    <value>146</value>
+                </period>
+                <period start="1600" end="1630">
+                    <value>202</value>
+                </period>
+                <period start="1630" end="1700">
+                    <value>142</value>
+                </period>
+                <period start="1700" end="1730">
+                    <value>126</value>
+                </period>
+                <period start="1730" end="1800">
+                    <value>133</value>
+                </period>
+                <period start="1800" end="1830">
+                    <value>212</value>
+                </period>
+                <period start="1830" end="1900">
+                    <value>182</value>
+                </period>
+                <period start="1900" end="1930">
+                    <value>123</value>
+                </period>
+                <period start="1930" end="2000">
+                    <value>141</value>
+                </period>
+                <period start="2000" end="2030">
+                    <value>118</value>
+                </period>
+                <period start="2030" end="2100">
+                    <value>179</value>
+                </period>
+                <period start="2100" end="2130">
+                    <value>192</value>
+                </period>
+                <period start="2130" end="2200">
+                    <value>136</value>
+                </period>
+                <period start="2200" end="2230">
+                    <value>187</value>
+                </period>
+                <period start="2230" end="2300">
+                    <value>164</value>
+                </period>
+                <period start="2300" end="2330">
+                    <value>114</value>
+                </period>
+                <period start="2330" end="0000">
+                    <value>154</value>
+                </period>
+            </measuringchannel>
+            <measuringchannel code="03" desc="RP">
+                <period start="0000" end="0030">
+                    <value>72</value>
+                </period>
+                <period start="0030" end="0100">
+                    <value>48</value>
+                </period>
+                <period start="0100" end="0130">
+                    <value>39</value>
+                </period>
+                <period start="0130" end="0200">
+                    <value>38</value>
+                </period>
+                <period start="0200" end="0230">
+                    <value>37</value>
+                </period>
+                <period start="0230" end="0300">
+                    <value>35</value>
+                </period>
+                <period start="0300" end="0330">
+                    <value>36</value>
+                </period>
+                <period start="0330" end="0400">
+                    <value>36</value>
+                </period>
+                <period start="0400" end="0430">
+                    <value>39</value>
+                </period>
+                <period start="0430" end="0500">
+                    <value>38</value>
+                </period>
+                <period start="0500" end="0530">
+                    <value>38</value>
+                </period>
+                <period start="0530" end="0600">
+                    <value>39</value>
+                </period>
+                <period start="0600" end="0630">
+                    <value>38</value>
+                </period>
+                <period start="0630" end="0700">
+                    <value>38</value>
+                </period>
+                <period start="0700" end="0730">
+                    <value>40</value>
+                </period>
+                <period start="0730" end="0800">
+                    <value>39</value>
+                </period>
+                <period start="0800" end="0830">
+                    <value>36</value>
+                </period>
+                <period start="0830" end="0900">
+                    <value>37</value>
+                </period>
+                <period start="0900" end="0930">
+                    <value>39</value>
+                </period>
+                <period start="0930" end="1000">
+                    <value>39</value>
+                </period>
+                <period start="1000" end="1030">
+                    <value>49</value>
+                </period>
+                <period start="1030" end="1100">
+                    <value>51</value>
+                </period>
+                <period start="1100" end="1130">
+                    <value>35</value>
+                </period>
+                <period start="1130" end="1200">
+                    <value>37</value>
+                </period>
+                <period start="1200" end="1230">
+                    <value>48</value>
+                </period>
+                <period start="1230" end="1300">
+                    <value>70</value>
+                </period>
+                <period start="1300" end="1330">
+                    <value>59</value>
+                </period>
+                <period start="1330" end="1400">
+                    <value>69</value>
+                </period>
+                <period start="1400" end="1430">
+                    <value>40</value>
+                </period>
+                <period start="1430" end="1500">
+                    <value>47</value>
+                </period>
+                <period start="1500" end="1530">
+                    <value>69</value>
+                </period>
+                <period start="1530" end="1600">
+                    <value>42</value>
+                </period>
+                <period start="1600" end="1630">
+                    <value>69</value>
+                </period>
+                <period start="1630" end="1700">
+                    <value>43</value>
+                </period>
+                <period start="1700" end="1730">
+                    <value>36</value>
+                </period>
+                <period start="1730" end="1800">
+                    <value>41</value>
+                </period>
+                <period start="1800" end="1830">
+                    <value>70</value>
+                </period>
+                <period start="1830" end="1900">
+                    <value>52</value>
+                </period>
+                <period start="1900" end="1930">
+                    <value>35</value>
+                </period>
+                <period start="1930" end="2000">
+                    <value>36</value>
+                </period>
+                <period start="2000" end="2030">
+                    <value>35</value>
+                </period>
+                <period start="2030" end="2100">
+                    <value>66</value>
+                </period>
+                <period start="2100" end="2130">
+                    <value>67</value>
+                </period>
+                <period start="2130" end="2200">
+                    <value>36</value>
+                </period>
+                <period start="2200" end="2230">
+                    <value>65</value>
+                </period>
+                <period start="2230" end="2300">
+                    <value>58</value>
+                </period>
+                <period start="2300" end="2330">
+                    <value>36</value>
+                </period>
+                <period start="2330" end="0000">
+                    <value>55</value>
+                </period>
+            </measuringchannel>
+        </measuringpoint>
+        <measuringpoint code="782130212218301" name="Хоккейный клуб СКА; Вв Т-3 0,4кВ">
+            <measuringchannel code="01" desc="AP">
+                <period start="0000" end="0030">
+                    <value>86</value>
+                </period>
+                <period start="0030" end="0100">
+                    <value>86</value>
+                </period>
+                <period start="0100" end="0130">
+                    <value>86</value>
+                </period>
+                <period start="0130" end="0200">
+                    <value>84</value>
+                </period>
+                <period start="0200" end="0230">
+                    <value>82</value>
+                </period>
+                <period start="0230" end="0300">
+                    <value>81</value>
+                </period>
+                <period start="0300" end="0330">
+                    <value>81</value>
+                </period>
+                <period start="0330" end="0400">
+                    <value>81</value>
+                </period>
+                <period start="0400" end="0430">
+                    <value>80</value>
+                </period>
+                <period start="0430" end="0500">
+                    <value>80</value>
+                </period>
+                <period start="0500" end="0530">
+                    <value>79</value>
+                </period>
+                <period start="0530" end="0600">
+                    <value>79</value>
+                </period>
+                <period start="0600" end="0630">
+                    <value>79</value>
+                </period>
+                <period start="0630" end="0700">
+                    <value>81</value>
+                </period>
+                <period start="0700" end="0730">
+                    <value>85</value>
+                </period>
+                <period start="0730" end="0800">
+                    <value>90</value>
+                </period>
+                <period start="0800" end="0830">
+                    <value>90</value>
+                </period>
+                <period start="0830" end="0900">
+                    <value>95</value>
+                </period>
+                <period start="0900" end="0930">
+                    <value>103</value>
+                </period>
+                <period start="0930" end="1000">
+                    <value>120</value>
+                </period>
+                <period start="1000" end="1030">
+                    <value>115</value>
+                </period>
+                <period start="1030" end="1100">
+                    <value>117</value>
+                </period>
+                <period start="1100" end="1130">
+                    <value>119</value>
+                </period>
+                <period start="1130" end="1200">
+                    <value>118</value>
+                </period>
+                <period start="1200" end="1230">
+                    <value>121</value>
+                </period>
+                <period start="1230" end="1300">
+                    <value>119</value>
+                </period>
+                <period start="1300" end="1330">
+                    <value>122</value>
+                </period>
+                <period start="1330" end="1400">
+                    <value>131</value>
+                </period>
+                <period start="1400" end="1430">
+                    <value>129</value>
+                </period>
+                <period start="1430" end="1500">
+                    <value>125</value>
+                </period>
+                <period start="1500" end="1530">
+                    <value>141</value>
+                </period>
+                <period start="1530" end="1600">
+                    <value>134</value>
+                </period>
+                <period start="1600" end="1630">
+                    <value>133</value>
+                </period>
+                <period start="1630" end="1700">
+                    <value>126</value>
+                </period>
+                <period start="1700" end="1730">
+                    <value>141</value>
+                </period>
+                <period start="1730" end="1800">
+                    <value>139</value>
+                </period>
+                <period start="1800" end="1830">
+                    <value>140</value>
+                </period>
+                <period start="1830" end="1900">
+                    <value>136</value>
+                </period>
+                <period start="1900" end="1930">
+                    <value>128</value>
+                </period>
+                <period start="1930" end="2000">
+                    <value>135</value>
+                </period>
+                <period start="2000" end="2030">
+                    <value>122</value>
+                </period>
+                <period start="2030" end="2100">
+                    <value>117</value>
+                </period>
+                <period start="2100" end="2130">
+                    <value>108</value>
+                </period>
+                <period start="2130" end="2200">
+                    <value>98</value>
+                </period>
+                <period start="2200" end="2230">
+                    <value>94</value>
+                </period>
+                <period start="2230" end="2300">
+                    <value>89</value>
+                </period>
+                <period start="2300" end="2330">
+                    <value>88</value>
+                </period>
+                <period start="2330" end="0000">
+                    <value>84</value>
+                </period>
+            </measuringchannel>
+            <measuringchannel code="03" desc="RP">
+                <period start="0000" end="0030">
+                    <value>0</value>
+                </period>
+                <period start="0030" end="0100">
+                    <value>0</value>
+                </period>
+                <period start="0100" end="0130">
+                    <value>0</value>
+                </period>
+                <period start="0130" end="0200">
+                    <value>0</value>
+                </period>
+                <period start="0200" end="0230">
+                    <value>0</value>
+                </period>
+                <period start="0230" end="0300">
+                    <value>0</value>
+                </period>
+                <period start="0300" end="0330">
+                    <value>0</value>
+                </period>
+                <period start="0330" end="0400">
+                    <value>0</value>
+                </period>
+                <period start="0400" end="0430">
+                    <value>0</value>
+                </period>
+                <period start="0430" end="0500">
+                    <value>0</value>
+                </period>
+                <period start="0500" end="0530">
+                    <value>0</value>
+                </period>
+                <period start="0530" end="0600">
+                    <value>0</value>
+                </period>
+                <period start="0600" end="0630">
+                    <value>0</value>
+                </period>
+                <period start="0630" end="0700">
+                    <value>0</value>
+                </period>
+                <period start="0700" end="0730">
+                    <value>0</value>
+                </period>
+                <period start="0730" end="0800">
+                    <value>0</value>
+                </period>
+                <period start="0800" end="0830">
+                    <value>0</value>
+                </period>
+                <period start="0830" end="0900">
+                    <value>0</value>
+                </period>
+                <period start="0900" end="0930">
+                    <value>0</value>
+                </period>
+                <period start="0930" end="1000">
+                    <value>0</value>
+                </period>
+                <period start="1000" end="1030">
+                    <value>0</value>
+                </period>
+                <period start="1030" end="1100">
+                    <value>0</value>
+                </period>
+                <period start="1100" end="1130">
+                    <value>0</value>
+                </period>
+                <period start="1130" end="1200">
+                    <value>0</value>
+                </period>
+                <period start="1200" end="1230">
+                    <value>0</value>
+                </period>
+                <period start="1230" end="1300">
+                    <value>0</value>
+                </period>
+                <period start="1300" end="1330">
+                    <value>0</value>
+                </period>
+                <period start="1330" end="1400">
+                    <value>0</value>
+                </period>
+                <period start="1400" end="1430">
+                    <value>0</value>
+                </period>
+                <period start="1430" end="1500">
+                    <value>0</value>
+                </period>
+                <period start="1500" end="1530">
+                    <value>0</value>
+                </period>
+                <period start="1530" end="1600">
+                    <value>0</value>
+                </period>
+                <period start="1600" end="1630">
+                    <value>0</value>
+                </period>
+                <period start="1630" end="1700">
+                    <value>0</value>
+                </period>
+                <period start="1700" end="1730">
+                    <value>0</value>
+                </period>
+                <period start="1730" end="1800">
+                    <value>0</value>
+                </period>
+                <period start="1800" end="1830">
+                    <value>0</value>
+                </period>
+                <period start="1830" end="1900">
+                    <value>0</value>
+                </period>
+                <period start="1900" end="1930">
+                    <value>0</value>
+                </period>
+                <period start="1930" end="2000">
+                    <value>0</value>
+                </period>
+                <period start="2000" end="2030">
+                    <value>0</value>
+                </period>
+                <period start="2030" end="2100">
+                    <value>0</value>
+                </period>
+                <period start="2100" end="2130">
+                    <value>0</value>
+                </period>
+                <period start="2130" end="2200">
+                    <value>0</value>
+                </period>
+                <period start="2200" end="2230">
+                    <value>0</value>
+                </period>
+                <period start="2230" end="2300">
+                    <value>0</value>
+                </period>
+                <period start="2300" end="2330">
+                    <value>0</value>
+                </period>
+                <period start="2330" end="0000">
+                    <value>0</value>
+                </period>
+            </measuringchannel>
+        </measuringpoint>
+        <measuringpoint code="782130212218201" name="Хоккейный клуб СКА; Вв Т-2 0,4кВ">
+            <measuringchannel code="01" desc="AP">
+                <period start="0000" end="0030">
+                    <value>90</value>
+                </period>
+                <period start="0030" end="0100">
+                    <value>68</value>
+                </period>
+                <period start="0100" end="0130">
+                    <value>74</value>
+                </period>
+                <period start="0130" end="0200">
+                    <value>80</value>
+                </period>
+                <period start="0200" end="0230">
+                    <value>80</value>
+                </period>
+                <period start="0230" end="0300">
+                    <value>79</value>
+                </period>
+                <period start="0300" end="0330">
+                    <value>80</value>
+                </period>
+                <period start="0330" end="0400">
+                    <value>80</value>
+                </period>
+                <period start="0400" end="0430">
+                    <value>69</value>
+                </period>
+                <period start="0430" end="0500">
+                    <value>69</value>
+                </period>
+                <period start="0500" end="0530">
+                    <value>69</value>
+                </period>
+                <period start="0530" end="0600">
+                    <value>70</value>
+                </period>
+                <period start="0600" end="0630">
+                    <value>68</value>
+                </period>
+                <period start="0630" end="0700">
+                    <value>74</value>
+                </period>
+                <period start="0700" end="0730">
+                    <value>79</value>
+                </period>
+                <period start="0730" end="0800">
+                    <value>79</value>
+                </period>
+                <period start="0800" end="0830">
+                    <value>79</value>
+                </period>
+                <period start="0830" end="0900">
+                    <value>83</value>
+                </period>
+                <period start="0900" end="0930">
+                    <value>97</value>
+                </period>
+                <period start="0930" end="1000">
+                    <value>98</value>
+                </period>
+                <period start="1000" end="1030">
+                    <value>96</value>
+                </period>
+                <period start="1030" end="1100">
+                    <value>106</value>
+                </period>
+                <period start="1100" end="1130">
+                    <value>78</value>
+                </period>
+                <period start="1130" end="1200">
+                    <value>79</value>
+                </period>
+                <period start="1200" end="1230">
+                    <value>90</value>
+                </period>
+                <period start="1230" end="1300">
+                    <value>128</value>
+                </period>
+                <period start="1300" end="1330">
+                    <value>96</value>
+                </period>
+                <period start="1330" end="1400">
+                    <value>92</value>
+                </period>
+                <period start="1400" end="1430">
+                    <value>98</value>
+                </period>
+                <period start="1430" end="1500">
+                    <value>106</value>
+                </period>
+                <period start="1500" end="1530">
+                    <value>120</value>
+                </period>
+                <period start="1530" end="1600">
+                    <value>85</value>
+                </period>
+                <period start="1600" end="1630">
+                    <value>87</value>
+                </period>
+                <period start="1630" end="1700">
+                    <value>97</value>
+                </period>
+                <period start="1700" end="1730">
+                    <value>104</value>
+                </period>
+                <period start="1730" end="1800">
+                    <value>108</value>
+                </period>
+                <period start="1800" end="1830">
+                    <value>130</value>
+                </period>
+                <period start="1830" end="1900">
+                    <value>102</value>
+                </period>
+                <period start="1900" end="1930">
+                    <value>87</value>
+                </period>
+                <period start="1930" end="2000">
+                    <value>102</value>
+                </period>
+                <period start="2000" end="2030">
+                    <value>97</value>
+                </period>
+                <period start="2030" end="2100">
+                    <value>106</value>
+                </period>
+                <period start="2100" end="2130">
+                    <value>115</value>
+                </period>
+                <period start="2130" end="2200">
+                    <value>81</value>
+                </period>
+                <period start="2200" end="2230">
+                    <value>89</value>
+                </period>
+                <period start="2230" end="2300">
+                    <value>88</value>
+                </period>
+                <period start="2300" end="2330">
+                    <value>104</value>
+                </period>
+                <period start="2330" end="0000">
+                    <value>112</value>
+                </period>
+            </measuringchannel>
+            <measuringchannel code="03" desc="RP">
+                <period start="0000" end="0030">
+                    <value>46</value>
+                </period>
+                <period start="0030" end="0100">
+                    <value>33</value>
+                </period>
+                <period start="0100" end="0130">
+                    <value>34</value>
+                </period>
+                <period start="0130" end="0200">
+                    <value>37</value>
+                </period>
+                <period start="0200" end="0230">
+                    <value>36</value>
+                </period>
+                <period start="0230" end="0300">
+                    <value>34</value>
+                </period>
+                <period start="0300" end="0330">
+                    <value>35</value>
+                </period>
+                <period start="0330" end="0400">
+                    <value>35</value>
+                </period>
+                <period start="0400" end="0430">
+                    <value>32</value>
+                </period>
+                <period start="0430" end="0500">
+                    <value>31</value>
+                </period>
+                <period start="0500" end="0530">
+                    <value>31</value>
+                </period>
+                <period start="0530" end="0600">
+                    <value>30</value>
+                </period>
+                <period start="0600" end="0630">
+                    <value>31</value>
+                </period>
+                <period start="0630" end="0700">
+                    <value>35</value>
+                </period>
+                <period start="0700" end="0730">
+                    <value>36</value>
+                </period>
+                <period start="0730" end="0800">
+                    <value>36</value>
+                </period>
+                <period start="0800" end="0830">
+                    <value>35</value>
+                </period>
+                <period start="0830" end="0900">
+                    <value>35</value>
+                </period>
+                <period start="0900" end="0930">
+                    <value>37</value>
+                </period>
+                <period start="0930" end="1000">
+                    <value>41</value>
+                </period>
+                <period start="1000" end="1030">
+                    <value>40</value>
+                </period>
+                <period start="1030" end="1100">
+                    <value>45</value>
+                </period>
+                <period start="1100" end="1130">
+                    <value>32</value>
+                </period>
+                <period start="1130" end="1200">
+                    <value>32</value>
+                </period>
+                <period start="1200" end="1230">
+                    <value>36</value>
+                </period>
+                <period start="1230" end="1300">
+                    <value>58</value>
+                </period>
+                <period start="1300" end="1330">
+                    <value>39</value>
+                </period>
+                <period start="1330" end="1400">
+                    <value>35</value>
+                </period>
+                <period start="1400" end="1430">
+                    <value>37</value>
+                </period>
+                <period start="1430" end="1500">
+                    <value>44</value>
+                </period>
+                <period start="1500" end="1530">
+                    <value>54</value>
+                </period>
+                <period start="1530" end="1600">
+                    <value>33</value>
+                </period>
+                <period start="1600" end="1630">
+                    <value>33</value>
+                </period>
+                <period start="1630" end="1700">
+                    <value>34</value>
+                </period>
+                <period start="1700" end="1730">
+                    <value>36</value>
+                </period>
+                <period start="1730" end="1800">
+                    <value>37</value>
+                </period>
+                <period start="1800" end="1830">
+                    <value>56</value>
+                </period>
+                <period start="1830" end="1900">
+                    <value>44</value>
+                </period>
+                <period start="1900" end="1930">
+                    <value>38</value>
+                </period>
+                <period start="1930" end="2000">
+                    <value>42</value>
+                </period>
+                <period start="2000" end="2030">
+                    <value>36</value>
+                </period>
+                <period start="2030" end="2100">
+                    <value>43</value>
+                </period>
+                <period start="2100" end="2130">
+                    <value>52</value>
+                </period>
+                <period start="2130" end="2200">
+                    <value>35</value>
+                </period>
+                <period start="2200" end="2230">
+                    <value>37</value>
+                </period>
+                <period start="2230" end="2300">
+                    <value>38</value>
+                </period>
+                <period start="2300" end="2330">
+                    <value>48</value>
+                </period>
+                <period start="2330" end="0000">
+                    <value>56</value>
+                </period>
+            </measuringchannel>
+        </measuringpoint>
+    </area>
+</message>

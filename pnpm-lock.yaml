@@ -20,6 +20,9 @@ dependencies:
   autoprefixer:
     specifier: 10.4.17
     version: 10.4.17(postcss@8.4.33)
+  gsap:
+    specifier: 3.12.5
+    version: 3.12.5
   htmx.org:
     specifier: 1.9.10
     version: 1.9.10
@@ -398,6 +401,10 @@ packages:
       minimatch: 9.0.3
       minipass: 7.0.4
       path-scurry: 1.10.1
+    dev: false
+
+  /gsap@3.12.5:
+    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
     dev: false
 
   /hasown@2.0.0:

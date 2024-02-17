@@ -1,5 +1,11 @@
 <div class="flex flex-col items-center justify-center ml-4">
-    <input type="checkbox" id="light-switch" name="light-switch" class="light-switch sr-only" />
+    <input
+        type="checkbox"
+        id="light-switch"
+        name="light-switch"
+        class="light-switch sr-only"
+        aria-label="Theme switch"
+    />
     <label class="relative cursor-pointer p-2 hover:text-white" for="light-switch">
         <svg class="h-4 w-4 dark:hidden text-gray-500">
             <use href="/assets/svg/sprite.svg#sun" />
@@ -10,8 +16,9 @@
         <span class="sr-only">light / dark</span>
     </label>
 </div>
+
 <script>
-    const lightSwitch = document.getElementById("light-switch");
+    const lightSwitch = htmx.find("#light-switch");
 
     if (localStorage.getItem("dark-mode") === "true") {
         lightSwitch.checked = true;

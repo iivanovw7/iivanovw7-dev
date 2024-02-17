@@ -1,7 +1,7 @@
 [main]
 author = "iivanovw7"
-title = "Igor Ivanov"
-description = "Frontend developer"
+name = "Igor Ivanov"
+profession = "Frontend developer"
 project = "https://github.com/iivanovw7/iivanovw7-dev"
 resume = "https://flowcv.com/resume/v6rbqr3rcs"
 
@@ -19,3 +19,34 @@ description = "I am interested in using my expertise to build well-constructed a
 [cards.contacts]
 title = "Contact me"
 description = "Make a contact via email or telegram."
+[cards.hello]
+title = "I am a Frontend developer with industry experience building websites and web applications."
+description = "I enjoy learning new things and overcome new challenges analyzing how I improved through them."
+
+[[jobs]]
+index = 1
+end = "Present"
+company = "Mytona"
+company_logo = "/assets/png/mytona-logo.png"
+location = "Singapore"
+position = "Frontend developer"
+start = "Jan 2021"
+subtitle = "Building polished software and web experiences using React / Mobx."
+[[jobs]]
+index = 2
+company = "AB Technology"
+company_logo = "/assets/png/ab-logo.png"
+end = "Jan 2021"
+location = "Saint-Petersburg, Russia"
+start = "Feb 2019"
+position = "Frontend developer"
+subtitle = "Developed an online cinema projects using React / Redux and Angular."
+[[jobs]]
+index = 3
+company = "BCC"
+company_logo = "/assets/png/bcc-logo.png"
+end = "Feb 2019"
+location = "Saint-Petersburg, Russia"
+position = "Engineer"
+start = "Jan 2013"
+subtitle = "Created logic for PLCs based on design documentation and implemented them in systems for production use. \n Developed a graphical interfaces for a dispatching system in Desigo Insight, WinCC, Citect. "

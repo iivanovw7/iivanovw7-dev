@@ -1,4 +1,10 @@
 @layer components {
+    .card {
+        @apply relative;
+        @apply drop-shadow-md bg-stone-100 dark:bg-stone-950;
+        @apply border border-gray-300 dark:border-gray-900;
+    }
+
     .card-link {
         @apply block max-w-sm p-2 shadow-md border;
         @apply border-gray-400 bg-stone-100 hover-hover:hover:bg-stone-300 dark:border-gray-600;
@@ -6,17 +12,34 @@
         @apply transition-transform hover-hover:hover:-translate-y-2;
     }
 
+    .card-button {
+        @apply block max-w-sm p-2 shadow-md;
+        @apply border border-gray-400 bg-stone-200 hover-hover:hover:bg-stone-300;
+        @apply dark:border-gray-600 dark:bg-stone-900 dark:hover-hover:hover:bg-stone-800;
+        @apply opacity-80 transition-transform hover:-translate-y-2;
+    }
+
     .contacts-card {
-        @apply relative h-48 bg-transparent order-6 col-start-9 col-end-13 p-0;
+        @apply relative h-48;
+        @apply border-transparent bg-transparent order-6 col-start-9 col-end-13 p-0;
     }
 
     .skills-card {
-        @apply relative h-80;
-        @apply drop-shadow-md bg-stone-100 dark:bg-stone-950;
-        @apply order-1 col-start-1 col-end-9 p-4 md:p-10 border border-gray-300 dark:border-gray-900;
+        @apply h-80;
+        @apply order-1 col-start-1 col-end-9 p-4 md:p-10;
     }
 
-    .card-title-chip {
+    .jobs-card {
+        @apply h-96;
+        @apply order-1 col-start-1 col-end-13 p-0;
+    }
+
+    .hello-card {
+        @apply h-full;
+        @apply order-1 col-start-1 col-end-13 p-4 md:p-10;
+    }
+
+    .card-chip {
         width: max-content;
         column-span: all;
         clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
@@ -24,7 +47,7 @@
         padding: 0 16px;
     }
 
-    .card-background-light {
+    .card-bg-light {
         background: linear-gradient(
             45deg,
             theme("colors.stone.100"),
@@ -35,7 +58,7 @@
         animation: CardBackgroundAnimation 30s ease infinite;
     }
 
-    .card-background-dark {
+    .card-bg-dark {
         background: linear-gradient(
             20deg,
             theme("colors.stone.950"),

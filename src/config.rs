@@ -13,13 +13,14 @@ pub struct Config {
     pub main: MainConfig,
     pub social: SocialConfig,
     pub cards: CardsConfig,
+    pub jobs: [Job; 3],
 }
 
 #[derive(Clone, Deserialize, Debug)]
 pub struct MainConfig {
     pub author: String,
-    pub title: String,
-    pub description: String,
+    pub name: String,
+    pub profession: String,
     pub project: String,
     pub resume: String,
 }
@@ -37,12 +38,25 @@ pub struct SocialConfig {
 pub struct CardsConfig {
     pub skills: CardConfig,
     pub contacts: CardConfig,
+    pub hello: CardConfig,
 }
 
 #[derive(Clone, Deserialize, Debug)]
 pub struct CardConfig {
     pub title: String,
     pub description: String,
+}
+
+#[derive(Clone, Deserialize, Debug)]
+pub struct Job {
+    pub index: i16,
+    pub end: String,
+    pub company: String,
+    pub company_logo: String,
+    pub location: String,
+    pub position: String,
+    pub start: String,
+    pub subtitle: String,
 }
 
 lazy_static! {
@@ -61,7 +75,9 @@ fn get_env() -> Env {
 
 fn get_config() -> Config {
     let file = fs::read_to_string("config.toml").expect("Unable to read config.toml");
-    let config: Config = toml::from_str(&file).expect("Unable to parse config.toml");
+    let mut config: Config = toml::from_str(&file).expect("Unable to parse config.toml");
+
+    config.jobs.sort_by_key(|a| a.index);
 
     return config.clone();
 }

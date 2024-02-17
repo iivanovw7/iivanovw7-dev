@@ -6,6 +6,7 @@ extern crate lazy_static;
 mod config;
 pub mod handlers;
 mod server;
+pub mod utils;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
