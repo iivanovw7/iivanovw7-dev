@@ -16,26 +16,26 @@
 `.env` file example
 
 ```bash
-SERVER="127.0.0.1:9000"
+SERVER="0.0.0.0:9000"
 ```
 
 -   Install rust
 
 ```bash
-    pacman -S rustup
-    rustup default stable
+pacman -S rustup
+rustup default stable
 ```
 
 -   Install pnpm
 
 ```bash
-  npm install --global pnpm
+npm install --global pnpm
 ```
 
 -   Setup node version manager environment
 
 ```bash
-   nvm use # or nvm install
+nvm use # or nvm install
 ```
 
 ### Scripts
@@ -43,8 +43,8 @@ SERVER="127.0.0.1:9000"
 -   Development server
 
 ```bash
-    pnpm run dev
-    pnpm run dev:css
+pnpm run dev
+pnpm run dev:css
 ```
 
 ### Dockerfile
@@ -71,6 +71,6 @@ docker-compose --version
 -   Build and run container
 
 ```bash
-    docker build -t container-name .
-    docker run -d -p 3000:8080 --name container-name container-name
+docker build -t container-name .
+docker run -d -p 3000:8080 --name container-name container-name
 ```
