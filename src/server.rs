@@ -1,6 +1,6 @@
 use crate::config::ENV;
 use crate::handlers;
-use axum::{routing::get, routing::post, Router};
+use axum::{routing::get, Router};
 use tower_http::services::ServeDir;
 use tracing_subscriber::{fmt, layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
@@ -27,7 +27,6 @@ pub async fn server() -> anyhow::Result<()> {
     let router = Router::new()
         .route("/", get(handlers::home::get))
         .route("/samples/alpha", get(handlers::alpha::get))
-        .route("/samples/alpha/upload", post(handlers::alpha_upload::post))
         .nest_service("/assets", assets_serve.clone())
         .nest_service("/samples/assets", assets_serve.clone())
         .nest_service("/gsap/dist", gsap_serve)

@@ -46,3 +46,31 @@ SERVER="127.0.0.1:9000"
     pnpm run dev
     pnpm run dev:css
 ```
+
+### Dockerfile
+
+-   Install docker
+
+```bash
+sudo pacman -Syu
+sudo pacman -S docker
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+sudo usermod -aG docker $USER
+
+sudo docker version
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+# docker-compose version 1.29.2, build 5becea4c
+
+```
+
+-   Build and run container
+
+```bash
+    docker build -t container-name .
+    docker run -d -p 3000:8080 --name container-name container-name
+```
