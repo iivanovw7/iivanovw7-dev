@@ -83,6 +83,7 @@
     });
 
     let draggable = new Draggable(document.createElement("div"), {
+        type: "x",
         trigger: ".slides-container",
         onPress() {
             gsap.killTweensOf(animation);
@@ -123,6 +124,9 @@
     resize();
 
     window.addEventListener("resize", resize);
-    document.querySelector("#prevButton").addEventListener("click", () => animateSlides(-1));
-    document.querySelector("#nextButton").addEventListener("click", () => animateSlides(1));
+
+    htmx.onLoad(function () {
+        htmx.on("#prevButton", "click", () => animateSlides(-1));
+        htmx.on("#nextButton", "click", () => animateSlides(1));
+    });
 </script>
