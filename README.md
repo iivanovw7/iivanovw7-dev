@@ -78,4 +78,7 @@ docker run -d -p 3000:8080 --name container-name container-name
 docker system prune -a
 docker image prune
 
+# Update docker image after changes
+chmod +x recompose.sh
+./recompose
 ```
