@@ -1,10 +1,12 @@
 @layer components {
     .slide {
-        @apply absolute overflow-hidden p-4 sm:p-10 h-full w-full items-start justify-start z-10 flex flex-col;
+        @apply absolute overflow-hidden p-4 sm:p-10 h-full w-full;
+        @apply items-start justify-start z-10 flex flex-col;
     }
 
     .company-logo {
-        @apply border border-gray-300 dark:border-gray-700 h-12 max-h-12 justify-center bg-stone-100 dark:bg-stone-900 ml-auto p-2 md:justify-start;
+        @apply border border-gray-300 dark:border-gray-700 h-12 max-h-12;
+        @apply justify-center bg-stone-100 dark:bg-stone-900 ml-auto p-2 md:justify-start;
     }
 
     .squares {

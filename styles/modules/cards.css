@@ -7,16 +7,16 @@
 
     .card-link {
         @apply block max-w-sm p-2 shadow-md border;
-        @apply border-gray-400 bg-stone-100 hover-hover:hover:bg-stone-300 dark:border-gray-600;
-        @apply dark:bg-stone-900 dark:hover-hover:hover:bg-stone-800;
-        @apply transition-transform hover-hover:hover:-translate-y-2;
+        @apply border-gray-400 bg-stone-100 hover-hover:bg-stone-300 dark:border-gray-600;
+        @apply dark:bg-stone-900 dark:hover-hover:bg-stone-800;
+        @apply transition-transform hover-hover:-translate-y-2;
     }
 
     .card-button {
         @apply block max-w-sm p-2 shadow-md;
-        @apply border border-gray-400 bg-stone-200 hover-hover:hover:bg-stone-300;
-        @apply dark:border-gray-600 dark:bg-stone-900 dark:hover-hover:hover:bg-stone-800;
-        @apply opacity-80 transition-transform hover:-translate-y-2;
+        @apply border border-gray-400 bg-stone-200 hover-hover:bg-stone-300;
+        @apply dark:border-gray-600 dark:bg-stone-900 dark:hover-hover:bg-stone-800;
+        @apply opacity-80 transition-transform hover-hover:-translate-y-2;
     }
 
     .contacts-card {

@@ -4,23 +4,23 @@
 
 @layer base {
     * {
-        scrollbar-color: rgba(136, 154, 201, 0.3) transparent;
-        scrollbar-width: auto;
+        scrollbar-color: theme("colors.stone.600") theme("colors.stone.800");
+        scrollbar-width: thin;
     }
 
     *::-webkit-scrollbar {
         width: 8px;
-        height: 8px;
     }
 
     *::-webkit-scrollbar-track {
-        background: transparent;
+        background: theme("colors.stone.600");
         box-shadow: none;
     }
 
     *::-webkit-scrollbar-thumb {
-        background-color: rgba(136, 154, 201, 0.3);
-        border-radius: calc(4px / 2);
+        background-color: theme("colors.stone.600");
+        border-radius: 20px;
+        border: 3px solid theme("colors.stone.800");
     }
 
     body {
