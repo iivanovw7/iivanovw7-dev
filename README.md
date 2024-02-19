@@ -73,4 +73,9 @@ docker-compose --version
 ```bash
 docker build -t container-name .
 docker run -d -p 3000:8080 --name container-name container-name
+
+# clear cache
+docker system prune -a
+docker image prune
+
 ```

@@ -39,7 +39,8 @@ COPY config.toml .
 COPY ./templates ./templates
 
 RUN pnpm install;
-RUN pnpm dlx tailwindcss -i ./styles/main.css -o ./assets/main.css
+RUN pnpm dlx tailwindcss -i ./styles/main.css -o ./assets/css/main.css
+RUN npm install pm2 -g
 
 FROM debian:bookworm-slim AS runtime
 
@@ -47,6 +48,7 @@ WORKDIR /app
 
 COPY --from=rust_builder /app/target/release/iivanovw7-dev ./server
 COPY --from=node_builder /app/assets ./assets
+COPY --from=node_builder /app/node_modules ./node_modules
 COPY --from=node_builder /app/.env .
 COPY --from=node_builder /app/config.toml .
 
