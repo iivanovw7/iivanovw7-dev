@@ -24,7 +24,7 @@ title = "I am a Frontend developer with industry experience building websites an
 description = "I enjoy learning new things and overcome new challenges analyzing how I improved through them."
 
 [[jobs]]
-index = 1
+index = 0
 end = "Present"
 company = "Mytona"
 company_logo = "/assets/png/mytona-logo.png"
@@ -33,7 +33,7 @@ position = "Frontend developer"
 start = "Jan 2021"
 subtitle = "Building polished software and web experiences using React / Mobx."
 [[jobs]]
-index = 2
+index = 1
 company = "AB Technology"
 company_logo = "/assets/png/ab-logo.png"
 end = "Jan 2021"
@@ -42,7 +42,7 @@ start = "Feb 2019"
 position = "Frontend developer"
 subtitle = "Developed an online cinema projects using React / Redux and Angular."
 [[jobs]]
-index = 3
+index = 2
 company = "BCC"
 company_logo = "/assets/png/bcc-logo.png"
 end = "Feb 2019"

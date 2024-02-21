@@ -58,12 +58,16 @@
         xPercent: (i) => i * 100,
     });
 
+    let prevButton = htmx.find("#prevButton");
+    let nextButton = htmx.find("#nextButton");
+
     let slideDelay = 1.5;
     let slideDuration = 0.3;
     let slides = gsap.utils.toArray(".slide");
     let numSlides = slides.length;
     let progressPerItem = 1 / (numSlides - 1);
     let snapProgress = gsap.utils.snap(progressPerItem);
+
     let snapProgressDirectional = (value, direction) => {
         let snapped = snapProgress(value);
 
@@ -71,6 +75,7 @@
             ? snapped
             : snapProgress(direction < 0 ? value - progressPerItem : value + progressPerItem);
     };
+
     let slideWidth = 0;
     let totalWidth = 0;
     let slideAnimation;
@@ -101,8 +106,31 @@
                 progress,
                 overwrite: true,
             });
+
+            updateVisibility(progress);
         },
     });
+
+    function updateVisibility(progress) {
+        switch (progress) {
+            case 0: {
+                prevButton.setAttribute("disabled", "true");
+                nextButton.removeAttribute("disabled");
+
+                break;
+            }
+            case 1: {
+                prevButton.removeAttribute("disabled");
+                nextButton.setAttribute("disabled", "true");
+
+                break;
+            }
+            default: {
+                prevButton.removeAttribute("disabled");
+                nextButton.removeAttribute("disabled");
+            }
+        }
+    }
 
     function animateSlides(direction) {
         let progress = snapProgress(animation.progress() + direction * progressPerItem);
@@ -113,6 +141,8 @@
                 duration: slideDuration,
                 overwrite: true,
             });
+
+            updateVisibility(progress);
         }
     }
 
@@ -122,11 +152,12 @@
     }
 
     resize();
+    updateVisibility(0);
 
     window.addEventListener("resize", resize);
 
     htmx.onLoad(function () {
-        htmx.on("#prevButton", "click", () => animateSlides(-1));
-        htmx.on("#nextButton", "click", () => animateSlides(1));
+        htmx.on(prevButton, "click", () => animateSlides(-1));
+        htmx.on(nextButton, "click", () => animateSlides(1));
     });
 </script>
