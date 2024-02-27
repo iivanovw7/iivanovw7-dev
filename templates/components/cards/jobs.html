@@ -25,12 +25,12 @@
             </div>
             <div class="p-4 md:p-10 absolute bottom-0 right-0 z-10 flex flex-row items-end justify-end gap-2">
                 <button id="prevButton" class="card-button" type="button" aria-label="Prev slide">
-                    <svg class="h-7 w-7 text-gray-900 dark:text-gray-200">
+                    <svg class="h-7 w-7">
                         <use href="/assets/svg/sprite.svg#arrow-left" />
                     </svg>
                 </button>
                 <button id="nextButton" class="card-button" type="button" aria-label="Next slide">
-                    <svg class="h-7 w-7 text-gray-900 dark:text-gray-200">
+                    <svg class="h-7 w-7">
                         <use href="/assets/svg/sprite.svg#arrow-right" />
                     </svg>
                 </button>
@@ -97,17 +97,21 @@
         onDrag() {
             let change = (draggable.startX - draggable.x) / totalWidth;
 
-            animation.progress(draggable.startProgress + change);
+            if (change >= 0 && change <= 1) {
+                animation.progress(draggable.startProgress + change);
+            }
         },
         onRelease() {
             let progress = snapProgress(animation.progress() + -Math.sign(this.deltaX) * progressPerItem);
 
-            gsap.to(animation, {
-                progress,
-                overwrite: true,
-            });
+            if (progress >= 0 && progress <= 1) {
+                gsap.to(animation, {
+                    progress,
+                    overwrite: true,
+                });
 
-            updateVisibility(progress);
+                updateVisibility(progress);
+            }
         },
     });
 

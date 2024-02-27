@@ -5,7 +5,7 @@
     }
 
     .company-logo {
-        @apply border border-gray-300 dark:border-gray-700 h-12 max-h-12;
+        @apply border border-stone-400 dark:border-stone-600 h-12 max-h-12;
         @apply justify-center bg-stone-100 dark:bg-stone-900 ml-auto p-2 md:justify-start;
     }
 
