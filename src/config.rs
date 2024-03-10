@@ -12,7 +12,6 @@ pub struct Env {
 pub struct Config {
     pub main: MainConfig,
     pub social: SocialConfig,
-    pub cards: CardsConfig,
     pub jobs: [Job; 3],
 }
 
@@ -32,19 +31,6 @@ pub struct SocialConfig {
     pub linkedin: String,
     pub telegram: String,
     pub twitter: String,
-}
-
-#[derive(Clone, Deserialize, Debug)]
-pub struct CardsConfig {
-    pub skills: CardConfig,
-    pub contacts: CardConfig,
-    pub hello: CardConfig,
-}
-
-#[derive(Clone, Deserialize, Debug)]
-pub struct CardConfig {
-    pub title: String,
-    pub description: String,
 }
 
 #[derive(Clone, Deserialize, Debug)]

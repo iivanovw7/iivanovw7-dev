@@ -1,45 +1,45 @@
 @layer components {
     .card {
         @apply relative;
-        @apply drop-shadow-md bg-stone-100 dark:bg-stone-950;
-        @apply border border-gray-300 dark:border-gray-900;
+        @apply bg-stone-200 dark:bg-stone-950;
     }
 
     .card-link {
-        @apply block max-w-sm p-2 shadow-md border;
-        @apply border-stone-400 bg-stone-100 hover:bg-stone-200 dark:border-stone-600;
-        @apply dark:bg-stone-900 dark:hover:bg-stone-800;
-        @apply transition-all md:hover:-translate-y-2;
+        @apply block max-w-sm p-2 shadow-none;
+        @apply text-stone-600 dark:text-stone-500;
+        @apply transition-all;
+        @apply hover:text-stone-900;
+        @apply dark:hover:text-stone-200;
     }
 
     .card-button {
-        @apply block max-w-sm p-2 shadow-md;
-        @apply transition-all md:enabled:hover:-translate-y-2;
-        @apply text-stone-900 dark:text-stone-300;
-        @apply border border-stone-400 bg-stone-100 enabled:hover:bg-stone-200;
-        @apply dark:border-stone-600 dark:bg-stone-900 enabled:dark:hover:bg-stone-800;
-        @apply disabled:bg-stone-100 disabled:border-stone-200 disabled:text-stone-200;
-        @apply disabled:dark:bg-stone-950 disabled:dark:border-stone-800 disabled:dark:text-stone-800;
+        @apply block max-w-sm shadow-none;
+        @apply text-stone-700 dark:text-stone-400;
+        @apply bg-stone-200 bg-transparent;
+        @apply enabled:hover:text-stone-900;
+        @apply enabled:dark:hover:text-stone-200;
+        @apply disabled:text-stone-300;
+        @apply disabled:dark:text-stone-800;
     }
 
-    .contacts-card {
-        @apply relative h-48;
-        @apply border-transparent bg-transparent order-6 col-start-9 col-end-13 p-0;
+    .card-title {
+        width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: Print 3s steps(32, end) forwards;
+        margin: 0;
     }
 
-    .skills-card {
-        @apply h-80;
-        @apply order-1 col-start-1 col-end-9 p-4 md:p-10;
+    .card-cursor {
+        animation: Blink 1s infinite;
+        margin-left: 2px;
+        color: theme("colors.white");
     }
 
-    .jobs-card {
-        @apply h-96;
-        @apply order-1 col-start-1 col-end-13 p-0;
-    }
-
-    .hello-card {
-        @apply h-full;
-        @apply order-1 col-start-1 col-end-13 p-4 md:p-10;
+    .card-arrow {
+        @apply w-0 h-0 border-t-transparent;
+        @apply border-t-[10px] border-b-transparent border-b-[10px] border-l-[10px];
+        @apply sm:border-t-[12px] sm:border-b-transparent sm:border-b-[12px] sm:border-l-[12px] border-l-stone-400;
     }
 
     .card-chip {
@@ -50,49 +50,13 @@
         padding: 0 16px;
     }
 
-    .card-bg-light {
-        background: linear-gradient(
-            45deg,
-            theme("colors.stone.100"),
-            theme("colors.stone.100"),
-            theme("colors.stone.500")
-        );
-        background-size: 250% 250%;
-        animation: CardBackgroundAnimation 30s ease infinite;
+    .card-slide {
+        @apply absolute overflow-hidden px-4 pt-36 pb-4 sm:pt-40 h-full w-full;
+        @apply items-start justify-start z-10 flex flex-col;
     }
 
-    .card-bg-dark {
-        background: linear-gradient(
-            20deg,
-            theme("colors.stone.950"),
-            theme("colors.stone.950"),
-            theme("colors.purple.950")
-        );
-        background-size: 250% 250%;
-        animation: CardBackgroundAnimation 30s ease infinite;
-    }
-
-    .card-frame::before {
-        border-radius: inherit;
-        content: "";
-        inset: 0;
-        mask:
-            linear-gradient(theme("colors.gray.200") 0, theme("colors.gray.950")) content-box,
-            linear-gradient(theme("colors.gray.200") 0, theme("colors.gray.950"));
-        mask-composite: exclude;
-        pointer-events: none;
-        position: absolute;
-        padding: 1px;
-        z-index: 10;
-    }
-
-    .card-frame-light::before {
-        background: linear-gradient(18.48deg, theme("colors.gray.400") 2.76%, rgba(255, 255, 255, 0) 17.23%),
-            linear-gradient(200.6deg, theme("colors.gray.400") 4.13%, rgba(255, 255, 255, 0) 20.54%);
-    }
-
-    .card-frame-dark::before {
-        background: linear-gradient(18.48deg, theme("colors.purple.900") 2.76%, rgba(255, 255, 255, 0) 17.23%),
-            linear-gradient(200.6deg, theme("colors.purple.900") 4.13%, rgba(255, 255, 255, 0) 20.54%);
+    .card-logo {
+        @apply h-10 max-h-10;
+        @apply justify-center bg-transparent ml-auto p-2 md:justify-start;
     }
 }

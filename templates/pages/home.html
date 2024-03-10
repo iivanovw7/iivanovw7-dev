@@ -4,12 +4,7 @@
 {% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
 
 {% block content %}
-<div class="mx-auto flex max-w-screen-lg grow flex-col px-6">
-    <div class="flex grow flex-col gap-6 mt-8 md:grid md:cols-[repeat(12,_1fr)]">
-        {% include "components/cards/hello.html" %}
-        {% include "components/cards/jobs.html" %}
-        {% include "components/cards/skills.html" %}
-        {% include "components/cards/contacts.html" %}
-    </div>
+<div class="mx-auto grow flex flex-col px-2 md:px-16 items-start justify-center w-full">
+    {% include "components/cards/jobs.html" %}
 </div>
 {% endblock %}

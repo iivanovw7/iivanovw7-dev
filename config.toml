@@ -1,5 +1,5 @@
 [main]
-author = "iivanovw7"
+author = "iivanovw7.dev"
 name = "Igor Ivanov"
 profession = "Frontend developer"
 project = "https://github.com/iivanovw7/iivanovw7-dev"
@@ -11,17 +11,6 @@ github = "https://github.com/iivanovw7"
 linkedin = "https://www.linkedin.com/in/iivanovw7"
 telegram = "https://t.me/iivanovw7"
 twitter = "https://twitter.com/_IvanovIgor"
-
-[cards]
-[cards.skills]
-title = "I constantly try to improve my skills."
-description = "I am interested in using my expertise to build well-constructed and user-friendly web applications"
-[cards.contacts]
-title = "Contact me"
-description = "Make a contact via email or telegram."
-[cards.hello]
-title = "I am a Frontend developer with industry experience building websites and web applications."
-description = "I enjoy learning new things and overcome new challenges analyzing how I improved through them."
 
 [[jobs]]
 index = 0
@@ -49,4 +38,4 @@ end = "Feb 2019"
 location = "Saint-Petersburg, Russia"
 position = "Engineer"
 start = "Jan 2013"
-subtitle = "Created logic for PLCs based on design documentation and implemented them in systems for production use. \n Developed a graphical interfaces for a dispatching system in Desigo Insight, WinCC, Citect. "
+subtitle = "Created logic for PLCs based on design documentation and implemented them in systems for production use."
