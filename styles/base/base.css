@@ -24,8 +24,12 @@
     }
 
     body {
-        @apply min-h-screen flex flex-col;
+        @apply h-screen flex flex-col overflow-hidden;
         @apply bg-stone-200 dark:bg-stone-950 text-gray-800 dark:text-gray-100;
+
+        @supports (-webkit-touch-callout: none) {
+            height: -webkit-fill-available;
+        }
     }
 
     html {
