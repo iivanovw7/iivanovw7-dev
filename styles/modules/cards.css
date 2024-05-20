@@ -1,15 +1,13 @@
 @layer components {
     .card {
-        @apply relative;
-        @apply bg-stone-200 dark:bg-stone-950;
+        @apply relative bg-stone-200 dark:bg-stone-950;
     }
 
     .card-link {
         @apply block max-w-sm p-2 shadow-none;
         @apply text-stone-600 dark:text-stone-500;
         @apply transition-all;
-        @apply hover:text-stone-900;
-        @apply dark:hover:text-stone-200;
+        @apply hover:text-stone-900 dark:hover:text-stone-200;
     }
 
     .card-button {
@@ -18,8 +16,7 @@
         @apply bg-stone-200 bg-transparent;
         @apply enabled:hover:text-stone-900;
         @apply enabled:dark:hover:text-stone-200;
-        @apply disabled:text-stone-300;
-        @apply disabled:dark:text-stone-800;
+        @apply disabled:text-stone-300 disabled:dark:text-stone-800;
     }
 
     .card-title {
@@ -43,6 +40,8 @@
     }
 
     .card-chip {
+        @apply flex items-center justify-center;
+
         width: max-content;
         column-span: all;
         clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);

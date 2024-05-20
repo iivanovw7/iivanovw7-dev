@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "cargo watch -x run",
-        "dev:css": "pnpm clean:css && pnpm pnpm dlx tailwindcss -c ./tailwind.config.cjs -i styles/main.css -o assets/css/main.css --watch",
+        "dev:css": "pnpm clean:css && pnpm dlx tailwindcss -c ./tailwind.config.cjs -i styles/main.css -o assets/css/main.css --watch",
         "build": "pnpm build:css && pnpm build:server",
         "build:server": "cargo build --release",
         "build:css": "pnpm dlx tailwindcss -c ./tailwind.config.cjs -i styles/main.css -o assets/css/main.css --minify",
