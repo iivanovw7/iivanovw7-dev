@@ -1,8 +1,6 @@
 <header class="fixed top-0 w-full my-0 flex flex-col">
     <div class="mx-auto flex w-full gap-4 p-4 flex-row items-center justify-end">
-        {% block content %}
-            {% include "elements/theme-switch.html" %}
-        {% endblock %}
+        {% block content %} {% include "elements/theme-switch.html" %} {% endblock %}
         <a
             class="text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 transition-colors"
             href="{{ main.project }}"
@@ -13,5 +11,5 @@
                 <use href="/assets/svg/sprite.svg#github" />
             </svg>
         </a>
-    </div> 
+    </div>
 </header>

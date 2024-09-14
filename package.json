@@ -10,25 +10,36 @@
         "build:server": "cargo build --release",
         "build:css": "pnpm dlx tailwindcss -c ./tailwind.config.cjs -i styles/main.css -o assets/css/main.css --minify",
         "build:run": "cargo run",
-        "format": "prettier --write --ignore-unknown .",
-        "clean:css": "rm -rf assets/css/main.css"
+        "test:format": "prettier --write --ignore-unknown .",
+        "test": "pnpm run /^test:/",
+        "clean:css": "rm -rf assets/css/main.css",
+        "prepare": "husky"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
         "@alpinejs/morph": "3.13.5",
+        "@commitlint/cli": "19.5.0",
+        "@commitlint/config-conventional": "19.5.0",
         "@tailwindcss/aspect-ratio": "0.4.2",
-        "@tailwindcss/typography": "0.5.10",
+        "@tailwindcss/typography": "0.5.15",
         "alpinejs": "3.13.5",
         "autoprefixer": "10.4.17",
         "gsap": "3.12.5",
         "htmx.org": "1.9.10",
+        "husky": "9.1.6",
         "postcss-100vh-fix": "1.0.2",
         "tailwindcss": "3.4.1"
     },
     "devDependencies": {
+        "cz-conventional-changelog": "^3.3.0",
         "prettier": "3.2.5",
         "prettier-plugin-tailwindcss": "0.5.11"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }

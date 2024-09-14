@@ -12,7 +12,7 @@ pub struct Env {
 pub struct Config {
     pub main: MainConfig,
     pub social: SocialConfig,
-    pub jobs: [Job; 3],
+    pub jobs: [Job; 4],
 }
 
 #[derive(Clone, Deserialize, Debug)]

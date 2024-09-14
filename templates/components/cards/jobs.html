@@ -86,18 +86,18 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="p-4 absolute bottom-0 right-0 z-10 flex flex-row items-end justify-end gap-2">
-                <button id="prevButton" class="card-button" type="button" aria-label="Prev slide">
-                    <svg class="h-7 w-7">
-                        <use href="/assets/svg/sprite.svg#chevron-left" />
-                    </svg>
-                </button>
-                <button id="nextButton" class="card-button" type="button" aria-label="Next slide">
-                    <svg class="h-7 w-7">
-                        <use href="/assets/svg/sprite.svg#chevron-right" />
-                    </svg>
-                </button>
-            </div>
+        </div>
+        <div class="p-4 absolute bottom-0 right-0 z-20 flex flex-row items-end justify-end gap-2">
+            <button id="prevButton" class="card-button" type="button" aria-label="Prev slide">
+                <svg class="h-7 w-7">
+                    <use href="/assets/svg/sprite.svg#chevron-left" />
+                </svg>
+            </button>
+            <button id="nextButton" class="card-button" type="button" aria-label="Next slide">
+                <svg class="h-7 w-7">
+                    <use href="/assets/svg/sprite.svg#chevron-right" />
+                </svg>
+            </button>
         </div>
     </div>
 </div>
@@ -147,33 +147,29 @@
         onDrag() {
             let change = (draggable.startX - draggable.x) / totalWidth;
 
-            if (change >= 0 && change <= 1) {
-                animation.progress(draggable.startProgress + change);
-            }
+            animation.progress(draggable.startProgress + change);
         },
-        onRelease() {
+        onDragEnd() {
             let progress = snapProgress(animation.progress() + -Math.sign(this.deltaX) * progressPerItem);
 
-            if (progress >= 0 && progress <= 1) {
-                gsap.to(animation, {
-                    progress,
-                    overwrite: true,
-                });
+            gsap.to(animation, {
+                progress,
+                overwrite: true,
+            });
 
-                updateVisibility(progress);
-            }
+            updateVisibility(progress);
         },
     });
 
-    function updateVisibility(progress) {
-        switch (progress) {
-            case 0: {
+    const updateVisibility = (progress) => {
+        switch (true) {
+            case progress <= 0: {
                 prevButton.setAttribute("disabled", "true");
                 nextButton.removeAttribute("disabled");
 
                 break;
             }
-            case 1: {
+            case progress >= 1: {
                 prevButton.removeAttribute("disabled");
                 nextButton.setAttribute("disabled", "true");
 
@@ -184,26 +180,31 @@
                 nextButton.removeAttribute("disabled");
             }
         }
-    }
+    };
 
-    function animateSlides(direction) {
-        let progress = snapProgress(animation.progress() + direction * progressPerItem);
+    const handleClick = (direction) => {
+        return (eventData) => {
+            eventData.stopPropagation();
+            eventData.preventDefault();
 
-        if (progress >= 0 && progress <= 1) {
-            slideAnimation = gsap.to(animation, {
-                progress,
-                duration: slideDuration,
-                overwrite: true,
-            });
+            let progress = snapProgress(animation.progress() + direction * progressPerItem);
 
-            updateVisibility(progress);
-        }
-    }
+            if (progress >= 0 && progress <= 1) {
+                updateVisibility(progress);
 
-    function resize() {
+                slideAnimation = gsap.to(animation, {
+                    progress,
+                    duration: slideDuration,
+                    overwrite: true,
+                });
+            }
+        };
+    };
+
+    const resize = () => {
         slideWidth = slides[0].offsetWidth;
         totalWidth = slideWidth * numSlides;
-    }
+    };
 
     resize();
     updateVisibility(0);
@@ -211,7 +212,7 @@
     window.addEventListener("resize", resize);
 
     htmx.onLoad(function () {
-        htmx.on(prevButton, "click", () => animateSlides(-1));
-        htmx.on(nextButton, "click", () => animateSlides(1));
+        htmx.on(prevButton, "click", handleClick(-1));
+        htmx.on(nextButton, "click", handleClick(1));
     });
 </script>

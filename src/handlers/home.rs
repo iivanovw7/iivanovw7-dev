@@ -21,7 +21,7 @@ pub async fn get() -> impl IntoResponse {
 struct HomeTemplate {
     pub main: MainConfig,
     pub social: SocialConfig,
-    pub jobs: [Job; 3],
+    pub jobs: [Job; 4],
 }
 
 struct HtmlTemplate<T>(T);

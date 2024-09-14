@@ -15,14 +15,25 @@ twitter = "https://twitter.com/_IvanovIgor"
 [[jobs]]
 index = 0
 end = "Present"
+company = "Devexperts"
+company_logo = "/assets/png/dx-logo.png"
+location = "Porto, Portugal"
+start = "Mar 2024"
+position = "Frontend developer"
+subtitle = "Working with React, TS, and a11y to create user-friendly interfaces for the Capital Markets industry."
+
+[[jobs]]
+index = 1
+end = "Feb 2024"
 company = "Mytona"
 company_logo = "/assets/png/mytona-logo.png"
 location = "Singapore"
 position = "Frontend developer"
 start = "Jan 2021"
 subtitle = "Building polished software and web experiences using React / Mobx."
+
 [[jobs]]
-index = 1
+index = 2
 company = "AB Technology"
 company_logo = "/assets/png/ab-logo.png"
 end = "Jan 2021"
@@ -30,8 +41,9 @@ location = "Saint-Petersburg, Russia"
 start = "Feb 2019"
 position = "Frontend developer"
 subtitle = "Developed an online cinema projects using React / Redux and Angular."
+
 [[jobs]]
-index = 2
+index = 3
 company = "BCC"
 company_logo = "/assets/png/bcc-logo.png"
 end = "Feb 2019"
