@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@use "sass:map";
+@use "sass:list";
+
+$cb-transition: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-opacity: opacity 250ms $cb-transition;
+$transition-color: color 250ms $cb-transition;
+$transition-bg-color: background-color 250ms $cb-transition;
+$transition-border-color: border-color 250ms $cb-transition;
+$transition-width: width 250ms $cb-transition;
+$transition-height: height 250ms $cb-transition;

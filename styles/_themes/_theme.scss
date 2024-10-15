@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+/*
+ *  Application themes.
+ *      @module styles/_themes/_theme
+ */
+
+@use "sass:map";
+@use "sass:list";
+@use "palette" as palette;
+
+$theme-variants: (
+    light: (
+        text-primary: palette.get(stone, 900),
+        text-secondary: palette.get(stone, 500),
+        text-white: palette.get(stone, 100),
+        background-primary: palette.get(stone, 200),
+        focus: palette.get(blue, 900),
+        cursor: "#000",
+
+        scrollbar: palette.get(stone, 800),
+        scrollbar-track: palette.get(stone, 600),
+        scrollbar-thumb: palette.get(stone, 600),
+        scrollbar-thumb-border: palette.get(stone, 800),
+        icon-link-secondary: palette.get(stone, 600),
+        icon-link-secondary-hover: palette.get(stone, 800),
+        icon-button-secondary: palette.get(stone, 700),
+        icon-button-secondary-disabled: palette.get(stone, 500),
+        icon-button-secondary-hover: palette.get(stone, 900),
+    ),
+    dark: (
+        text-primary: palette.get(stone, 200),
+        text-secondary: palette.get(stone, 500),
+        text-white: palette.get(stone, 100),
+        background-primary: palette.get(stone, 900),
+        focus: palette.get(blue, 600),
+        cursor: "#FFF",
+
+        scrollbar: palette.get(stone, 600),
+        scrollbar-track: palette.get(stone, 600),
+        scrollbar-thumb: palette.get(stone, 600),
+        scrollbar-thumb-border: palette.get(stone, 800),
+        icon-link-secondary: palette.get(stone, 400),
+        icon-link-secondary-hover: palette.get(stone, 200),
+        icon-button-secondary: palette.get(stone, 400),
+        icon-button-secondary-disabled: palette.get(stone, 800),
+        icon-button-secondary-hover: palette.get(stone, 200),
+    ),
+);
+
+@mixin if-dark {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}
+
+@each $name, $map in $theme-variants {
+    html[data-theme="#{$name}"] {
+        @each $key, $value in $map {
+            --#{$key}: #{$value};
+        }
+    }
+}

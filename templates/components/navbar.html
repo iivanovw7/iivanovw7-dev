@@ -1,15 +1,11 @@
-<header class="fixed top-0 w-full my-0 flex flex-col">
-    <div class="mx-auto flex w-full gap-4 p-4 flex-row items-center justify-end">
-        {% block content %} {% include "elements/theme-switch.html" %} {% endblock %}
-        <a
-            class="text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 transition-colors"
-            href="{{ main.project }}"
-            rel="noreferrer"
-            target="_blank"
-        >
-            <svg class="h-6 w-6">
-                <use href="/assets/svg/sprite.svg#github" />
-            </svg>
-        </a>
+<header class="navbar">
+    <div class="navbar__box">
+        <!-- prettier-ignore -->
+        {% include "elements/theme-switch.html" %}
+        {% set variant = "secondary" %}
+        {% set size = "medium" %}
+        {% set icon = "github" %}
+        {% set href = main.project.to_string() %}
+        {% include "elements/link-icon.html" %}
     </div>
 </header>

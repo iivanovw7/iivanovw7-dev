@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+/* stylelint-disable scss/load-no-partial-leading-underscore */
+
+/**
+ *  Main css file.
+ *    @module styles/main
+ */
+
+/* ============ Themes ================== */
+
+@import "./_themes";
+
+/* ============ Vendors ================== */
+
+@import "./_vendors";
+
+/* ============ Base ================== */
+
+@import "./base";
+
+/* ============ Elements ============== */
+
+@import "./elements/theme-switch";
+@import "./elements/icon-button";
+@import "./elements/icon-link";
+
+/* ============ Components ============= */
+
+@import "./components/home/jobs";
+@import "./components/navbar";
+
+/* ============ Pages ============= */
+
+@import "./pages/alpha";
+@import "./pages/home";

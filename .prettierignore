@@ -1,2 +1,5 @@
 /assets/**/*
 /target/**/*
+/node_modules/**/*
+
+pnpm-lock.yaml

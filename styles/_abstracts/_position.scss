@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+/*
+ *  Positions helper.
+ *      @module styles/_abstracts/_position
+ */
+
+@use "sass:map";
+@use "sass:list";
+@use "sass:math";
+
+@import "./../_internal/utils";
+
+@mixin position($position: absolute, $offsets: 0) {
+    $offsets: __shorthand-property($offsets);
+
+    $positioning-offsets: (
+        top: list.nth($offsets, 1),
+        right: list.nth($offsets, 2),
+        bottom: list.nth($offsets, 3),
+        left: list.nth($offsets, 4),
+    );
+
+    position: $position;
+
+    @each $offset, $value in $positioning-offsets {
+        @if __validate-length($value) {
+            #{$offset}: $value;
+        }
+    }
+}

@@ -4,7 +4,5 @@
 {% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
 
 {% block content %}
-<div class="mx-auto grow flex flex-col px-2 md:px-16 items-start justify-center w-full h-full">
-    {% include "components/cards/jobs.html" %}
-</div>
+<div class="pages-home">{% include "components/home/jobs.html" %}</div>
 {% endblock %}

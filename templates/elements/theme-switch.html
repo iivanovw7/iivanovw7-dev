@@ -1,45 +1,52 @@
-<div class="flex flex-col items-center justify-center ml-4">
+<div class="theme-switch">
     <input
         type="checkbox"
         id="light-switch"
         name="light-switch"
-        class="light-switch sr-only"
+        class="theme-switch__input"
         aria-label="Theme switch"
     />
-    <label class="relative cursor-pointer p-2 hover:text-white" for="light-switch">
-        <svg
-            class="h-6 w-6 dark:hidden text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200"
-        >
+    <label class="theme-switch__label" for="light-switch">
+        <svg class="theme-switch__icon theme-switch__icon--light">
             <use href="/assets/svg/sprite.svg#sun" />
         </svg>
-        <svg
-            class="h-6 w-6 hidden dark:block text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200"
-        >
+        <svg class="theme-switch__icon theme-switch__icon--dark">
             <use href="/assets/svg/sprite.svg#night" />
         </svg>
-        <span class="sr-only">light / dark</span>
+        <span class="theme-switch__text">light / dark</span>
     </label>
 </div>
 
 <script>
     const lightSwitch = htmx.find("#light-switch");
 
-    if (localStorage.getItem("dark-mode") === "true") {
-        lightSwitch.checked = true;
-        document.documentElement.classList.add("dark");
-    }
-
     lightSwitch.addEventListener("change", () => {
         const { checked } = lightSwitch;
 
         lightSwitch.checked = checked;
+        localStorage["dark-mode"] = checked;
 
         if (lightSwitch.checked) {
-            document.documentElement.classList.add("dark");
+            html.setAttribute("data-theme", "dark");
             localStorage.setItem("dark-mode", true);
         } else {
-            document.documentElement.classList.remove("dark");
+            html.setAttribute("data-theme", "light");
             localStorage.setItem("dark-mode", false);
         }
     });
+
+    let themeValue = window.matchMedia("(prefers-color-scheme: dark)") ? "dark" : "light";
+
+    if (localStorage.getItem("dark-mode") !== null) {
+        themeValue = localStorage.getItem("dark-mode") === "true" ? "dark" : "light";
+    }
+
+    if (themeValue === "dark") {
+        lightSwitch.checked = true;
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("dark-mode", true);
+    } else {
+        html.setAttribute("data-theme", "light");
+        localStorage.setItem("dark-mode", false);
+    }
 </script>

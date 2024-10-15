@@ -1,0 +1,57 @@
+@use "./../_abstracts/position" as *;
+@use "./../_abstracts/sizer" as *;
+@use "./../_abstracts/convert" as *;
+@use "./../_abstracts/media" as *;
+@use "./../_abstracts/spacing" as *;
+@use "./../_abstracts/layout" as *;
+@use "./../_abstracts/variables" as *;
+@use "./../_abstracts/a11y" as *;
+
+.icon-link {
+    display: inline-flex;
+    text-decoration: none;
+    outline: none;
+    transition: $transition-color;
+
+    &:focus-visible {
+        @include focus-outline;
+    }
+
+    .icon-link__icon {
+        margin: auto;
+    }
+
+    &__medium {
+        @include sizer(rem(40px));
+        @include p(2);
+
+        .icon-link__icon {
+            @include sizer(rem(24px));
+        }
+    }
+
+    &__large {
+        @include sizer(rem(48px));
+        @include p(2);
+
+        .icon-link__icon {
+            @include sizer(rem(32px));
+        }
+    }
+
+    &__primary {
+        color: var(--icon-link-primary);
+
+        &:hover {
+            color: var(--icon-link-primary-hover);
+        }
+    }
+
+    &__secondary {
+        color: var(--icon-link-secondary);
+
+        &:hover {
+            color: var(--icon-link-secondary-hover);
+        }
+    }
+}

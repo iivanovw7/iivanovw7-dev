@@ -2,6 +2,7 @@ use dotenv::dotenv;
 use lazy_static::lazy_static;
 use serde::Deserialize;
 use std::fs;
+use struct_iterable::Iterable;
 
 #[derive(Clone, Deserialize, Debug)]
 pub struct Env {
@@ -16,15 +17,20 @@ pub struct Config {
 }
 
 #[derive(Clone, Deserialize, Debug)]
+pub struct SocialConfigItem {
+    pub title: String,
+    pub link: String,
+}
+
+#[derive(Clone, Deserialize, Debug)]
 pub struct MainConfig {
     pub author: String,
     pub name: String,
     pub profession: String,
     pub project: String,
-    pub resume: String,
 }
 
-#[derive(Clone, Deserialize, Debug)]
+#[derive(Clone, Deserialize, Debug, Iterable)]
 pub struct SocialConfig {
     pub email: String,
     pub github: String,
@@ -65,7 +71,7 @@ fn get_config() -> Config {
 
     config.jobs.sort_by_key(|a| a.index);
 
-    return config.clone();
+    config.clone()
 }
 
 #[cfg(test)]

@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/*
+*  Sizer helper.
+*      @module styles/_abstracts/_sizer
+*/
+
+@use "sass:map";
+@use "sass:list";
+
+@mixin sizer($width, $height: $width) {
+    inline-size: $width;
+    block-size: $height;
+}

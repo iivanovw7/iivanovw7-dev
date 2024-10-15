@@ -1,5 +1,9 @@
 .env
+.exintcache
 
 /assets/css/main.css
+/asstes/css/main.css.map
+/assets/css/css.meta.json
+
 /node_modules
 /target

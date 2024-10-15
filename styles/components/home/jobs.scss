@@ -1,0 +1,288 @@
+@use "./../../_abstracts/media" as *;
+@use "./../../_abstracts/sizer" as *;
+@use "./../../_abstracts/convert" as *;
+@use "./../../_abstracts/spacing" as *;
+@use "./../../_abstracts/a11y" as *;
+@use "./../../_abstracts/position" as *;
+@use "./../../_abstracts/layout" as *;
+@use "./../../_abstracts/typography" as *;
+@use "./../../_abstracts/z-index" as *;
+@use "./../../_themes/palette" as palette;
+
+.home-jobs {
+    @include sizer(100%, rem(448px));
+
+    position: relative;
+    max-inline-size: rem(640px);
+    max-block-size: 80vb;
+
+    &__inner {
+        @include sizer(100%);
+        @include justify-align-flex;
+
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__slides-container {
+        @include sizer(100%);
+
+        position: relative;
+        display: flex;
+        flex: 1 1 0%;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    &__slider-header {
+        @include position(absolute, 0 auto auto 0);
+        @include p(2);
+        @include z-index(slider-header);
+
+        display: flex;
+        flex-direction: column;
+        gap: rem(8px);
+        inline-size: 100%;
+    }
+
+    &__slider-header-top {
+        @include text-setting(sm);
+
+        display: flex;
+        flex-direction: row;
+
+        @include media(min, sm) {
+            @include text-setting(base);
+        }
+    }
+
+    &__path-folder {
+        @include px(2);
+
+        display: inline-flex;
+        block-size: rem(20px);
+        color: palette.get(stone, 100);
+        background-color: palette.get(purple, 950);
+
+        @include media(min, sm) {
+            block-size: rem(24px);
+        }
+    }
+
+    &__path-folder-icon {
+        @include sizer(rem(12px));
+
+        margin: auto rem(8px) auto 0;
+
+        @include media(min, sm) {
+            @include sizer(rem(16px));
+        }
+    }
+
+    &__path-git {
+        @include px(2);
+
+        display: inline-flex;
+        block-size: rem(20px);
+        color: palette.get(stone, 950);
+        background-color: palette.get(stone, 400);
+
+        @include media(min, sm) {
+            block-size: rem(24px);
+        }
+    }
+
+    &__path-arrow {
+        @include sizer(0);
+
+        border-style: solid;
+        border-block-start-color: transparent;
+        border-block-start-width: rem(10px);
+        border-block-end-color: transparent;
+        border-block-end-width: rem(10px);
+        border-inline-start-color: palette.get(stone, 400);
+        border-inline-start-width: rem(10px);
+        border-inline-end-width: 0;
+
+        @include border-box;
+
+        @include media(min, sm) {
+            border-block-start-width: rem(12px);
+            border-block-end-width: rem(12px);
+            border-inline-start-width: rem(12px);
+        }
+    }
+
+    &__slider-header-middle {
+        @include justify-align-flex(flex-start, center);
+
+        column-gap: rem(8px);
+
+        .icon-link {
+            @include p(0);
+        }
+    }
+
+    &__cli-container {
+        @include justify-align-flex(flex-start, center);
+
+        flex-direction: row;
+    }
+
+    &__cli-content {
+        @include justify-align-flex(flex-start, center);
+        @include m(0);
+        @include text-overflow(hidden);
+
+        inline-size: 0;
+        animation: print 3s steps(32, end) forwards;
+    }
+
+    &__cli-content-name {
+        font-weight: $font-weight-bold;
+    }
+
+    &__cli-content-comma,
+    &__cli-content-profession {
+        color: var(--text-secondary);
+    }
+
+    &__cli-cursor {
+        @include ml(1);
+
+        color: var(--cursor);
+        animation: blink 1s infinite;
+    }
+
+    &__cli-content-name,
+    &__cli-content-comma,
+    &__cli-content-profession,
+    &__cli-cursor {
+        @include text-setting(base);
+
+        @include media(min, sm) {
+            @include text-setting(xl);
+        }
+    }
+
+    &__slider-header-bottom {
+        @include justify-align-flex(flex-start, center);
+
+        flex-direction: row;
+        gap: rem(16px);
+    }
+
+    &__slider-container {
+        @include sizer(100%);
+        @include z-index(content);
+
+        position: relative;
+        overflow: visible;
+    }
+
+    &__slider-slide {
+        @include position(absolute);
+        @include justify-align-flex(flex-start, flex-start);
+        @include z-index(slider-slide);
+
+        flex-direction: column;
+        padding: rem(154px) rem(16px) rem(16px);
+
+        @include media(min, sm) {
+            padding-block-start: rem(160px);
+        }
+    }
+
+    &__slider-slide-company-container {
+        @include justify-align-flex;
+
+        flex-direction: row;
+        gap: rem(36px);
+        inline-size: 100%;
+    }
+
+    &__slider-slide-company {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__slider-slide-company-title {
+        @include m(0);
+    }
+
+    &__slider-slide-company-location {
+        color: var(--text-secondary);
+    }
+
+    &__slider-slide-company-logo {
+        @include sizer(rem(40px), auto);
+        @include ml(auto);
+        @include p(1);
+
+        max-block-size: rem(40px);
+        background-color: transparent;
+    }
+
+    &__slider-slide-position-container {
+        @include mt(2);
+        @include pr(1);
+
+        display: flex;
+        flex-direction: column;
+        gap: rem(8px);
+
+        @include media(min, sm) {
+            flex-direction: row;
+        }
+    }
+
+    &__slider-slide-postion-date-container {
+        @include justify-align-flex(center, center);
+        @include px(3);
+        @include py(1);
+
+        inline-size: max-content;
+        clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+        color: var(--text-white);
+        background-color: palette.get(purple, 950);
+
+        > span {
+            white-space: nowrap;
+        }
+
+        > span:nth-of-type(2) {
+            @include mx(1);
+        }
+
+        @include media(min, sm) {
+            @include px(4);
+        }
+    }
+
+    &__slider-slide-position-description {
+        @include mt(2);
+
+        color: var(--text-secondary);
+    }
+
+    &__slider-slide-company-title,
+    &__slider-slide-position,
+    &__slider-slide-company-location,
+    &__slider-slide-position-description {
+        @include text-setting(sm);
+
+        @include media(min, sm) {
+            @include text-setting(base);
+        }
+    }
+
+    &__buttons-container {
+        @include p(3);
+        @include position(absolute, auto 0 0 auto);
+        @include justify-align-flex(flex-end, flex-end);
+        @include z-index(slider-controls);
+
+        flex-direction: row;
+        gap: rem(8px);
+    }
+}

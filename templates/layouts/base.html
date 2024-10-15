@@ -23,11 +23,26 @@
         <script src="/htmx.org/dist/ext/alpine-morph.js"></script>
         <script src="/gsap/dist/gsap.min.js"></script>
         <script src="/gsap/dist/Draggable.min.js"></script>
+        <script src="https://unpkg.com/htmx-ext-class-tools@2.0.1/class-tools.js"></script>
         <script defer src="/alpinejs/dist/cdn.min.js"></script>
         <script defer src="/@alpinejs/morph/dist/cdn.min.js"></script>
-        {% block head %}{% endblock %}
+        <script>
+            let html = document.documentElement;
+
+            if (localStorage["dark-mode"] === "false") {
+                html.setAttribute("data-theme", "light");
+            } else if (localStorage["dark-mode"] === "true") {
+                html.setAttribute("data-theme", "dark");
+            }
+        </script>
+        <!-- prettier-ignore -->
+        {% block head %}
+        {% endblock %}
     </head>
     <body>
-        {% include "components/navbar.html" %} {% block content %}{% endblock %}
+        <!-- prettier-ignore -->
+        {% include "components/navbar.html" %}
+        {% block content %}
+        {% endblock %}
     </body>
 </html>

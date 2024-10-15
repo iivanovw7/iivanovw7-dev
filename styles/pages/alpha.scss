@@ -1,0 +1,34 @@
+@use "./../_abstracts/position" as *;
+@use "./../_abstracts/sizer" as *;
+@use "./../_abstracts/media" as *;
+@use "./../_abstracts/convert" as *;
+@use "./../_abstracts/spacing" as *;
+@use "./../_abstracts/a11y" as *;
+@use "./../_abstracts/layout" as *;
+@use "./../_abstracts/variables" as *;
+
+@use "sass:map";
+
+.pages-alpha {
+    @include justify-align-flex(flex-start, flex-start);
+    @include sizer(100%);
+    @include mx(auto);
+    @include px(3);
+
+    flex-direction: column;
+    max-inline-size: map.get($screens, lg);
+
+    @include media(min, md) {
+        @include px(5);
+    }
+
+    &__box {
+        @include justify-align-flex(center, center);
+        @include sizer(100%);
+        @include mt(2);
+
+        flex-grow: 1;
+        flex-direction: column;
+        gap: rem(24px);
+    }
+}

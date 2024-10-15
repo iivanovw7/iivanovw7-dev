@@ -1,0 +1,24 @@
+@use "./../_abstracts/position" as *;
+@use "./../_abstracts/sizer" as *;
+@use "./../_abstracts/convert" as *;
+@use "./../_abstracts/spacing" as *;
+@use "./../_abstracts/layout" as *;
+
+.navbar {
+    @include position(fixed, 0 auto auto 0);
+    @include my(0);
+
+    display: flex;
+    flex-direction: column;
+    inline-size: 100%;
+
+    &__box {
+        @include sizer(100%);
+        @include mx(auto);
+        @include p(3);
+        @include justify-align-flex(flex-end, center);
+
+        flex-direction: row;
+        gap: rem(16px);
+    }
+}

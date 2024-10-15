@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/*
+ *  Keyframes.
+ *  @module styles/base/keyframes
+ */
+
+@keyframes print {
+    0% {
+        inline-size: 0;
+    }
+
+    1% {
+        opacity: 100%;
+    }
+
+    100% {
+        inline-size: 100%;
+    }
+}
+
+@keyframes blink {
+    100% {
+        opacity: 0%;
+    }
+}

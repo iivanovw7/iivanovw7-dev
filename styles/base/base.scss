@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/*
+*  Default base styles.
+*  @module styles/base/base
+*/
+
+@use "./../_abstracts/typography" as *;
+@use "./../_abstracts/layout" as *;
+
+* {
+    @include scrollbars(
+        8px,
+        var(--scrollbar),
+        var(--scrollbar-track),
+        var(--scrollbar-thumb),
+        var(--scrollbar-thumb-border)
+    );
+}
+
+html {
+    font-family: $base-font-family;
+    font-weight: $font-weight-regular;
+}
+
+body {
+    display: flex;
+    block-size: 100vb;
+    overflow: hidden;
+    color: var(--text-primary);
+    background: var(--background-primary);
+}

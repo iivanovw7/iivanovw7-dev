@@ -1,0 +1,61 @@
+@use "./../_abstracts/position" as *;
+@use "./../_abstracts/sizer" as *;
+@use "./../_abstracts/convert" as *;
+@use "./../_abstracts/spacing" as *;
+@use "./../_abstracts/media" as *;
+@use "./../_abstracts/layout" as *;
+@use "./../_abstracts/variables" as *;
+@use "./../_abstracts/a11y" as *;
+
+.icon-button {
+    @include m(0);
+
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    inline-size: max-content;
+    text-align: start;
+    text-decoration: none;
+    vertical-align: top;
+    cursor: pointer;
+    outline: none;
+    transition: $transition-color;
+
+    &:focus-visible {
+        @include focus-outline;
+    }
+
+    &:disabled,
+    &:hover:disabled,
+    &:focus:disabled {
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+    &__medium {
+        @include sizer(rem(40px));
+        @include p(2);
+
+        .icon-button__icon {
+            @include sizer(rem(24px));
+
+            position: absolute;
+            flex-shrink: 0;
+        }
+    }
+
+    &__secondary {
+        color: var(--icon-button-secondary);
+
+        &:hover {
+            color: var(--icon-button-secondary-hover);
+        }
+
+        &:disabled,
+        &:hover:disabled,
+        &:focus:disabled {
+            color: var(--icon-button-secondary-disabled);
+        }
+    }
+}

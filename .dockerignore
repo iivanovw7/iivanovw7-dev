@@ -2,17 +2,12 @@
 
 .gitignore
 .prettierignore
-
-# web stuff, not needed for building
-
 .prettierrc.cjs
-assets/main.css
 
-# don't need our task file
+assets/css/main.css
+assets/css/css.meta.json
 
 Makefile.toml
-
-# build output files
 
 /target
 /node_modules

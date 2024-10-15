@@ -6,7 +6,7 @@ use tracing_subscriber::{fmt, layer::SubscriberExt, util::SubscriberInitExt, Env
 
 pub async fn server() -> anyhow::Result<()> {
     dotenv::dotenv().ok();
-    std::env::set_var("RUST_LOG", "debug");
+    unsafe { std::env::set_var("RUST_LOG", "debug") };
 
     tracing_subscriber::registry()
         .with(EnvFilter::try_from_default_env().unwrap_or_else(|_| "iivanovw7-dev=debug".into()))

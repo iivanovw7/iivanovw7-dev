@@ -1,0 +1,217 @@
+<div class="home-jobs">
+    <div class="home-jobs__inner">
+        <div class="home-jobs__slides-container">
+            <div class="home-jobs__slider-header">
+                <div class="home-jobs__slider-header-top">
+                    <span class="home-jobs__path-folder">
+                        <svg class="home-jobs__path-folder-icon">
+                            <use href="/assets/svg/sprite.svg#folder" />
+                        </svg>
+                        <span>~/W/</span>
+                        <span>{{ main.author }}</span>
+                    </span>
+                    <span class="home-jobs__path-git">
+                        <span>on main</span>
+                    </span>
+                    <span class="home-jobs__path-arrow" />
+                </div>
+                <div class="home-jobs__slider-header-middle">
+                    <a
+                        aria-label="iivanovw7 homepage"
+                        class="icon-link icon-link__secondary icon-link__medium"
+                        href="/"
+                    >
+                        <svg class="icon-link__icon">
+                            <use href="/assets/svg/sprite.svg#chevron-right" />
+                        </svg>
+                    </a>
+                    <div class="home-jobs__cli-container">
+                        <div class="home-jobs__cli-content">
+                            <h3 class="home-jobs__cli-content-name">{{ main.name }}</h3>
+                            <span class="home-jobs__cli-content-comma">,</span>
+                            <h3 class="home-jobs__cli-content-profession">{{ main.profession }}</h3>
+                        </div>
+                        <span class="home-jobs__cli-cursor">|</span>
+                    </div>
+                </div>
+                <div class="home-jobs__slider-header-bottom">
+                    <!-- prettier-ignore -->
+                    {% for social in social_links %}
+                        {% block content %}
+                            {% set variant = "secondary" %}
+                            {% set size = "medium" %}
+                            {% set icon = social.title.to_string() %}
+                            {% set href = social.link.to_string() %}
+                            {% include "elements/link-icon.html" %}
+                        {% endblock %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="home-jobs__slider-container">
+                <!-- prettier-ignore -->
+                {% for job in jobs %}
+                <div class="home-jobs__slider-slide">
+                    <div class="home-jobs__slider-slide-company-container">
+                        <div class="home-jobs__slider-slide-company">
+                            <h3 class="home-jobs__slider-silde-company-title">{{job.company}}</h3>
+                            <span class="home-jobs__slider-slide-company-location">{{job.location}}</span>
+                        </div>
+                        <img
+                            alt="Avatar"
+                            class="home-jobs__slider-slide-company-logo"
+                            loading="lazy"
+                            src="{{ job.company_logo }}"
+                        />
+                    </div>
+                    <div class="home-jobs__slider-slide-position-container">
+                        <p class="home-jobs__slider-slide-position">{{job.position}}</p>
+                        <div class="home-jobs__slider-slide-postion-date-container">
+                            <span>{{job.start}}</span>
+                            <span> - </span>
+                            <span>{{job.end}}</span>
+                        </div>
+                    </div>
+                    <p class="home-jobs__slider-slide-position-description">{{job.subtitle}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="home-jobs__buttons-container">
+            <button
+                id="prevButton"
+                class="icon-button icon-button__secondary icon-button__medium"
+                type="button"
+                aria-label="Prev slide"
+            >
+                <svg class="icon-button__icon">
+                    <use href="/assets/svg/sprite.svg#chevron-left" />
+                </svg>
+            </button>
+            <button
+                id="nextButton"
+                class="icon-button icon-button__secondary icon-button__medium"
+                type="button"
+                aria-label="Next slide"
+            >
+                <svg class="icon-button__icon">
+                    <use href="/assets/svg/sprite.svg#chevron-right" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    gsap.registerPlugin(Draggable);
+    gsap.set(".home-jobs__slider-slide", {
+        xPercent: (i) => i * 100,
+    });
+
+    let prevButton = htmx.find("#prevButton");
+    let nextButton = htmx.find("#nextButton");
+
+    let slideDelay = 1.5;
+    let slideDuration = 0.3;
+    let slides = gsap.utils.toArray(".home-jobs__slider-slide");
+    let numSlides = slides.length;
+    let progressPerItem = 1 / (numSlides - 1);
+    let snapProgress = gsap.utils.snap(progressPerItem);
+
+    let snapProgressDirectional = (value, direction) => {
+        let snapped = snapProgress(value);
+
+        return snapped - value < 0 === direction < 0
+            ? snapped
+            : snapProgress(direction < 0 ? value - progressPerItem : value + progressPerItem);
+    };
+
+    let slideWidth = 0;
+    let totalWidth = 0;
+    let slideAnimation;
+
+    let animation = gsap.to(slides, {
+        xPercent: "-=" + (numSlides - 1) * 100,
+        duration: 1,
+        ease: "none",
+        paused: true,
+    });
+
+    let draggable = new Draggable(document.createElement("div"), {
+        type: "x",
+        trigger: ".home-jobs__slider-container",
+        onPress() {
+            gsap.killTweensOf(animation);
+            this.startProgress = animation.progress();
+        },
+        onDrag() {
+            let change = (draggable.startX - draggable.x) / totalWidth;
+
+            animation.progress(draggable.startProgress + change);
+        },
+        onDragEnd() {
+            let progress = snapProgress(animation.progress() + -Math.sign(this.deltaX) * progressPerItem);
+
+            gsap.to(animation, {
+                progress,
+                overwrite: true,
+            });
+
+            updateVisibility(progress);
+        },
+    });
+
+    const updateVisibility = (progress) => {
+        switch (true) {
+            case progress <= 0: {
+                prevButton.setAttribute("disabled", "true");
+                nextButton.removeAttribute("disabled");
+
+                break;
+            }
+            case progress >= 1: {
+                prevButton.removeAttribute("disabled");
+                nextButton.setAttribute("disabled", "true");
+
+                break;
+            }
+            default: {
+                prevButton.removeAttribute("disabled");
+                nextButton.removeAttribute("disabled");
+            }
+        }
+    };
+
+    const handleClick = (direction) => {
+        return (eventData) => {
+            eventData.stopPropagation();
+            eventData.preventDefault();
+
+            let progress = snapProgress(animation.progress() + direction * progressPerItem);
+
+            if (progress >= 0 && progress <= 1) {
+                updateVisibility(progress);
+
+                slideAnimation = gsap.to(animation, {
+                    progress,
+                    duration: slideDuration,
+                    overwrite: true,
+                });
+            }
+        };
+    };
+
+    const resize = () => {
+        slideWidth = slides[0].offsetWidth;
+        totalWidth = slideWidth * numSlides;
+    };
+
+    resize();
+    updateVisibility(0);
+
+    window.addEventListener("resize", resize);
+
+    htmx.onLoad(function () {
+        htmx.on(prevButton, "click", handleClick(-1));
+        htmx.on(nextButton, "click", handleClick(1));
+    });
+</script>
