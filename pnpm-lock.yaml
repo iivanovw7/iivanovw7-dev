@@ -69,9 +69,6 @@ importers:
       stylelint:
         specifier: 16.9.0
         version: 16.9.0(typescript@5.6.2)
-      stylelint-config-iivanovw7:
-        specifier: github:iivanovw7/stylelint-config-iivanovw7
-        version: https://codeload.github.com/iivanovw7/stylelint-config-iivanovw7/tar.gz/34264da10f46bf2a22fd454b36d4e43a3257a312
       stylelint-config-recess-order:
         specifier: 5.1.1
         version: 5.1.1(stylelint@16.9.0(typescript@5.6.2))
@@ -84,9 +81,6 @@ importers:
       stylelint-order:
         specifier: 6.0.4
         version: 6.0.4(stylelint@16.9.0(typescript@5.6.2))
-      stylelint-plugin-logical-css:
-        specifier: 1.2.1
-        version: 1.2.1(stylelint@16.9.0(typescript@5.6.2))
       stylelint-scss:
         specifier: 6.7.0
         version: 6.7.0(stylelint@16.9.0(typescript@5.6.2))
@@ -1932,11 +1926,6 @@ packages:
   style-search@0.1.0:
     resolution: {integrity: sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==}
 
-  stylelint-config-iivanovw7@https://codeload.github.com/iivanovw7/stylelint-config-iivanovw7/tar.gz/34264da10f46bf2a22fd454b36d4e43a3257a312:
-    resolution: {tarball: https://codeload.github.com/iivanovw7/stylelint-config-iivanovw7/tar.gz/34264da10f46bf2a22fd454b36d4e43a3257a312}
-    version: 1.0.1
-    engines: {node: 20.11.1}
-
   stylelint-config-recess-order@5.1.1:
     resolution: {integrity: sha512-eDAHWVBelzDbMbdMj15pSw0Ycykv5eLeriJdbGCp0zd44yvhgZLI+wyVHegzXp5NrstxTPSxl0fuOVKdMm0XLA==}
     peerDependencies:
@@ -1969,12 +1958,6 @@ packages:
     resolution: {integrity: sha512-0UuKo4+s1hgQ/uAxlYU4h0o0HS4NiQDud0NAUNI0aa8FJdmYHA5ZZTFHiV5FpmE3071e9pZx5j0QpVJW5zOCUA==}
     peerDependencies:
       stylelint: ^14.0.0 || ^15.0.0 || ^16.0.1
-
-  stylelint-plugin-logical-css@1.2.1:
-    resolution: {integrity: sha512-56r1xGVZ/ExZT5SFJ7AhyZVUjOvRTCbLLl68PFTN1R55KU0SQEe22YyE53570cxeTf9plpvqckHAQBiUU714YQ==}
-    engines: {node: '>=18.12.0'}
-    peerDependencies:
-      stylelint: ^14.0.0 || ^15.0.0 || ^16.0.0
 
   stylelint-scss@6.7.0:
     resolution: {integrity: sha512-RFIa2A+pVWS5wjNT+whtK7wsbZEWazyqesCuSaPbPlZ8lh2TujwVJSnCYJijg6ChZzwI8pZPRZS1L6A9aCbXDg==}
@@ -3899,8 +3882,6 @@ snapshots:
 
   style-search@0.1.0: {}
 
-  stylelint-config-iivanovw7@https://codeload.github.com/iivanovw7/stylelint-config-iivanovw7/tar.gz/34264da10f46bf2a22fd454b36d4e43a3257a312: {}
-
   stylelint-config-recess-order@5.1.1(stylelint@16.9.0(typescript@5.6.2)):
     dependencies:
       stylelint: 16.9.0(typescript@5.6.2)
@@ -3931,10 +3912,6 @@ snapshots:
     dependencies:
       postcss: 8.4.47
       postcss-sorting: 8.0.2(postcss@8.4.47)
-      stylelint: 16.9.0(typescript@5.6.2)
-
-  stylelint-plugin-logical-css@1.2.1(stylelint@16.9.0(typescript@5.6.2)):
-    dependencies:
       stylelint: 16.9.0(typescript@5.6.2)
 
   stylelint-scss@6.7.0(stylelint@16.9.0(typescript@5.6.2)):

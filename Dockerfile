@@ -23,15 +23,13 @@ FROM node:bookworm-slim as node_builder
 
 WORKDIR /app
 
-# we'll use pnpm to ensure we're consistent across the dev and release environments
 RUN corepack enable
 
 # copy on over all the dependencies
-COPY tailwind.config.cjs .
-COPY postcss.config.js .
 COPY styles ./styles
 COPY assets ./assets
 COPY package.json .
+COPY esbuild.config.css.mjs .
 COPY .env .
 COPY .nvmrc .
 COPY config.toml .
@@ -39,7 +37,7 @@ COPY config.toml .
 COPY ./templates ./templates
 
 RUN pnpm install;
-RUN pnpm dlx tailwindcss -i ./styles/main.css -o ./assets/css/main.css
+RUN pnpm run build:css 
 RUN npm install pm2 -g
 
 FROM debian:bookworm-slim AS runtime

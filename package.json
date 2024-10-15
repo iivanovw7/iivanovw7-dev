@@ -42,7 +42,6 @@
         "rimraf": "6.0.1",
         "sass": "1.79.4",
         "stylelint": "16.9.0",
-        "stylelint-config-iivanovw7": "github:iivanovw7/stylelint-config-iivanovw7",
         "stylelint-config-recess-order": "5.1.1",
         "stylelint-config-recommended-scss": "14.1.0",
         "stylelint-config-sass-guidelines": "12.1.0",

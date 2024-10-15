@@ -16,9 +16,9 @@ $spacing-sizes: (
     4: 2rem,
     5: 4rem,
     6: 8rem,
-) !default;
+);
 
-$spacing-important: false !default;
+$spacing-important: false;
 
 @mixin m($t: 1, $r: null, $b: null, $l: null) {
     @if ($t and $r and $b and $l) {
