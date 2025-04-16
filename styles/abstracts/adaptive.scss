@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+@use "sass:map";
+@use "media" as *;
+
+@mixin adaptive($gutter: 30px) {
+    $actual-breakpoints: map.remove($screens, "zero", "xs");
+
+    margin: 0 auto;
+    @each $item, $value in $actual-breakpoints {
+        @media (min-width: #{$value}) {
+            max-width: calc(#{$value} - (#{$gutter} * 2));
+        }
+    }
+}

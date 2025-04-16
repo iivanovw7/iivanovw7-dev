@@ -1,6 +1,7 @@
 .env
 .exintcache
 
+/assets/css/main.js
 /assets/css/main.css
 /asstes/css/main.css.map
 /assets/css/css.meta.json

@@ -1,16 +1,12 @@
 module.exports = {
-    plugins: ["stylelint-scss"],
     extends: ["stylelint-config-recommended-scss", "stylelint-config-recess-order"],
-    ignoreFiles: ["**/*.js"],
+    ignoreFiles: ["**/*.js", "**/*.html"],
+    plugins: ["stylelint-scss"],
     rules: {
         "alpha-value-notation": "percentage",
         "annotation-no-unknown": true,
-        "at-rule-empty-line-before": [
-            "always",
-            {
-                except: ["blockless-after-same-name-blockless", "first-nested"],
-            },
-        ],
+        "at-rule-empty-line-before": null,
+        "at-rule-no-unknown": null,
         "at-rule-no-vendor-prefix": true,
         "block-no-empty": true,
         "color-function-notation": "legacy",
@@ -26,14 +22,14 @@ module.exports = {
         "custom-media-pattern": [
             "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
             {
-                message: (name) => `Expected custom media query name "${name}" to be kebab-case`,
+                message: (value) => `Expected custom media query value "${value}" to be kebab-case`,
             },
         ],
         "custom-property-no-missing-var-function": true,
         "custom-property-pattern": [
             "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
             {
-                message: (name) => `Expected custom property name "${name}" to be kebab-case`,
+                message: (value) => `Expected custom property value "${value}" to be kebab-case`,
             },
         ],
         "declaration-block-no-duplicate-custom-properties": true,
@@ -57,7 +53,7 @@ module.exports = {
         "font-family-no-duplicate-names": true,
         "font-family-no-missing-generic-family-keyword": true,
         "function-calc-no-unspaced-operator": true,
-        "function-disallowed-list": ["rgb", "rgba", "hsl", "hsla"],
+        "function-disallowed-list": ["hsl", "hsla"],
         "function-linear-gradient-no-nonstandard-direction": true,
         "function-name-case": "lower",
         "function-no-unknown": null,
@@ -70,77 +66,9 @@ module.exports = {
         "keyframes-name-pattern": [
             "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
             {
-                message: (name) => `Expected keyframe name "${name}" to be kebab-case`,
+                message: (value) => `Expected keyframe value "${value}" to be kebab-case`,
             },
         ],
-        "length-zero-no-unit": [
-            true,
-            {
-                ignore: ["custom-properties"],
-            },
-        ],
-        "media-feature-name-no-vendor-prefix": true,
-        "media-feature-name-no-unknown": true,
-        "media-feature-range-notation": "context",
-        "media-query-no-invalid": null,
-        "named-grid-areas-no-invalid": true,
-        "no-descending-specificity": true,
-        "no-duplicate-at-import-rules": true,
-        "no-duplicate-selectors": true,
-        "no-invalid-double-slash-comments": true,
-        "no-invalid-position-at-import-rule": null,
-        "number-max-precision": 4,
-        "property-no-vendor-prefix": true,
-        "property-no-unknown": true,
-        "rule-empty-line-before": [
-            "always-multi-line",
-            {
-                except: ["first-nested"],
-                ignore: ["after-comment"],
-            },
-        ],
-        "selector-anb-no-unmatchable": true,
-        "selector-attribute-quotes": "always",
-        "selector-class-pattern": [
-            "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
-            {
-                message: (selector) => `Expected class selector "${selector}" to be kebab-case`,
-            },
-        ],
-        "selector-id-pattern": [
-            "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
-            {
-                message: (selector) => `Expected id selector "${selector}" to be kebab-case`,
-            },
-        ],
-        "selector-no-vendor-prefix": true,
-        "selector-not-notation": "complex",
-        "selector-pseudo-class-no-unknown": [
-            true,
-            {
-                ignorePseudoClasses: ["global"],
-            },
-        ],
-        "selector-pseudo-element-no-unknown": true,
-        "selector-pseudo-element-colon-notation": "double",
-        "selector-type-case": "lower",
-        "selector-type-no-unknown": [
-            true,
-            {
-                ignore: ["custom-elements"],
-            },
-        ],
-        "shorthand-property-no-redundant-values": true,
-        "string-no-newline": true,
-        "unit-no-unknown": true,
-        "value-keyword-case": "lower",
-        "value-no-vendor-prefix": true,
-        "order/properties-alphabetical-order": null,
-        "at-rule-no-unknown": null,
-        "max-nesting-depth": 2,
-        "selector-class-pattern": null,
-        "no-descending-specificity": null,
-        "block-no-empty": true,
         "length-zero-no-unit": [
             true,
             {
@@ -148,11 +76,22 @@ module.exports = {
             },
         ],
         "max-nesting-depth": [
-            4,
+            2,
             {
                 ignore: ["pseudo-classes"],
             },
         ],
+        "media-feature-name-no-unknown": true,
+        "media-feature-name-no-vendor-prefix": true,
+        "media-feature-range-notation": "context",
+        "media-query-no-invalid": null,
+        "named-grid-areas-no-invalid": true,
+        "no-descending-specificity": null,
+        "no-duplicate-at-import-rules": true,
+        "no-duplicate-selectors": true,
+        "no-invalid-double-slash-comments": true,
+        "no-invalid-position-at-import-rule": null,
+        "number-max-precision": 4,
         "order/order": [
             [
                 {
@@ -165,29 +104,55 @@ module.exports = {
             },
         ],
         "order/properties-alphabetical-order": null,
-        "order/properties-order": [],
         "property-no-unknown": [
             true,
             {
                 ignoreSelectors: [":export"],
             },
         ],
-        "selector-class-pattern":
-            "([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*)(?:__([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*))?(?:--([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*))?",
-        "selector-max-id": 1,
-        "selector-no-qualifying-type": null,
-        "function-disallowed-list": ["hsl", "hsla"],
-        "color-function-notation": "legacy",
-        "import-notation": null,
-        "alpha-value-notation": "percentage",
-        "at-rule-no-unknown": null,
-        "at-rule-empty-line-before": null,
-        "scss/at-rule-no-unknown": true,
-        "max-nesting-depth": [
-            4,
+        "property-no-vendor-prefix": true,
+        "rule-empty-line-before": [
+            "always-multi-line",
             {
-                ignore: ["pseudo-classes"],
+                except: ["first-nested"],
+                ignore: ["after-comment"],
             },
         ],
+        "scss/at-rule-no-unknown": true,
+        "scss/operator-no-unspaced": true,
+        "selector-anb-no-unmatchable": true,
+        "selector-attribute-quotes": "always",
+        "selector-class-pattern":
+            "([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*)(?:__([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*))?(?:--([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*))?",
+        "selector-id-pattern": [
+            "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
+            {
+                message: (selector) => `Expected id selector "${selector}" to be kebab-case`,
+            },
+        ],
+        "selector-max-id": 1,
+        "selector-no-qualifying-type": null,
+        "selector-no-vendor-prefix": true,
+        "selector-not-notation": "complex",
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                ignorePseudoClasses: ["global"],
+            },
+        ],
+        "selector-pseudo-element-colon-notation": "double",
+        "selector-pseudo-element-no-unknown": true,
+        "selector-type-case": "lower",
+        "selector-type-no-unknown": [
+            true,
+            {
+                ignore: ["custom-elements"],
+            },
+        ],
+        "shorthand-property-no-redundant-values": true,
+        "string-no-newline": true,
+        "unit-no-unknown": true,
+        "value-keyword-case": "lower",
+        "value-no-vendor-prefix": true,
     },
 };

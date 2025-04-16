@@ -2,35 +2,26 @@
 
 /* stylelint-disable scss/load-no-partial-leading-underscore */
 
-/**
- *  Main css file.
- *    @module styles/main
- */
+/* ============ Vendors =========== */
 
-/* ============ Themes ================== */
+@use "@styles/vendors";
 
-@import "./_themes";
+/* ============ Themes ============ */
 
-/* ============ Vendors ================== */
+@use "@styles/themes";
 
-@import "./_vendors";
+/* ============ Global ============ */
 
-/* ============ Base ================== */
-
-@import "./base";
-
-/* ============ Elements ============== */
-
-@import "./elements/theme-switch";
-@import "./elements/icon-button";
-@import "./elements/icon-link";
-
-/* ============ Components ============= */
-
-@import "./components/home/jobs";
-@import "./components/navbar";
+@use "@styles/global";
 
 /* ============ Pages ============= */
 
-@import "./pages/alpha";
-@import "./pages/home";
+@use "@templates/pages";
+
+/* ============ Elements ========== */
+
+@use "@templates/ui-kit";
+
+/* ============ Components ======== */
+
+@use "@templates/components";

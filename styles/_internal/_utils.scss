@@ -1,16 +1,11 @@
 @charset "UTF-8";
 
-/*
- *  Internal utility functions.
- *  @module styles/_internal/_utils
- */
-
 @use "sass:map";
 @use "sass:meta";
 @use "sass:list";
 @use "sass:math";
 
-@function __validate-breakpoint($value) {
+@function validate-breakpoint($value) {
     @for $i from 1 through list.length($value) {
         @if map.has-key($screens, $value) {
             @return map.get($screens, list.nth($value, $i));
@@ -20,7 +15,7 @@
     }
 }
 
-@function __validate-length($value) {
+@function validate-length($value) {
     $list: ("auto", "inherit", "initial", 0);
 
     @if list.index($list, $value) {
@@ -34,7 +29,7 @@
     }
 }
 
-@function __shorthand-property($value) {
+@function shorthand-property($value) {
     @if list.length($value) == 1 {
         @return list.nth($value, 1) list.nth($value, 1) list.nth($value, 1) list.nth($value, 1);
     } @else if list.length($value) == 2 {

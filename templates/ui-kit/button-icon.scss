@@ -1,0 +1,54 @@
+@use "@styles/abstracts" as *;
+
+.button-icon {
+    @include m(0);
+
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    inline-size: max-content;
+    text-align: start;
+    text-decoration: none;
+    vertical-align: top;
+    cursor: pointer;
+    outline: none;
+    transition: $transition-color;
+
+    &:focus-visible {
+        @include focus-outline;
+    }
+
+    &:disabled,
+    &:hover:disabled,
+    &:focus:disabled {
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+    &__medium {
+        @include sizer(rem(40px));
+        @include p(2);
+
+        .button-icon__icon {
+            @include sizer(rem(24px));
+
+            flex-shrink: 0;
+            position: absolute;
+        }
+    }
+
+    &__secondary {
+        color: var(--button-icon-secondary);
+
+        &:hover {
+            color: var(--button-icon-secondary-hover);
+        }
+
+        &:disabled,
+        &:hover:disabled,
+        &:focus:disabled {
+            color: var(--button-icon-secondary-disabled);
+        }
+    }
+}

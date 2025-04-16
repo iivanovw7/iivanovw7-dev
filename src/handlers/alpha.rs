@@ -15,7 +15,7 @@ pub async fn get() -> impl IntoResponse {
 }
 
 #[derive(Template)]
-#[template(path = "./pages/alpha.html")]
+#[template(path = "./pages/alpha/alpha.html")]
 struct AlphaTemplate {
     pub main: MainConfig,
 }

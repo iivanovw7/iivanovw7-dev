@@ -35,7 +35,7 @@ pub async fn get() -> impl IntoResponse {
 }
 
 #[derive(Template)]
-#[template(path = "./pages/home.html")]
+#[template(path = "./pages/home/home.html")]
 struct HomeTemplate {
     pub main: MainConfig,
     #[allow(dead_code)]

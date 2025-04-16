@@ -1,0 +1,14 @@
+@use "@styles/abstracts" as *;
+
+.pages-home {
+    @include justify-align-flex(center, flex-start);
+    @include sizer(100%);
+    @include mx(auto);
+    @include px(3);
+
+    flex-direction: column;
+
+    @include media(min, md) {
+        @include px(5);
+    }
+}

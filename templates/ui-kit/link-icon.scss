@@ -1,0 +1,50 @@
+@use "@styles/abstracts" as *;
+
+.link-icon {
+    display: inline-flex;
+    text-decoration: none;
+    outline: none;
+    transition: $transition-color;
+
+    &:focus-visible {
+        @include focus-outline;
+    }
+
+    .link-icon__icon {
+        margin: auto;
+    }
+
+    &__medium {
+        @include sizer(rem(40px));
+        @include p(2);
+
+        .link-icon__icon {
+            @include sizer(rem(24px));
+        }
+    }
+
+    &__large {
+        @include sizer(rem(48px));
+        @include p(2);
+
+        .link-icon__icon {
+            @include sizer(rem(32px));
+        }
+    }
+
+    &__primary {
+        color: var(--link-icon-primary);
+
+        &:hover {
+            color: var(--link-icon-primary-hover);
+        }
+    }
+
+    &__secondary {
+        color: var(--link-icon-secondary);
+
+        &:hover {
+            color: var(--link-icon-secondary-hover);
+        }
+    }
+}

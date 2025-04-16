@@ -1,0 +1,48 @@
+/* stylelint-disable at-rule-empty-line-before */
+@charset "UTF-8";
+
+@use "sass:map";
+@use "sass:list";
+@use "sizer" as *;
+
+@mixin vert-align-flex($align: center) {
+    display: flex;
+    align-items: $align;
+}
+
+@mixin justify-align-flex($justify: center, $align: center) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin scrollbars(
+    $size: 8px,
+    $foreground-color: var(--scrollbar),
+    $background-color: color.mix($foreground-color, white, 50%),
+    $thumb-color: var(--scrollbar-thumb),
+    $thumb-border-color: color.mix($thumb-color, white, 50%)
+) {
+    & {
+        scrollbar-face-color: $foreground-color;
+        scrollbar-track-color: $background-color;
+        scrollbar-color: $background-color;
+        scrollbar-width: thin;
+    }
+
+    &::-webkit-scrollbar {
+        @include sizer($size);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+        background-color: $thumb-color;
+        border: 3px solid $thumb-border-color;
+        border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $background-color;
+        box-shadow: none;
+    }
+}
