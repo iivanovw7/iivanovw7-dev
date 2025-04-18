@@ -29,7 +29,7 @@ RUN corepack enable
 COPY styles ./styles
 COPY assets ./assets
 COPY package.json .
-COPY esbuild.config.css.mjs .
+COPY rspack.config.mjs .
 COPY .env .
 COPY .nvmrc .
 COPY config.toml .
