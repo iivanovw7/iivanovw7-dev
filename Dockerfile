@@ -27,7 +27,6 @@ RUN corepack enable
 
 COPY styles ./styles
 COPY assets ./assets
-COPY dist ./dist
 COPY package.json .
 COPY rspack.config.mjs .
 COPY .env .
