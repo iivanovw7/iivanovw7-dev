@@ -1,7 +1,7 @@
 use axum::{extract::State, response::IntoResponse};
 use tera::Context;
 
-use crate::types::AppState;
+use crate::{types::AppState, utils::load_css_assets_manifest};
 
 pub async fn get(state: State<AppState>) -> impl IntoResponse {
     let config = &state.config;
@@ -11,6 +11,7 @@ pub async fn get(state: State<AppState>) -> impl IntoResponse {
     context.insert("main", &config.main);
     context.insert("social", &config.social);
     context.insert("jobs", &config.jobs);
+    context.insert("css_file", &load_css_assets_manifest());
 
     match tera.render("pages/alpha/alpha.html", &context) {
         Ok(body) => axum::response::Html(body).into_response(),

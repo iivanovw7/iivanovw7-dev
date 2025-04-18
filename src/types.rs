@@ -1,7 +1,13 @@
 use serde::{Deserialize, Serialize};
-use std::sync::Arc;
+use std::{collections::HashMap, sync::Arc};
 use struct_iterable::Iterable;
 use tera::Tera;
+
+#[derive(Clone, Serialize, Deserialize, Debug)]
+pub struct CssManifest {
+    #[serde(flatten)]
+    pub entries: HashMap<String, String>,
+}
 
 #[derive(Clone)]
 pub struct AppState {
