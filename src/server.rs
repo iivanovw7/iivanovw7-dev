@@ -30,21 +30,26 @@ pub async fn server() -> anyhow::Result<()> {
 
     tracing::info!("initializing assets");
 
-    let assets = std::env::current_dir().unwrap();
-    let assets_path = assets.to_str().unwrap();
+    let current_dir = std::env::current_dir().unwrap();
+    let current_dir_path = current_dir.to_str().unwrap();
 
-    let assets_serve = ServeDir::new(format!("{}/dist", assets_path));
-    let gsap_serve = ServeDir::new(format!("{}/node_modules/gsap/dist", assets_path));
-    let htmx_serve = ServeDir::new(format!("{}/node_modules/htmx.org/dist", assets_path));
-    let alpine_serve = ServeDir::new(format!("{}/node_modules/alpinejs/dist", assets_path));
-    let morph_serve = ServeDir::new(format!("{}/node_modules/@alpinejs/morph/dist", assets_path));
+    let dist_serve = ServeDir::new(format!("{}/dist", current_dir_path));
+    let assets_serve = ServeDir::new(format!("{}/assets", current_dir_path));
+    let gsap_serve = ServeDir::new(format!("{}/node_modules/gsap/dist", current_dir_path));
+    let htmx_serve = ServeDir::new(format!("{}/node_modules/htmx.org/dist", current_dir_path));
+    let alpine_serve = ServeDir::new(format!("{}/node_modules/alpinejs/dist", current_dir_path));
+    let morph_serve = ServeDir::new(format!(
+        "{}/node_modules/@alpinejs/morph/dist",
+        current_dir_path
+    ));
 
     tracing::info!("initializing router");
 
     let router = Router::new()
         .route("/", get(handlers::home::get))
         .route("/samples/alpha", get(handlers::alpha::get))
-        .nest_service("/dist", assets_serve.clone())
+        .nest_service("/assets", assets_serve.clone())
+        .nest_service("/dist", dist_serve.clone())
         .nest_service("/samples/assets", assets_serve.clone())
         .nest_service("/gsap/dist", gsap_serve)
         .nest_service("/htmx.org/dist", htmx_serve)
