@@ -1,77 +1,64 @@
+use anyhow::Result;
 use dotenv::dotenv;
 use lazy_static::lazy_static;
-use serde::Deserialize;
 use std::fs;
 use struct_iterable::Iterable;
+use tera::Tera;
 
-#[derive(Clone, Deserialize, Debug)]
-pub struct Env {
-    pub server: String,
-}
+use crate::types::{Config, Env, RawConfig, SocialConfig, SocialConfigItem};
 
-#[derive(Clone, Deserialize, Debug)]
-pub struct Config {
-    pub main: MainConfig,
-    pub social: SocialConfig,
-    pub jobs: [Job; 4],
-}
-
-#[derive(Clone, Deserialize, Debug)]
-pub struct SocialConfigItem {
-    pub title: String,
-    pub link: String,
-}
-
-#[derive(Clone, Deserialize, Debug)]
-pub struct MainConfig {
-    pub author: String,
-    pub name: String,
-    pub profession: String,
-    pub project: String,
-}
-
-#[derive(Clone, Deserialize, Debug, Iterable)]
-pub struct SocialConfig {
-    pub email: String,
-    pub github: String,
-    pub linkedin: String,
-    pub telegram: String,
-    pub twitter: String,
-}
-
-#[derive(Clone, Deserialize, Debug)]
-pub struct Job {
-    pub index: i16,
-    pub end: String,
-    pub company: String,
-    pub company_logo: String,
-    pub location: String,
-    pub position: String,
-    pub start: String,
-    pub subtitle: String,
+lazy_static! {
+    pub static ref TERA: Tera = {
+        match Tera::new("templates/**/*") {
+            Ok(t) => t,
+            Err(e) => {
+                panic!("Failed to create Tera instance: {}", e);
+            }
+        }
+    };
 }
 
 lazy_static! {
-    pub static ref ENV: Env = get_env();
-    pub static ref CONFIG: Config = get_config();
+    pub static ref ENV: Env = get_env().expect("Failed to load environment variables");
+    pub static ref CONFIG: Config = get_config().expect("Failed to load configuration");
 }
 
-fn get_env() -> Env {
-    dotenv().ok();
+fn get_social_links(social: &SocialConfig) -> Vec<SocialConfigItem> {
+    let mut links: Vec<SocialConfigItem> = Vec::new();
 
-    match envy::from_env::<Env>() {
-        Ok(env) => env,
-        Err(error) => panic!("Env configuration Error: {:#?}", error),
+    for (key, value) in social.clone().iter() {
+        links.push(SocialConfigItem {
+            title: String::from(key),
+            link: match &value.downcast_ref::<String>() {
+                Some(as_string) => as_string.to_string(),
+                None => "".to_string(),
+            },
+        })
     }
+
+    links
 }
 
-fn get_config() -> Config {
+fn get_env() -> Result<Env> {
+    dotenv().ok();
+    Ok(envy::from_env::<Env>()?)
+}
+
+fn get_config() -> Result<Config> {
     let file = fs::read_to_string("config.toml").expect("Unable to read config.toml");
-    let mut config: Config = toml::from_str(&file).expect("Unable to parse config.toml");
+    let raw_config: RawConfig = toml::from_str(&file).expect("Unable to parse config.toml");
+    let social_links = get_social_links(&raw_config.social);
+
+    let mut config = Config {
+        main: raw_config.main.clone(),
+        jobs: raw_config.jobs.clone(),
+        social: raw_config.social.clone(),
+        social_links,
+    };
 
     config.jobs.sort_by_key(|a| a.index);
 
-    config.clone()
+    Ok(config)
 }
 
 #[cfg(test)]
@@ -80,7 +67,7 @@ mod tests {
 
     #[test]
     fn it_gets_env() {
-        let env = get_env();
+        let env = get_env().expect("Failed to load environment variables");
         assert_ne!(env.server, "".to_string());
     }
 

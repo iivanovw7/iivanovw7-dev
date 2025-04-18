@@ -6,6 +6,7 @@ extern crate lazy_static;
 mod config;
 pub mod handlers;
 mod server;
+pub mod types;
 pub mod utils;
 
 #[tokio::main]

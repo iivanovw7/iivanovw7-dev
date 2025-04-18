@@ -36,15 +36,15 @@
                 </div>
                 <div class="home-jobs__slider-header-bottom">
                     <!-- prettier-ignore -->
-                    {% for social in social_links %}
-                        {% block content %}
+                    {% block social_links %}
+                        {% for social in social_links %}
                             {% set variant = "secondary" %}
                             {% set size = "medium" %}
-                            {% set icon = social.title.to_string() %}
-                            {% set href = social.link.to_string() %}
+                            {% set icon = social.title %}
+                            {% set href = social.link %}
                             {% include "ui-kit/link-icon.html" %}
-                        {% endblock %}
-                    {% endfor %}
+                        {% endfor %}
+                    {% endblock social_links %}
                 </div>
             </div>
             <div class="home-jobs__slider-container">
@@ -85,7 +85,7 @@
                 {% set size = "medium" %}
                 {% set icon = "chevron-left" %}
                 {% include "ui-kit/button-icon.html" %}
-            {% endblock %}
+            {% endblock slider_prev_button %}
             {% block slider_next_button %}
                 {% set id = "nextButton" %}
                 {% set ariaLabel = "Next slide" %}
@@ -93,7 +93,7 @@
                 {% set size = "medium" %}
                 {% set icon = "chevron-right" %}
                 {% include "ui-kit/button-icon.html" %}
-            {% endblock %}
+            {% endblock slider_next_button %}
         </div>
     </div>
 </div>

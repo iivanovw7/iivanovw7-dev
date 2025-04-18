@@ -239,9 +239,9 @@
         @include py(1);
 
         inline-size: max-content;
-        clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
         color: var(--text-white);
         background-color: palette.get(purple, 950);
+        clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 
         > span {
             white-space: nowrap;

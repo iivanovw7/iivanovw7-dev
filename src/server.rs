@@ -1,11 +1,14 @@
-use crate::config::ENV;
+use crate::config::{CONFIG, ENV, TERA};
 use crate::handlers;
+use crate::types::AppState;
 use axum::{routing::get, Router};
+use std::sync::Arc;
 use tower_http::services::ServeDir;
 use tracing_subscriber::{fmt, layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
 pub async fn server() -> anyhow::Result<()> {
     dotenv::dotenv().ok();
+
     unsafe { std::env::set_var("RUST_LOG", "debug") };
 
     tracing_subscriber::registry()
@@ -13,7 +16,19 @@ pub async fn server() -> anyhow::Result<()> {
         .with(fmt::layer())
         .init();
 
-    tracing::info!("initializing router and assets");
+    tracing::info!("initializing config");
+
+    let config = Arc::new(CONFIG.clone());
+    let tera = Arc::new(TERA.clone());
+
+    tracing::info!("initializing state");
+
+    let app_state = AppState {
+        config: config.clone(),
+        tera: tera.clone(),
+    };
+
+    tracing::info!("initializing assets");
 
     let assets = std::env::current_dir().unwrap();
     let assets_path = assets.to_str().unwrap();
@@ -24,6 +39,8 @@ pub async fn server() -> anyhow::Result<()> {
     let alpine_serve = ServeDir::new(format!("{}/node_modules/alpinejs/dist", assets_path));
     let morph_serve = ServeDir::new(format!("{}/node_modules/@alpinejs/morph/dist", assets_path));
 
+    tracing::info!("initializing router");
+
     let router = Router::new()
         .route("/", get(handlers::home::get))
         .route("/samples/alpha", get(handlers::alpha::get))
@@ -33,7 +50,8 @@ pub async fn server() -> anyhow::Result<()> {
         .nest_service("/htmx.org/dist", htmx_serve)
         .nest_service("/alpinejs/dist", alpine_serve)
         .nest_service("/@alpinejs/morph/dist", morph_serve)
-        .fallback(get(handlers::home::get));
+        .fallback(get(handlers::home::get))
+        .with_state(app_state);
 
     let listener = tokio::net::TcpListener::bind(&ENV.server).await.unwrap();
 

@@ -1,15 +1,15 @@
 # iivanovw7-dev
 
-### Main crates
+## Main crates
 
 -   [axum](https://docs.rs/axum/latest/axum)
 -   [askama](https://docs.rs/askama/latest/askama)
--   [tokio](https://docs.rs/tokio/latest/tokio)
+-   [tera](https://keats.github.io/tera/docs/#introduction)
 
 ### Requirements
 
--   Cargo 1.72.0
--   Rustc 1.72.0 (5680fa18f 2023-08-23) (Arch Linux rust 1:1.72.0-1)
+-   Cargo 1.85.0
+-   rustc 1.85.0
 
 ### Installation
 

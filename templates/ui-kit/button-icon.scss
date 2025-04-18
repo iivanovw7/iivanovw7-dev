@@ -8,9 +8,9 @@
     flex-shrink: 0;
     justify-content: space-between;
     inline-size: max-content;
+    vertical-align: top;
     text-align: start;
     text-decoration: none;
-    vertical-align: top;
     cursor: pointer;
     outline: none;
     transition: $transition-color;
@@ -33,8 +33,8 @@
         .button-icon__icon {
             @include sizer(rem(24px));
 
-            flex-shrink: 0;
             position: absolute;
+            flex-shrink: 0;
         }
     }
 

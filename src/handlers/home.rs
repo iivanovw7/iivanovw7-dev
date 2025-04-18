@@ -1,63 +1,27 @@
-use askama::Template;
-use axum::{
-    http::StatusCode,
-    response::{Html, IntoResponse, Response},
-};
-use struct_iterable::Iterable;
+use axum::{extract::State, response::IntoResponse};
+use tera::Context;
 
-use crate::config::{Job, MainConfig, SocialConfig, SocialConfigItem, CONFIG};
+use crate::types::AppState;
 
-fn get_social_links() -> Vec<SocialConfigItem> {
-    let mut links: Vec<SocialConfigItem> = Vec::new();
+pub async fn get(state: State<AppState>) -> impl IntoResponse {
+    let config = &state.config;
+    let tera = &state.tera;
+    let mut context = Context::new();
 
-    for (key, value) in CONFIG.social.clone().iter() {
-        links.push(SocialConfigItem {
-            title: String::from(key),
-            link: match &value.downcast_ref::<String>() {
-                Some(as_string) => as_string.to_string(),
-                None => "".to_string(),
-            },
-        })
-    }
+    context.insert("main", &config.main);
+    context.insert("social", &config.social);
+    context.insert("jobs", &config.jobs);
+    context.insert("social_links", &config.social_links);
 
-    links
-}
-
-pub async fn get() -> impl IntoResponse {
-    let template = HomeTemplate {
-        main: CONFIG.main.clone(),
-        social: CONFIG.social.clone(),
-        social_links: get_social_links(),
-        jobs: CONFIG.jobs.clone(),
-    };
-
-    HtmlTemplate(template)
-}
-
-#[derive(Template)]
-#[template(path = "./pages/home/home.html")]
-struct HomeTemplate {
-    pub main: MainConfig,
-    #[allow(dead_code)]
-    pub social: SocialConfig,
-    pub social_links: Vec<SocialConfigItem>,
-    pub jobs: [Job; 4],
-}
-
-struct HtmlTemplate<T>(T);
-
-impl<T> IntoResponse for HtmlTemplate<T>
-where
-    T: Template,
-{
-    fn into_response(self) -> Response {
-        match self.0.render() {
-            Ok(html) => Html(html).into_response(),
-            Err(err) => (
-                StatusCode::INTERNAL_SERVER_ERROR,
-                format!("Failed to render template. Error: {}", err),
+    match tera.render("pages/home/home.html", &context) {
+        Ok(body) => axum::response::Html(body).into_response(),
+        Err(error) => {
+            eprintln!("Template error: {}", error);
+            (
+                axum::http::StatusCode::INTERNAL_SERVER_ERROR,
+                "Internal Server Error",
             )
-                .into_response(),
+                .into_response()
         }
     }
 }

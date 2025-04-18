@@ -1,21 +1,26 @@
-use crate::{
-    config::{MainConfig, CONFIG},
-    utils::HtmlTemplate,
-};
-use askama::Template;
-use axum::response::IntoResponse;
+use axum::{extract::State, response::IntoResponse};
+use tera::Context;
 
-pub async fn get() -> impl IntoResponse {
-    let template = AlphaTemplate {
-        #[allow(dead_code)]
-        main: CONFIG.main.clone(),
-    };
+use crate::types::AppState;
 
-    HtmlTemplate(template)
-}
+pub async fn get(state: State<AppState>) -> impl IntoResponse {
+    let config = &state.config;
+    let tera = &state.tera;
+    let mut context = Context::new();
 
-#[derive(Template)]
-#[template(path = "./pages/alpha/alpha.html")]
-struct AlphaTemplate {
-    pub main: MainConfig,
+    context.insert("main", &config.main);
+    context.insert("social", &config.social);
+    context.insert("jobs", &config.jobs);
+
+    match tera.render("pages/alpha/alpha.html", &context) {
+        Ok(body) => axum::response::Html(body).into_response(),
+        Err(error) => {
+            eprintln!("Template error: {}", error);
+            (
+                axum::http::StatusCode::INTERNAL_SERVER_ERROR,
+                "Internal Server Error",
+            )
+                .into_response()
+        }
+    }
 }
