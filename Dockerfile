@@ -49,6 +49,7 @@ COPY --from=node_builder /app/assets ./assets
 COPY --from=node_builder /app/node_modules ./node_modules
 COPY --from=node_builder /app/.env .
 COPY --from=node_builder /app/config.toml .
+COPY --from=node_builder /app/templates ./templates
 
 EXPOSE 80
 EXPOSE 443
