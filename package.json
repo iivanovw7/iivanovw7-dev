@@ -13,7 +13,7 @@
         "test:format": "prettier --write --ignore-unknown .",
         "test:stylelint": "stylelint \"styles/**/*.{css,scss}\"",
         "test": "pnpm run /^test:/",
-        "clean:css": "rimraf assets/css/*.{js,css,json}",
+        "clean:css": "rimraf dist/*.{js,css,json}",
         "prepare": "husky"
     },
     "keywords": [],

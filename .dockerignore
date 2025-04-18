@@ -7,11 +7,6 @@
 
 .prettierrc.cjs
 
-/assets/css/*.js
-/assets/css/*.css
-/asstes/css/*.map
-/assets/css/*.json
-
 # don't need our task file
 
 Makefile.toml

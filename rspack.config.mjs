@@ -1,5 +1,6 @@
 import { defineConfig } from "@rspack/cli";
 import path from "node:path";
+import { rspack } from "@rspack/core";
 import url from "url";
 import * as sass from "sass-embedded";
 import { RspackManifestPlugin } from "rspack-manifest-plugin";
@@ -37,9 +38,9 @@ export default defineConfig((env) => {
             minimize: !isWatch,
         },
         output: {
-            path: path.resolve(__dirname, "./assets/css/"),
+            path: path.resolve(__dirname, "./dist"),
             filename: "[name].[contenthash].js",
-            assetModuleFilename: "[name][ext]",
+            assetModuleFilename: "[name][contenthash][ext]",
         },
         resolve: {
             alias: {
@@ -76,11 +77,14 @@ export default defineConfig((env) => {
             ],
         },
         plugins: [
+            new rspack.CssExtractRspackPlugin({
+                filename: "[name].[contenthash].css",
+            }),
             new RspackManifestPlugin({
                 fileName: "manifest.json",
-                publicPath: "/assets/css",
+                publicPath: "/dist",
                 map: (file) => {
-                    file.path = file.path.replace("/assets/css/", "");
+                    file.path = file.path.replace("/dist/", "");
 
                     return file;
                 },

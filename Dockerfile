@@ -25,9 +25,9 @@ WORKDIR /app
 
 RUN corepack enable
 
-# copy on over all the dependencies
 COPY styles ./styles
 COPY assets ./assets
+COPY dist ./dist
 COPY package.json .
 COPY rspack.config.mjs .
 COPY .env .
@@ -46,6 +46,7 @@ WORKDIR /app
 
 COPY --from=rust_builder /app/target/release/iivanovw7-dev ./server
 COPY --from=node_builder /app/assets ./assets
+COPY --from=node_builder /app/dist ./dist
 COPY --from=node_builder /app/node_modules ./node_modules
 COPY --from=node_builder /app/.env .
 COPY --from=node_builder /app/config.toml .
