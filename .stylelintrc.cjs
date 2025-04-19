@@ -1,6 +1,6 @@
 module.exports = {
     extends: ["stylelint-config-recommended-scss", "stylelint-config-recess-order"],
-    ignoreFiles: ["**/*.js", "**/*.html", "dist/**/*"],
+    ignoreFiles: ["**/*.js", "**/*.html", "dist/**/*", "assets/**/*", "build/**/*"],
     plugins: ["stylelint-scss"],
     rules: {
         "alpha-value-notation": "percentage",

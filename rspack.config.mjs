@@ -4,6 +4,7 @@ import { rspack } from "@rspack/core";
 import url from "url";
 import * as sass from "sass-embedded";
 import { RspackManifestPlugin } from "rspack-manifest-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 import autoprefixer from "autoprefixer";
 import postcss100vhFix from "postcss-100vh-fix";
@@ -30,17 +31,21 @@ export default defineConfig((env) => {
     return {
         experiments: {
             css: true,
+            layers: true,
         },
         entry: {
-            main: path.resolve(__dirname, "./styles/main.scss"),
+            main: {
+                import: path.resolve(__dirname, "./styles/main.scss"),
+                layer: "styles",
+            },
         },
         optimization: {
             minimize: !isWatch,
         },
         output: {
-            path: path.resolve(__dirname, "./dist"),
-            filename: "[name].[contenthash].js",
-            assetModuleFilename: "[name][contenthash][ext]",
+            path: path.resolve(__dirname, "./assets/css"),
+            filename: () => "",
+            assetModuleFilename: "[name].[contenthash].[ext]",
         },
         resolve: {
             alias: {
@@ -72,19 +77,27 @@ export default defineConfig((env) => {
                             },
                         },
                     ],
-                    type: "css",
+                    type: "asset/resource",
+                    generator: {
+                        filename: "[name].[contenthash].css",
+                    },
                 },
             ],
         },
         plugins: [
+            new CleanWebpackPlugin({
+                cleanAfterEveryBuildPatterns: ["./assets/css/*"],
+            }),
             new rspack.CssExtractRspackPlugin({
+                path: path.resolve(__dirname, "./assets/css"),
                 filename: "[name].[contenthash].css",
+                assetModuleFilename: "[name][contenthash][ext]",
             }),
             new RspackManifestPlugin({
                 fileName: "manifest.json",
-                publicPath: "/dist",
+                publicPath: "/assets/css",
                 map: (file) => {
-                    file.path = file.path.replace("/dist/", "");
+                    file.path = file.path.replace("/assets/css/", "");
 
                     return file;
                 },

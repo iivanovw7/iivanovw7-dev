@@ -2,11 +2,15 @@
 @use "@styles/themes/palette" as palette;
 
 .home-jobs {
-    @include sizer(100%, rem(448px));
+    @include sizer(100%, rem(420px));
 
     position: relative;
     max-inline-size: rem(640px);
     max-block-size: 90vb;
+
+    @include media-tablet {
+        @include sizer(100%, rem(380px));
+    }
 
     &__inner {
         @include sizer(100%);
@@ -28,7 +32,7 @@
 
     &__slider-header {
         @include position(absolute, 0 auto auto 0);
-        @include p(2);
+        @include p(2, 2, 2, 3);
         @include z-index(slider-header);
 
         display: flex;
@@ -47,7 +51,7 @@
         display: flex;
         flex-direction: row;
 
-        @include media(min, sm) {
+        @include media-tablet {
             @include text-setting(base);
         }
     }
@@ -57,10 +61,10 @@
 
         display: inline-flex;
         block-size: rem(20px);
-        color: palette.get(stone, 100);
-        background-color: palette.get(purple, 950);
+        color: var(--text-white);
+        background-color: var(--accent);
 
-        @include media(min, sm) {
+        @include media-tablet {
             block-size: rem(24px);
         }
     }
@@ -70,7 +74,7 @@
 
         margin: auto rem(8px) auto 0;
 
-        @include media(min, sm) {
+        @include media-tablet {
             @include sizer(rem(16px));
         }
     }
@@ -83,7 +87,7 @@
         color: palette.get(stone, 950);
         background-color: palette.get(stone, 400);
 
-        @include media(min, sm) {
+        @include media-tablet {
             block-size: rem(24px);
         }
     }
@@ -112,7 +116,7 @@
     &__slider-header-middle {
         @include justify-align-flex(flex-start, center);
 
-        column-gap: rem(8px);
+        column-gap: rem(4px);
 
         .link-icon {
             @include p(0);
@@ -128,7 +132,7 @@
     &__cli-content {
         @include justify-align-flex(flex-start, center);
         @include m(0);
-        @include text-overflow(hidden);
+        @include text-overflow(clip);
 
         inline-size: 0;
         animation: print 3s steps(32, end) forwards;
@@ -156,7 +160,7 @@
     &__cli-cursor {
         @include text-setting(base);
 
-        @include media(min, sm) {
+        @include media-tablet {
             @include text-setting(xl);
         }
     }
@@ -171,9 +175,11 @@
     &__slider-container {
         @include sizer(100%);
         @include z-index(content);
+        @include pl(1);
 
         position: relative;
-        overflow: visible;
+        overflow: hidden;
+        border-left: rem(4px) solid var(--card-border);
     }
 
     &__slider-slide {
@@ -182,10 +188,14 @@
         @include z-index(slider-slide);
 
         flex-direction: column;
-        padding: rem(154px) rem(16px) rem(16px);
+        padding: rem(154px) rem(16px) 0 rem(36px);
 
-        @include media(min, sm) {
+        @include media-mobile-only {
             padding-block-start: rem(160px);
+        }
+
+        @include media-mobile-only-landscape {
+            padding-block-start: rem(140px);
         }
     }
 
@@ -228,7 +238,7 @@
         flex-direction: column;
         gap: rem(8px);
 
-        @include media(min, sm) {
+        @include media-tablet {
             flex-direction: row;
         }
     }
@@ -240,19 +250,19 @@
 
         inline-size: max-content;
         color: var(--text-white);
-        background-color: palette.get(purple, 950);
+        background-color: var(--accent);
         clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 
-        > span {
-            white-space: nowrap;
-        }
-
-        > span:nth-of-type(2) {
-            @include mx(1);
-        }
-
-        @include media(min, sm) {
+        @include media-tablet {
             @include px(4);
+        }
+    }
+
+    &__slider-slide-postion-date-container > span {
+        white-space: nowrap;
+
+        @include only(2) {
+            @include mx(1);
         }
     }
 
@@ -268,13 +278,13 @@
     &__slider-slide-position-description {
         @include text-setting(sm);
 
-        @include media(min, sm) {
+        @include media-tablet {
             @include text-setting(base);
         }
     }
 
     &__buttons-container {
-        @include p(3);
+        @include p(3, 3, 0);
         @include position(absolute, auto 0 0 auto);
         @include justify-align-flex(flex-end, flex-end);
         @include z-index(slider-controls);

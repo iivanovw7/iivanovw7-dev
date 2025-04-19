@@ -1,7 +1,7 @@
 use axum::{extract::State, response::IntoResponse};
 use tera::Context;
 
-use crate::{types::AppState, utils::load_css_assets_manifest};
+use crate::{types::config::AppState, utils::css::load_css_assets_manifest};
 
 pub async fn get(state: State<AppState>) -> impl IntoResponse {
     let config = &state.config;

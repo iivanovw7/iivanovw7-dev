@@ -5,7 +5,7 @@ use std::fs;
 use struct_iterable::Iterable;
 use tera::Tera;
 
-use crate::types::{Config, Env, RawConfig, SocialConfig, SocialConfigItem};
+use crate::types::config::{Config, Env, RawConfig, SocialConfig, SocialConfigItem};
 
 lazy_static! {
     pub static ref TERA: Tera = {

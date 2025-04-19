@@ -2,6 +2,9 @@
 .exintcache
 
 /dist
+/build
+
+/assets/css
 
 /node_modules
 /target

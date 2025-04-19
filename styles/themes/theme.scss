@@ -6,12 +6,14 @@
 
 $theme-variants: (
     light: (
+        accent: palette.get(purple, 950),
         text-primary: palette.get(stone, 900),
         text-secondary: palette.get(stone, 500),
         text-white: palette.get(stone, 100),
         background-primary: palette.get(stone, 200),
         focus: palette.get(blue, 900),
         cursor: "#000",
+        card-border: palette.get(stone, 300),
         // Scrollbars
         scrollbar: palette.get(stone, 800),
         scrollbar-track: palette.get(stone, 600),
@@ -26,12 +28,14 @@ $theme-variants: (
         button-icon-secondary-hover: palette.get(stone, 900),
     ),
     dark: (
+        accent: palette.get(purple, 950),
         text-primary: palette.get(stone, 200),
         text-secondary: palette.get(stone, 500),
         text-white: palette.get(stone, 100),
         background-primary: palette.get(stone, 900),
         focus: palette.get(blue, 600),
         cursor: "#FFF",
+        card-border: palette.get(stone, 800),
         // Scrollbars
         scrollbar: palette.get(stone, 600),
         scrollbar-track: palette.get(stone, 600),

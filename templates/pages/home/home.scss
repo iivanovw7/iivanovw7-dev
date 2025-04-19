@@ -8,6 +8,8 @@
 
     flex-direction: column;
 
+    @include adaptive(rem(36px));
+
     @include media(min, md) {
         @include px(5);
     }

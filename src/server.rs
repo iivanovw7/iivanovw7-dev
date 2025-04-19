@@ -1,6 +1,6 @@
 use crate::config::{CONFIG, ENV, TERA};
 use crate::handlers;
-use crate::types::AppState;
+use crate::types::config::AppState;
 use axum::{routing::get, Router};
 use std::sync::Arc;
 use tower_http::services::ServeDir;
@@ -33,7 +33,6 @@ pub async fn server() -> anyhow::Result<()> {
     let current_dir = std::env::current_dir().unwrap();
     let current_dir_path = current_dir.to_str().unwrap();
 
-    let dist_serve = ServeDir::new(format!("{}/dist", current_dir_path));
     let assets_serve = ServeDir::new(format!("{}/assets", current_dir_path));
     let gsap_serve = ServeDir::new(format!("{}/node_modules/gsap/dist", current_dir_path));
     let htmx_serve = ServeDir::new(format!("{}/node_modules/htmx.org/dist", current_dir_path));
@@ -49,7 +48,6 @@ pub async fn server() -> anyhow::Result<()> {
         .route("/", get(handlers::home::get))
         .route("/samples/alpha", get(handlers::alpha::get))
         .nest_service("/assets", assets_serve.clone())
-        .nest_service("/dist", dist_serve.clone())
         .nest_service("/samples/assets", assets_serve.clone())
         .nest_service("/gsap/dist", gsap_serve)
         .nest_service("/htmx.org/dist", htmx_serve)
