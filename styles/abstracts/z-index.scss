@@ -4,11 +4,14 @@
 @use "sass:list";
 
 $z-index: (
+    underlay: -1,
     default: 0,
     content: 1,
+    overlay: 5,
     slider-controls: 20,
     slider-header: 15,
     slider-slide: 10,
+    overlay-container: 100,
 );
 
 @function z-index($key) {

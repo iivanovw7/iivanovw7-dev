@@ -1270,6 +1270,7 @@ dependencies = [
  "http",
  "lazy_static",
  "log",
+ "mime",
  "serde",
  "serde_derive",
  "serde_json",

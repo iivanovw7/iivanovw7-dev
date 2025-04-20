@@ -3,6 +3,8 @@ use tera::Context;
 
 use crate::{types::config::AppState, utils::css::load_css_assets_manifest};
 
+use super::error::template_error;
+
 pub async fn get(state: State<AppState>) -> impl IntoResponse {
     let config = &state.config;
     let tera = &state.tera;
@@ -15,13 +17,6 @@ pub async fn get(state: State<AppState>) -> impl IntoResponse {
 
     match tera.render("pages/alpha/alpha.html", &context) {
         Ok(body) => axum::response::Html(body).into_response(),
-        Err(error) => {
-            eprintln!("Template error: {}", error);
-            (
-                axum::http::StatusCode::INTERNAL_SERVER_ERROR,
-                "Internal Server Error",
-            )
-                .into_response()
-        }
+        Err(error) => template_error(state, error).await.into_response(),
     }
 }

@@ -14,6 +14,7 @@ $theme-variants: (
         focus: palette.get(blue, 900),
         cursor: "#000",
         card-border: palette.get(stone, 300),
+        error: palette.get(red, 800),
         // Scrollbars
         scrollbar: palette.get(stone, 800),
         scrollbar-track: palette.get(stone, 600),
@@ -36,6 +37,7 @@ $theme-variants: (
         focus: palette.get(blue, 600),
         cursor: "#FFF",
         card-border: palette.get(stone, 800),
+        error: palette.get(red, 800),
         // Scrollbars
         scrollbar: palette.get(stone, 600),
         scrollbar-track: palette.get(stone, 600),

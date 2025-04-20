@@ -3,10 +3,13 @@
 .navbar {
     @include position(fixed, 0 auto auto 0);
     @include my(0);
+    @include z-index(overlay-container);
 
     display: flex;
     flex-direction: column;
     inline-size: 100%;
+    height: rem($navbar-height);
+    max-height: rem($navbar-height);
 
     &__box {
         @include sizer(100%);

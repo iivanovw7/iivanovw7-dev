@@ -53,7 +53,7 @@ pub async fn server() -> anyhow::Result<()> {
         .nest_service("/htmx.org/dist", htmx_serve)
         .nest_service("/alpinejs/dist", alpine_serve)
         .nest_service("/@alpinejs/morph/dist", morph_serve)
-        .fallback(get(handlers::home::get))
+        .fallback(get(handlers::error::not_found_error))
         .with_state(app_state);
 
     let listener = tokio::net::TcpListener::bind(&ENV.server).await.unwrap();
