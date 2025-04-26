@@ -26,7 +26,7 @@
         box-shadow: none;
     }
 
-    &__medium {
+    &--medium {
         @include sizer(rem(40px));
         @include p(2);
 
@@ -38,7 +38,7 @@
         }
     }
 
-    &__secondary {
+    &--secondary {
         color: var(--button-icon-secondary);
 
         &:hover {

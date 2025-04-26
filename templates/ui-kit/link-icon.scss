@@ -14,7 +14,7 @@
         margin: auto;
     }
 
-    &__medium {
+    &--medium {
         @include sizer(rem(40px));
         @include p(2);
 
@@ -23,7 +23,7 @@
         }
     }
 
-    &__large {
+    &--large {
         @include sizer(rem(48px));
         @include p(2);
 
@@ -32,7 +32,7 @@
         }
     }
 
-    &__primary {
+    &--primary {
         color: var(--link-icon-primary);
 
         &:hover {
@@ -40,7 +40,7 @@
         }
     }
 
-    &__secondary {
+    &--secondary {
         color: var(--link-icon-secondary);
 
         &:hover {

@@ -62,7 +62,7 @@
         display: inline-flex;
         block-size: rem(20px);
         color: var(--text-white);
-        background-color: var(--accent);
+        background-color: var(--accent-primary);
 
         @include media-tablet {
             block-size: rem(24px);
@@ -250,7 +250,7 @@
 
         inline-size: max-content;
         color: var(--text-white);
-        background-color: var(--accent);
+        background-color: var(--accent-primary);
         clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 
         @include media-tablet {
@@ -284,7 +284,7 @@
     }
 
     &__buttons-container {
-        @include p(3, 3, 0);
+        @include p(3, 3, 1);
         @include position(absolute, auto 0 0 auto);
         @include justify-align-flex(flex-end, flex-end);
         @include z-index(slider-controls);

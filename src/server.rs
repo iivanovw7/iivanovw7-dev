@@ -46,9 +46,11 @@ pub async fn server() -> anyhow::Result<()> {
 
     let router = Router::new()
         .route("/", get(handlers::home::get))
+        .route("/posts", get(handlers::posts::get))
         .route("/samples/alpha", get(handlers::alpha::get))
         .nest_service("/assets", assets_serve.clone())
         .nest_service("/samples/assets", assets_serve.clone())
+        .nest_service("/posts/assets", assets_serve.clone())
         .nest_service("/gsap/dist", gsap_serve)
         .nest_service("/htmx.org/dist", htmx_serve)
         .nest_service("/alpinejs/dist", alpine_serve)

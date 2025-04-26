@@ -1,9 +1,16 @@
+<!-- prettier-ignore -->
+{% set variant = variant | default(value='primary') %}
+{% set size = size | default(value='medium') %}
+{% set class = class | default(value='') %}
+
+{% set classes = "link-icon link-icon--" ~ variant ~ " link-icon--" ~ size ~ " " ~ class | trim %}
+
 <a
     aria-label="{{ icon }}"
-    class="link-icon link-icon__{{ variant }} link-icon__{{ size }}"
+    class="{{ classes }}"
     href="{{ href }}"
     rel="noreferrer"
-    target="_blank"
+    target="{{ target | default(value='_self') }}"
 >
     <svg class="link-icon__icon">
         <use href="/assets/svg/sprite.svg#{{ icon }}" />

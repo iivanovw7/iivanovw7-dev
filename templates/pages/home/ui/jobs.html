@@ -16,15 +16,13 @@
                     <span class="home-jobs__path-arrow" />
                 </div>
                 <div class="home-jobs__slider-header-middle">
-                    <a
-                        aria-label="iivanovw7 homepage"
-                        class="link-icon link-icon__secondary link-icon__medium"
-                        href="/"
-                    >
-                        <svg class="link-icon__icon">
-                            <use href="/assets/svg/sprite.svg#chevron-right" />
-                        </svg>
-                    </a>
+                    <!-- prettier-ignore -->
+                    {% block logo %}
+                        {% set variant = "secondary" %}
+                        {% set icon = "chevron-right" %}
+                        {% set href = "/" %}
+                        {% include "ui-kit/link-icon.html" %}
+                    {% endblock logo %}
                     <div class="home-jobs__cli-container">
                         <div class="home-jobs__cli-content">
                             <h3 class="home-jobs__cli-content-name">{{ main.name }}</h3>
@@ -39,9 +37,9 @@
                     {% block social_links %}
                         {% for social in social_links %}
                             {% set variant = "secondary" %}
-                            {% set size = "medium" %}
                             {% set icon = social.title %}
                             {% set href = social.link %}
+                            {% set target = "_blank" %}
                             {% include "ui-kit/link-icon.html" %}
                         {% endfor %}
                     {% endblock social_links %}
@@ -82,7 +80,6 @@
                 {% set id = "prevButton" %}
                 {% set ariaLabel = "Prev slide" %}
                 {% set variant = "secondary" %}
-                {% set size = "medium" %}
                 {% set icon = "chevron-left" %}
                 {% include "ui-kit/button-icon.html" %}
             {% endblock slider_prev_button %}
@@ -90,8 +87,8 @@
                 {% set id = "nextButton" %}
                 {% set ariaLabel = "Next slide" %}
                 {% set variant = "secondary" %}
-                {% set size = "medium" %}
                 {% set icon = "chevron-right" %}
+                {% set target = "_blank" %}
                 {% include "ui-kit/button-icon.html" %}
             {% endblock slider_next_button %}
         </div>

@@ -1,0 +1,23 @@
+<!-- prettier-ignore -->
+{% set variant = variant | default(value="primary") %}
+{% set size = size | default(value="medium") %}
+{% set class = class | default(value="") %}
+{% set fill = fill | default(value="none") %}
+{% set active = active | default(value=false) %}
+
+{% set classes = "link link--" ~ variant ~ " link--" ~ size ~ " link--" ~ fill ~ " " ~ class | trim %}
+
+<!-- prettier-ignore -->
+{% if active %}
+    {% set classes = classes ~ " link--active" %}
+{% endif %}
+
+<a
+    class="{{ classes }}"
+    aria-label="{{ text }}"
+    href="{{ href }}"
+    rel="noreferrer"
+    target="{{ target | default(value='_self') }}"
+>
+    <span class="link__text">{{ text }}</span>
+</a>

@@ -1,0 +1,99 @@
+@use "@styles/abstracts" as *;
+
+.pages-posts {
+    @include sizer(100%);
+    @include mb(auto);
+    @include pb(3);
+    @include px(3);
+
+    display: grid;
+    grid-template:
+        [row1-start] "header" rem(100px) [row1-end]
+        [row2-start] "sidebar" auto [row2-end]
+        [row3-start] "main" 1fr [row3-end]
+        / auto;
+    gap: rem(16px);
+    padding-top: rem($navbar-height);
+
+    @include adaptive(rem(36px));
+
+    @include media-desktop {
+        @include px(5);
+
+        grid-template:
+            [row1-start] "header header" rem(100px) [row1-end]
+            [row2-start] "sidebar main" auto [row2-end]
+            / 380px auto;
+    }
+
+    &__header {
+        @include py(2);
+
+        display: flex;
+        flex-flow: column wrap;
+        grid-area: header;
+        width: 100%;
+        border-bottom: rem(1px) solid var(--post-border);
+    }
+
+    &__sidebar {
+        @include justify-align-flex(flex-start, flex-start);
+        @include sizer(100%, fit-content);
+        @include p(3);
+        @include border-radius(1);
+
+        flex-direction: column;
+        grid-area: sidebar;
+        gap: rem(8px);
+        background-color: var(--background-secondary);
+
+        @include media-desktop {
+            max-width: rem(400px);
+        }
+    }
+
+    &__sidebar-title {
+        @include text-setting(base);
+    }
+
+    &__sidebar-list {
+        @include sizer(100%, auto);
+        @include p(2, 2, 2, 0);
+
+        display: flex;
+        flex-flow: row wrap;
+        gap: rem(8px);
+    }
+
+    &__title {
+        @include text-setting(xl);
+    }
+
+    &__subtitle {
+        @include text-setting(base);
+
+        color: var(--text-secondary);
+    }
+
+    &__container {
+        @include p(3);
+        @include sizer(100%);
+        @include justify-align-flex;
+
+        flex-direction: column;
+    }
+
+    &__main {
+        @include sizer(100%);
+        @include justify-align-flex;
+        @include m(0);
+
+        flex-direction: column;
+        grid-area: main;
+    }
+
+    &__main-list {
+        @include sizer(100%);
+        @include pb(3);
+    }
+}

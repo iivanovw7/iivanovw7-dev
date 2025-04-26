@@ -17,7 +17,7 @@
 
 @mixin focus-outline($type: "border") {
     @if ($type == "border") {
-        outline: 1px solid var(--focus);
+        outline: 2px solid var(--focus);
 
         @media screen and (prefers-contrast) {
             outline-style: dotted;
@@ -32,6 +32,15 @@
     @if ($type == "outline") {
         outline: 2px solid var(--focus);
         outline-offset: -2px;
+
+        @media screen and (prefers-contrast) {
+            outline-style: dotted;
+        }
+    }
+
+    @if ($type == "outline-offset") {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
 
         @media screen and (prefers-contrast) {
             outline-style: dotted;

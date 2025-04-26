@@ -1,9 +1,11 @@
-<button
-    id="{{ id }}"
-    class="button-icon button-icon__{{ variant }} button-icon__{{ size }}"
-    type="button"
-    aria-label="{{ ariaLabel }}"
->
+<!-- prettier-ignore -->
+{% set variant = variant | default(value='primary') %}
+{% set size = size | default(value='medium') %}
+{% set class = class | default(value='') %}
+
+{% set classes = "button-icon button-icon--" ~ variant ~ " button-icon--" ~ size ~ " " ~ class | trim %}
+
+<button id="{{ id }}" class="{{ classes }}" type="button" aria-label="{{ ariaLabel }}">
     <svg class="button-icon__icon">
         <use href="/assets/svg/sprite.svg#{{ icon }}" />
     </svg>

@@ -1,0 +1,49 @@
+{% extends "layouts/base.html" %}
+
+<!-- prettier-ignore -->
+{% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
+
+{% block content %}
+
+<section class="pages-posts">
+    <div class="pages-posts__header">
+        <h1 class="pages-posts__title">Latest notes</h1>
+        <p class="pages-posts__subtitle">List of notes and projects</p>
+    </div>
+    <div class="pages-posts__sidebar">
+        <p class="pages-posts__sidebar-title">Filter by tags:</p>
+        <div class="pages-posts__sidebar-list">
+            {% for tag in tags %}
+            <!-- prettier-ignore -->
+            {% set active = current_tag == tag %} 
+            {% set text = tag %}
+            {% set fill = "full" %}
+            {% if active %}
+                {% set href = "/posts" %}
+            {% else %}
+                {% set href = "/posts?tag="~tag %}
+            {% endif %}
+            {% include "ui-kit/link.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    <main class="pages-posts__main">
+        <ul class="pages-posts__main-list">
+            <!-- prettier-ignore -->
+            {% block posts_list %}
+                {% for post in posts %}
+                {% set title = post.metadata.title %}
+                {% set date = post.date %}
+                {% set image = post.metadata.image %}
+                {% set tags = post.metadata.tags %}
+                {% set current_tag = current_tag %}
+                {% set file_name = post.metadata.file_name %}
+                {% set description = post.metadata.description %}
+                {% include "pages/posts/ui/posts-item.html" %}
+                {% endfor %}
+            {% endblock posts_list %}
+        </ul>
+    </main>
+</section>
+
+{% endblock %}

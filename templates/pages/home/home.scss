@@ -10,7 +10,7 @@
 
     @include adaptive(rem(36px));
 
-    @include media(min, md) {
+    @include media-tablet {
         @include px(5);
     }
 }
