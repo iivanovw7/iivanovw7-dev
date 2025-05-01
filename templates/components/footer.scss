@@ -1,0 +1,13 @@
+@use "@styles/abstracts" as *;
+
+.footer {
+    inline-size: 100%;
+    height: rem($footer-height);
+
+    &__content {
+        @include justify-align-flex;
+        @include sizer(100%);
+
+        gap: rem(8px);
+    }
+}

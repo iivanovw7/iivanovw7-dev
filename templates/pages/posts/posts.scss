@@ -1,18 +1,19 @@
 @use "@styles/abstracts" as *;
 
 .pages-posts {
-    @include sizer(100%);
+    @include sizer(100%, auto);
     @include mb(auto);
     @include pb(3);
     @include px(3);
 
     display: grid;
     grid-template:
-        [row1-start] "header" rem(100px) [row1-end]
+        [row1-start] "header" rem(160px) [row1-end]
         [row2-start] "sidebar" auto [row2-end]
         [row3-start] "main" 1fr [row3-end]
         / auto;
     gap: rem(16px);
+    min-height: calc(100% - rem($footer-height));
     padding-top: rem($navbar-height);
 
     @include adaptive(rem(36px));
@@ -21,16 +22,16 @@
         @include px(5);
 
         grid-template:
-            [row1-start] "header header" rem(100px) [row1-end]
+            [row1-start] "header header" rem(160px) [row1-end]
             [row2-start] "sidebar main" auto [row2-end]
             / 380px auto;
     }
 
     &__header {
-        @include py(2);
+        @include py(2, 4);
 
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: column;
         grid-area: header;
         width: 100%;
         border-bottom: rem(1px) solid var(--post-border);
@@ -66,7 +67,11 @@
     }
 
     &__title {
-        @include text-setting(xl);
+        @include text-setting(xxl);
+        @include mb(2);
+        @include mt(2);
+
+        font-weight: bold;
     }
 
     &__subtitle {
@@ -83,7 +88,7 @@
         flex-direction: column;
     }
 
-    &__main {
+    &__section {
         @include sizer(100%);
         @include justify-align-flex;
         @include m(0);
@@ -92,7 +97,7 @@
         grid-area: main;
     }
 
-    &__main-list {
+    &__section-list {
         @include sizer(100%);
         @include pb(3);
     }

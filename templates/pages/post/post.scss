@@ -1,0 +1,286 @@
+@use "sass:math";
+
+@use "@styles/abstracts" as *;
+
+.pages-post {
+    @include sizer(100%, auto);
+    @include mb(auto);
+    @include pb(3);
+    @include px(3);
+
+    display: grid;
+    grid-template:
+        [row1-start] "header" auto [row1-end]
+        [row2-start] "sidebar" auto [row2-end]
+        [row3-start] "article" 1fr [row3-end]
+        / auto;
+    row-gap: rem(16px);
+    min-height: calc(100% - rem($footer-height));
+    padding-top: rem($navbar-height);
+
+    @include adaptive(rem(36px));
+
+    @include media-desktop {
+        @include px(5);
+
+        grid-template:
+            [row1-start] "header sidebar" minmax(rem(68px), auto) [row1-end]
+            [row2-start] "article article" 1fr [row2-end]
+            / 1fr auto;
+    }
+
+    &__header {
+        @include py(2, 4);
+
+        display: flex;
+        flex-flow: column;
+        grid-area: header;
+        width: 100%;
+        border-bottom: rem(1px) solid var(--post-border);
+    }
+
+    &__article {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        grid-area: article;
+        width: auto;
+        max-width: 100%;
+    }
+
+    &__date {
+        @include mb(2);
+
+        color: var(--text-secondary);
+    }
+
+    &__date-label {
+        @include sr-only;
+    }
+
+    &__sidebar {
+        @include pt(2);
+
+        grid-area: sidebar;
+        border-botton: none;
+
+        @include media-desktop {
+            border-bottom: rem(1px) solid var(--post-border);
+        }
+    }
+
+    &__description {
+        @include text-setting(sm);
+        @include mt(2);
+        @include text-overflow(ellipsis, false);
+
+        height: 100%;
+        max-height: rem(80px);
+        color: var(--text-tertiary);
+    }
+
+    &__title {
+        @include text-setting(xxl);
+        @include mb(2);
+        @include mt(2);
+
+        font-weight: bold;
+    }
+
+    &__content-header {
+        display: flex;
+        flex-direction: column;
+        gap: rem(16px);
+
+        @include media-tablet {
+            flex-direction: row;
+        }
+    }
+
+    &__image {
+        $base-width: 100%;
+        $tablet-width: rem(240px);
+
+        @include sizer($base-width, auto);
+        @include my(2, 0);
+        @include border-radius(1);
+
+        min-width: $base-width;
+        max-width: $base-width;
+
+        @include background-image;
+        @include ratio-box(math.div(4, 3));
+
+        @include media-tablet {
+            @include sizer($tablet-width, auto);
+            @include my(2, 4);
+
+            min-width: $tablet-width;
+            max-width: $tablet-width;
+        }
+    }
+
+    &__controls {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__tags {
+        @include my(2);
+        @include sizer(100%, fit-content);
+        @include p(3);
+        @include border-radius(1);
+
+        display: flex;
+        gap: rem(8px);
+        background-color: var(--background-secondary);
+
+        @include media-tablet {
+            @include sizer(fit-content);
+        }
+    }
+
+    &__content {
+        * {
+            @include border-box;
+        }
+
+        pre {
+            @include py(3);
+
+            width: auto;
+            max-width: 100%;
+        }
+
+        code {
+            @include border-radius(1);
+
+            max-width: calc(100vw - rem(32px));
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @include my(4, 3);
+            @include py(1);
+
+            border-bottom: rem(1px) solid var(--text-border);
+        }
+
+        h1 {
+            @include text-setting(xxxl);
+        }
+
+        h2 {
+            @include text-setting(xxl);
+        }
+
+        h3 {
+            @include text-setting(xl);
+        }
+
+        h4 {
+            @include text-setting(lg);
+        }
+
+        h5 {
+            @include text-setting(md);
+        }
+
+        h6 {
+            @include text-setting(base);
+
+            line-height: line-height(md);
+        }
+
+        p {
+            @include my(2);
+            @include text-setting(base);
+        }
+
+        hr {
+            @include my(2);
+
+            color: var(--text-border);
+        }
+
+        del,
+        s {
+            text-decoration: line-through;
+        }
+
+        blockquote {
+            @include m(2, 0, 2, 4);
+            @include pl(2);
+
+            border-left: rem(3px) solid var(--text-border);
+        }
+
+        code:not([class]) {
+            @include border-radius(1);
+            @include p(1, 2);
+
+            color: var(--text-primary);
+            background-color: var(--background-secondary);
+        }
+
+        ol,
+        ul {
+            @include pl(4);
+
+            list-style: none;
+        }
+
+        ol:not(li > ol),
+        ul:not(li > ul) {
+            @include mb(3);
+        }
+
+        ul li,
+        ol li {
+            @include my(2);
+        }
+
+        ul {
+            list-style-position: inside;
+        }
+
+        ul li::before {
+            @include m(1);
+
+            position: relative;
+            color: var(--primary-accent);
+            content: "•";
+        }
+
+        ol {
+            counter-reset: steps;
+        }
+
+        ol li {
+            counter-increment: steps;
+        }
+
+        ol li::before {
+            content: counters(steps, ".") ". ";
+        }
+
+        a {
+            color: var(--text-link);
+            text-decoration: underline;
+            border: none;
+            transition: $transition-color;
+        }
+
+        a:focus-visible {
+            @include focus-outline(outline-offset);
+        }
+
+        a:hover {
+            color: var(--text-link-hover);
+        }
+    }
+}

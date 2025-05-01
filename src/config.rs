@@ -76,4 +76,29 @@ mod tests {
         let env = &ENV;
         assert_ne!(env.server, "".to_string());
     }
+
+    #[test]
+    fn it_gets_social_links_directly() {
+        let social_config = SocialConfig {
+            email: "test@example.com".to_string(),
+            github: "https://github.com/test".to_string(),
+            linkedin: "https://linkedin.com/in/test".to_string(),
+            telegram: "https://t.me/test".to_string(),
+            twitter: "https://twitter.com/test".to_string(),
+        };
+
+        let links = get_social_links(&social_config);
+
+        assert_eq!(links.len(), 5);
+        assert_eq!(links[0].title, "email");
+        assert_eq!(links[0].link, "test@example.com");
+        assert_eq!(links[1].title, "github");
+        assert_eq!(links[1].link, "https://github.com/test");
+        assert_eq!(links[2].title, "linkedin");
+        assert_eq!(links[2].link, "https://linkedin.com/in/test");
+        assert_eq!(links[3].title, "telegram");
+        assert_eq!(links[3].link, "https://t.me/test");
+        assert_eq!(links[4].title, "twitter");
+        assert_eq!(links[4].link, "https://twitter.com/test");
+    }
 }

@@ -37,6 +37,10 @@ pub async fn server() -> anyhow::Result<()> {
     let gsap_serve = ServeDir::new(format!("{}/node_modules/gsap/dist", current_dir_path));
     let htmx_serve = ServeDir::new(format!("{}/node_modules/htmx.org/dist", current_dir_path));
     let alpine_serve = ServeDir::new(format!("{}/node_modules/alpinejs/dist", current_dir_path));
+    let htmx_class_tools_serve = ServeDir::new(format!(
+        "{}/node_modules/htmx-ext-class-tools/dist",
+        current_dir_path
+    ));
     let morph_serve = ServeDir::new(format!(
         "{}/node_modules/@alpinejs/morph/dist",
         current_dir_path
@@ -47,12 +51,14 @@ pub async fn server() -> anyhow::Result<()> {
     let router = Router::new()
         .route("/", get(handlers::home::get))
         .route("/posts", get(handlers::posts::get))
+        .route("/posts/{name}", get(handlers::post::get))
         .route("/samples/alpha", get(handlers::alpha::get))
         .nest_service("/assets", assets_serve.clone())
         .nest_service("/samples/assets", assets_serve.clone())
         .nest_service("/posts/assets", assets_serve.clone())
         .nest_service("/gsap/dist", gsap_serve)
         .nest_service("/htmx.org/dist", htmx_serve)
+        .nest_service("/htmx-ext-class-tools/dist", htmx_class_tools_serve)
         .nest_service("/alpinejs/dist", alpine_serve)
         .nest_service("/@alpinejs/morph/dist", morph_serve)
         .fallback(get(handlers::error::not_found_error))

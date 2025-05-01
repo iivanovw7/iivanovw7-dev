@@ -1,6 +1,14 @@
 <header class="navbar">
     <div class="navbar__box">
         <!-- prettier-ignore -->
+        {% set variant = "secondary" %}
+        {% set size = "medium" %}
+        {% set icon = "terminal" %}
+        {% set href = "/" %}
+        {% include "ui-kit/link-icon.html" %}
+    </div>
+    <div class="navbar__box">
+        <!-- prettier-ignore -->
         {% include "ui-kit/theme-switch.html" %}
         {% set variant = "secondary" %}
         {% set size = "medium" %}

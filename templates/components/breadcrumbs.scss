@@ -1,0 +1,25 @@
+@use "@styles/abstracts" as *;
+
+.breadcrumbs {
+    @include pb(2);
+    @include mb(2);
+    @include sizer(100%, rem(24px));
+
+    display: flex;
+    gap: rem(6px);
+
+    .link {
+        text-decoration: underline;
+    }
+
+    &__separator {
+        @include sizer(auto, rem(20px));
+        @include mx(2);
+
+        border-right: rem(2px) dotted var(--text-border);
+    }
+
+    &__leaf {
+        color: var(--text-tertiary);
+    }
+}

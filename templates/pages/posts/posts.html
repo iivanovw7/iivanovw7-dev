@@ -5,8 +5,9 @@
 
 {% block content %}
 
-<section class="pages-posts">
+<main class="pages-posts">
     <div class="pages-posts__header">
+        {% include "components/breadcrumbs.html" %}
         <h1 class="pages-posts__title">Latest notes</h1>
         <p class="pages-posts__subtitle">List of notes and projects</p>
     </div>
@@ -27,8 +28,8 @@
             {% endfor %}
         </div>
     </div>
-    <main class="pages-posts__main">
-        <ul class="pages-posts__main-list">
+    <section class="pages-posts__section">
+        <ul class="pages-posts__section-list">
             <!-- prettier-ignore -->
             {% block posts_list %}
                 {% for post in posts %}
@@ -43,7 +44,10 @@
                 {% endfor %}
             {% endblock posts_list %}
         </ul>
-    </main>
-</section>
+    </section>
+</main>
+
+<!-- prettier-ignore -->
+{% include "components/footer.html" %}
 
 {% endblock %}

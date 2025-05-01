@@ -5,16 +5,6 @@
 @use "sass:list";
 @use "sass:math";
 
-@function validate-breakpoint($value) {
-    @for $i from 1 through list.length($value) {
-        @if map.has-key($screens, $value) {
-            @return map.get($screens, list.nth($value, $i));
-        } @else {
-            @return list.nth($value, $i);
-        }
-    }
-}
-
 @function validate-length($value) {
     $list: ("auto", "inherit", "initial", 0);
 

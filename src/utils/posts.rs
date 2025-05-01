@@ -6,7 +6,7 @@ use std::{
     path::Path,
 };
 
-use super::string::capitalize;
+use itertools::Itertools;
 
 pub fn get_posts_file<P: AsRef<Path>>(path: P) -> Vec<DirEntry> {
     fs::read_dir(path)
@@ -34,6 +34,7 @@ pub fn parse_post_content(content: &str) -> Option<Post> {
     let mut options = Options::empty();
 
     options.insert(Options::ENABLE_HEADING_ATTRIBUTES);
+    options.insert(Options::ENABLE_STRIKETHROUGH);
 
     let matter = Matter::<YAML>::new();
     let post_data = matter
@@ -79,7 +80,7 @@ pub fn process_posts<P: AsRef<Path>>(path: P) -> (Vec<Post>, Vec<String>) {
                 let parsed_post_date = parse_date(&post.metadata.date);
 
                 for post_tag in post.metadata.tags.clone() {
-                    post_tags.push(capitalize(post_tag.leak()))
+                    post_tags.push(post_tag);
                 }
 
                 post.metadata.date = parsed_post_date.format("%Y-%m-%d").to_string();
@@ -96,22 +97,28 @@ pub fn process_posts<P: AsRef<Path>>(path: P) -> (Vec<Post>, Vec<String>) {
     (posts, tags)
 }
 
-pub fn collect_posts() -> (HashMap<PostType, Vec<Post>>, Vec<String>) {
+pub fn collect_posts(filter: Vec<PostType>) -> (Vec<Post>, Vec<String>) {
     let mut post_paths = HashMap::new();
 
     post_paths.insert(PostType::Note, "posts/notes");
     post_paths.insert(PostType::Project, "posts/projects");
 
-    let mut all_posts = HashMap::new();
-    let mut all_tags = Vec::new();
+    let mut all_posts: Vec<Post> = vec![];
+    let mut all_tags: Vec<String> = Vec::new();
 
-    for (post_type, path) in post_paths {
-        let (posts, mut tags) = process_posts(path);
+    for post_type in filter {
+        if let Some(path) = post_paths.get(&post_type) {
+            let (posts, mut tags) = process_posts(path);
 
-        all_posts.insert(post_type, posts);
-        all_tags.append(&mut tags);
-        all_tags.sort();
+            all_posts.extend(posts);
+            all_tags.append(&mut tags);
+        }
     }
 
-    (all_posts, all_tags)
+    all_tags.sort();
+
+    (
+        all_posts,
+        all_tags.into_iter().unique().collect::<Vec<String>>(),
+    )
 }

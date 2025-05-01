@@ -34,8 +34,8 @@
 
     &__box {
         display: flex;
-        gap: rem(8px);
         flex-direction: column;
+        gap: rem(8px);
 
         @include media-tablet {
             flex-direction: row;

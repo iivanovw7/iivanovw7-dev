@@ -4,7 +4,9 @@
 /dist
 /build
 
-/assets/css
+/assets/css/manifest.json
+/assets/css/main.*.js
+/assets/css/main.*.css
 
 /node_modules
 /target

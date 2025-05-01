@@ -15,6 +15,16 @@ $screens: (
     "2xl": 1536px,
 );
 
+@function validate-breakpoint($value) {
+    @for $i from 1 through list.length($value) {
+        @if map.has-key($screens, $value) {
+            @return map.get($screens, list.nth($value, $i));
+        } @else {
+            @return list.nth($value, $i);
+        }
+    }
+}
+
 @mixin media($params...) {
     @if list.length($params) == 1 {
         $value: list.nth($params, 1);
@@ -31,7 +41,7 @@ $screens: (
         @if not list.index("only" "min" "max" "between", list.nth($params, 1)) {
             $start: list.nth($params, 1);
             $end: list.nth($params, 2);
-            @media (min-width: #{utils.validate-breakpoint($start)}) and (max-width: #{if(map.has-key($screens, $end), utils.validate-breakpoint($end) - 1, $end)}) {
+            @media (min-width: #{validate-breakpoint($start)}) and (max-width: #{if(map.has-key($screens, $end), validate-breakpoint($end) - 1, $end)}) {
                 @content;
             }
         } @else {
@@ -70,7 +80,7 @@ $screens: (
             } @else if $mode == "between" {
                 $start: list.nth($value, 1);
                 $end: list.nth($value, 2);
-                @media (min-width: #{utils.validate-breakpoint($start)}) and (max-width: #{if(map.has-key($screens, $end), utils.validate-breakpoint($end) - 1, $end)}) {
+                @media (min-width: #{validate-breakpoint($start)}) and (max-width: #{if(map.has-key($screens, $end), validate-breakpoint($end) - 1, $end)}) {
                     @content;
                 }
             }
@@ -86,6 +96,12 @@ $screens: (
 
 @mixin media-mobile-only-landscape {
     @media (max-height: map.get($screens, sm)) and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin media-tablet-only {
+    @include media(sm, md) {
         @content;
     }
 }
