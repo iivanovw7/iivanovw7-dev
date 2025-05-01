@@ -6,10 +6,11 @@
     @include z-index(overlay-container);
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     inline-size: 100%;
     height: rem($navbar-height);
     max-height: rem($navbar-height);
+    background-color: var(--background-primary);
 
     &__box {
         @include sizer(100%);
@@ -19,5 +20,9 @@
 
         flex-direction: row;
         gap: rem(16px);
+
+        @include only(first) {
+            flex-basis: fit-content;
+        }
     }
 }

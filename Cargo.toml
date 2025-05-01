@@ -8,13 +8,18 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.79"
 axum = { version = "0.8.3", features = ["multipart"] }
+axum-extra = "0.10.1"
 cargo-watch = "8.5.2"
+chrono = "0.4.40"
 dotenv = "0.15.0"
 envy = "0.4.2"
+gray_matter = "0.2.8"
 http = "1.0.0"
+itertools = "0.14.0"
 lazy_static = "1.4.0"
 log = "0.4.20"
 mime = "0.3.17"
+pulldown-cmark = "0.13.0"
 serde = { version = "1.0.192", features = ["derive"] }
 serde_derive = "1.0.196"
 serde_json = "1.0.113"

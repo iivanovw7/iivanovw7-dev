@@ -33,14 +33,22 @@ $text-settings: (
     ),
     "md": (
         font-size: 1.125rem,
-        line-height: $base-line-height * 2,
+        line-height: $base-line-height * 1.5,
     ),
     "lg": (
         font-size: 1.25rem,
-        line-height: $base-line-height * 2,
+        line-height: $base-line-height * 1.6,
     ),
     "xl": (
         font-size: 1.5rem,
+        line-height: $base-line-height * 1.7,
+    ),
+    "xxl": (
+        font-size: 1.8rem,
+        line-height: $base-line-height * 1.8,
+    ),
+    "xxxl": (
+        font-size: 2.2rem,
         line-height: $base-line-height * 2,
     ),
 );

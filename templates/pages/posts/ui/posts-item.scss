@@ -1,0 +1,105 @@
+@use "sass:math";
+
+@use "@styles/abstracts" as *;
+
+.pages-posts-item {
+    @include mt(3);
+
+    @include only(first) {
+        @include mt(0);
+    }
+
+    border: rem(1px) solid var(--post-border);
+
+    &__article {
+        @include p(2);
+
+        height: auto;
+        max-height: 100%;
+
+        @include media-tablet {
+            height: rem(180px);
+        }
+    }
+
+    &__date {
+        @include mb(2);
+
+        color: var(--text-secondary);
+    }
+
+    &__date-label {
+        @include sr-only;
+    }
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        gap: rem(8px);
+
+        @include media-tablet {
+            flex-direction: row;
+        }
+    }
+
+    &__description {
+        @include text-setting(sm);
+        @include mt(2);
+        @include text-overflow(ellipsis, false);
+
+        height: 100%;
+        max-height: rem(80px);
+        color: var(--text-tertiary);
+    }
+
+    &__title {
+        @include text-setting(lg);
+        @include mb(2);
+        @include mt(2);
+
+        font-weight: bold;
+        line-height: 1.4rem;
+
+        @include media-tablet {
+            @include mt(0);
+        }
+    }
+
+    &__image {
+        $base-width: 100%;
+        $tablet-width: rem(180px);
+
+        @include sizer($base-width, auto);
+
+        min-width: $base-width;
+        max-width: $base-width;
+
+        @include background-image;
+        @include ratio-box(math.div(4, 3));
+
+        @include media-tablet {
+            @include sizer($tablet-width, auto);
+
+            min-width: $tablet-width;
+            max-width: $tablet-width;
+        }
+    }
+
+    &__tags {
+        @include my(2);
+        @include justify-align-flex(flex-start, center);
+
+        gap: rem(8px);
+    }
+
+    &__tag {
+        @include py(1);
+
+        color: var(--text-primary);
+        background-color: var(--background-primary);
+
+        &--active {
+            filter: invert(100%);
+        }
+    }
+}

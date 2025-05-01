@@ -4,6 +4,24 @@ use struct_iterable::Iterable;
 use tera::Tera;
 
 #[derive(Clone, Serialize, Deserialize, Debug)]
+pub struct Breadcrumb {
+    pub label: String,
+    pub path: String,
+}
+
+#[derive(Clone, Serialize, Deserialize, Debug)]
+pub struct Breadcrumbs {
+    pub crumbs: Vec<Breadcrumb>,
+    pub leaf: String,
+}
+
+#[derive(Clone, Serialize, Deserialize, Debug)]
+pub struct BreadcrumbsConfig {
+    pub path: String,
+    pub leaf: Option<String>,
+}
+
+#[derive(Clone, Serialize, Deserialize, Debug)]
 pub struct CssManifest {
     #[serde(flatten)]
     pub entries: HashMap<String, String>,

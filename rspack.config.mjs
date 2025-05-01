@@ -86,7 +86,9 @@ export default defineConfig((env) => {
         },
         plugins: [
             new CleanWebpackPlugin({
-                cleanAfterEveryBuildPatterns: ["./assets/css/*"],
+                verbose: true,
+                cleanOnceBeforeBuildPatterns: ["main.*.css", "main.*.js", "manifest.json"],
+                cleanAfterEveryBuildPatterns: [],
             }),
             new rspack.CssExtractRspackPlugin({
                 path: path.resolve(__dirname, "./assets/css"),

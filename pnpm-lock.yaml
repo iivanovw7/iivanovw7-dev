@@ -17,6 +17,9 @@ importers:
       gsap:
         specifier: 3.12.5
         version: 3.12.5
+      htmx-ext-class-tools:
+        specifier: 2.0.2
+        version: 2.0.2
       htmx.org:
         specifier: 1.9.10
         version: 1.9.10
@@ -99,9 +102,6 @@ importers:
       stylelint-scss:
         specifier: 6.8.1
         version: 6.8.1(stylelint@16.17.0(typescript@5.6.2))
-      webpack-rimraf-plugin:
-        specifier: 0.0.1-security
-        version: 0.0.1-security
 
 packages:
 
@@ -1609,8 +1609,14 @@ packages:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
     engines: {node: '>=8'}
 
+  htmx-ext-class-tools@2.0.2:
+    resolution: {integrity: sha512-qF5buTUawzsAo4Ca/qGJE7w3RKAzN0BFO68twURZDC36UC0rH9HWeofZBjfpedwXG+VOtfdDLzUVkRd//gySXw==}
+
   htmx.org@1.9.10:
     resolution: {integrity: sha512-UgchasltTCrTuU2DQLom3ohHrBvwr7OqpwyAVJ9VxtNBng4XKkVsqrv0Qr3srqvM9ZNI3f1MmvVQQqK7KW/bTA==}
+
+  htmx.org@2.0.4:
+    resolution: {integrity: sha512-HLxMCdfXDOJirs3vBZl/ZLoY+c7PfM4Ahr2Ad4YXh6d22T5ltbTXFFkpx9Tgb2vvmWFMbIc3LqN2ToNkZJvyYQ==}
 
   http-deceiver@1.2.7:
     resolution: {integrity: sha512-LmpOGxTfbpgtGVxJrj5k7asXHCgNZp5nLfp+hWc8QQRqtb7fUy6kRY3BO1h9ddF6yIPYUARgxGOwB42DnxIaNw==}
@@ -3134,9 +3140,6 @@ packages:
         optional: true
       webpack-cli:
         optional: true
-
-  webpack-rimraf-plugin@0.0.1-security:
-    resolution: {integrity: sha512-EhbY7AVtQdfpbSQjXAT+D70nr2MGyTM2A7DmP00PibqBeNoKTZ5UMJF6ibv6AKJFiOrbFyAutLf2Ebr04H8aAg==}
 
   webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
@@ -4874,7 +4877,13 @@ snapshots:
 
   html-tags@3.3.1: {}
 
+  htmx-ext-class-tools@2.0.2:
+    dependencies:
+      htmx.org: 2.0.4
+
   htmx.org@1.9.10: {}
+
+  htmx.org@2.0.4: {}
 
   http-deceiver@1.2.7: {}
 
@@ -6357,8 +6366,6 @@ snapshots:
       - debug
       - supports-color
       - utf-8-validate
-
-  webpack-rimraf-plugin@0.0.1-security: {}
 
   webpack-sources@3.2.3: {}
 

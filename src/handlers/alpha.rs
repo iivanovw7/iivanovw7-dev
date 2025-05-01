@@ -1,19 +1,22 @@
 use axum::{extract::State, response::IntoResponse};
-use tera::Context;
 
-use crate::{types::config::AppState, utils::css::load_css_assets_manifest};
+use crate::{
+    types::config::{AppState, BreadcrumbsConfig},
+    utils::{breadcrumbs::generate_breadcrumbs, context::create_context},
+};
 
 use super::error::template_error;
 
 pub async fn get(state: State<AppState>) -> impl IntoResponse {
-    let config = &state.config;
     let tera = &state.tera;
-    let mut context = Context::new();
+    let mut context = create_context(&state);
 
-    context.insert("main", &config.main);
-    context.insert("social", &config.social);
-    context.insert("jobs", &config.jobs);
-    context.insert("css_file", &load_css_assets_manifest());
+    let breadcrumbs_config = BreadcrumbsConfig {
+        path: "/samples/alpha".to_string(),
+        leaf: None,
+    };
+
+    context.insert("breadcrumbs", &generate_breadcrumbs(breadcrumbs_config));
 
     match tera.render("pages/alpha/alpha.html", &context) {
         Ok(body) => axum::response::Html(body).into_response(),

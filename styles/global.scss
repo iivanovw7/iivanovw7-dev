@@ -1,5 +1,7 @@
 @use "@styles/abstracts/typography" as *;
 @use "@styles/abstracts/layout" as *;
+@use "@styles/abstracts/media" as *;
+@use "@styles/abstracts/variables" as *;
 
 * {
     @include scrollbars(
@@ -23,9 +25,18 @@ body {
 html {
     font-family: $base-font-family;
     font-weight: $font-weight-regular;
+
+    @include media-mobile-only {
+        font-size: 3.4vw;
+    }
+
+    @include media-tablet-only {
+        font-size: 1.8vw;
+    }
 }
 
 body {
     color: var(--text-primary);
+    scroll-padding-top: $navbar-height;
     background: var(--background-primary);
 }

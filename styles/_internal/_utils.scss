@@ -5,16 +5,6 @@
 @use "sass:list";
 @use "sass:math";
 
-@function validate-breakpoint($value) {
-    @for $i from 1 through list.length($value) {
-        @if map.has-key($screens, $value) {
-            @return map.get($screens, list.nth($value, $i));
-        } @else {
-            @return list.nth($value, $i);
-        }
-    }
-}
-
 @function validate-length($value) {
     $list: ("auto", "inherit", "initial", 0);
 
@@ -41,4 +31,32 @@
     } @else if list.length($value) > 4 {
         @error "You've passed #{length($value)} arguments. Please do not pass more than 4.";
     }
+}
+
+@function null($value, $seperation: comma, $skip: false) {
+    $list: ();
+    @for $i from 1 through list.length($value) {
+        /* stylelint-disable-next-line scss/at-if-no-null */
+        @if list.nth($value, $i) == null {
+            $list: list.append($list, if($skip, null, 0), $seperation);
+        } @else {
+            $list: list.append($list, list.nth($value, $i), $seperation);
+        }
+    }
+
+    @return $list;
+}
+
+@function convertToNumber($value) {
+    $string-numerals: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9";
+    $calc: 0;
+
+    @for $i from 1 through string.length($value) {
+        $digit: string.slice($value, $i, $i);
+        $index-of-digit: list.index($string-numerals, $digit);
+        $actual-digit: $index-of-digit - 1;
+        $calc: $calc * 10 + $actual-digit;
+    }
+
+    @return $calc;
 }
