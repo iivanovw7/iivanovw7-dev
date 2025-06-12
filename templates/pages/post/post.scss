@@ -62,7 +62,7 @@
         @include pt(2);
 
         grid-area: sidebar;
-        border-botton: none;
+        border-bottom: none;
 
         @include media-desktop {
             border-bottom: rem(1px) solid var(--post-border);
@@ -142,6 +142,7 @@
 
     &__content {
         * {
+            @include text-setting(base);
             @include border-box;
         }
 
@@ -221,8 +222,10 @@
 
         code:not([class]) {
             @include border-radius(1);
-            @include p(1, 2);
+            @include px(2);
 
+            padding-top: rem(1px);
+            padding-bottom: rem(1px);
             color: var(--text-primary);
             background-color: var(--background-secondary);
         }
