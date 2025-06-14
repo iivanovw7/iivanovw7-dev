@@ -65,9 +65,9 @@
         @include pt(2);
         @include justify-align-flex(flex-start, flex-end);
 
+        flex-direction: column;
         grid-area: sidebar;
         border-bottom: none;
-        flex-direction: column;
 
         @include media-desktop {
             border-bottom: rem(1px) solid var(--post-border);
@@ -146,6 +146,10 @@
     }
 
     &__content {
+        width: 100%;
+
+        @include adaptive(rem(54px));
+
         * {
             @include text-setting(base);
             @include border-box;
