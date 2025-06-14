@@ -19,14 +19,21 @@
 SERVER="0.0.0.0:9000"
 ```
 
--   Install rust
+-   Install `rust`
 
 ```bash
 pacman -S rustup
 rustup default stable
 ```
 
--   Install pnpm
+-   Install `rustfmt` and `rust-analyzer`
+
+```bash
+rustup component add rust-analyzer
+rustup component add rustfmt
+```
+
+-   Install `pnpm`
 
 ```bash
 npm install --global pnpm

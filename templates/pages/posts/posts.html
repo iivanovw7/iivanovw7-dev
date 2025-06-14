@@ -35,6 +35,7 @@
                 {% for post in posts %}
                 {% set title = post.metadata.title %}
                 {% set date = post.date %}
+                {% set estimation = post.estimation %}
                 {% set image = post.metadata.image %}
                 {% set tags = post.metadata.tags %}
                 {% set current_tag = current_tag %}

@@ -1,11 +1,14 @@
 <li class="pages-posts-item">
     <article class="pages-posts-item__article">
-        <dl>
-            <dt class="pages-posts-item__date-label">Published on</dt>
-            <dd class="pages-posts-item__date">
-                <time datetime="{{ date }}">{{ date }}</time>
-            </dd>
-        </dl>
+        <div class="pages-posts-item__header">
+            <dl>
+                <dt class="pages-posts-item__date-label">Published on</dt>
+                <dd class="pages-posts-item__date">
+                    <time datetime="{{ date }}">{{ date }}</time>
+                </dd>
+            </dl>
+            <span class="pages-posts-item__estimation">{{ estimation.text }} read</span>
+        </div>
         <div class="pages-posts-item__box">
             <figure class="pages-posts-item__image" style="background-image: url('{{ image }}')"></figure>
             <div>

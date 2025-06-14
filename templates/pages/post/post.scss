@@ -48,10 +48,13 @@
         max-width: 100%;
     }
 
+    &__estimation,
+    &__date {
+        color: var(--text-secondary);
+    }
+
     &__date {
         @include mb(2);
-
-        color: var(--text-secondary);
     }
 
     &__date-label {
@@ -60,9 +63,11 @@
 
     &__sidebar {
         @include pt(2);
+        @include justify-align-flex(flex-start, flex-end);
 
         grid-area: sidebar;
         border-bottom: none;
+        flex-direction: column;
 
         @include media-desktop {
             border-bottom: rem(1px) solid var(--post-border);

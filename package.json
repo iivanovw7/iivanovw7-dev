@@ -10,8 +10,10 @@
         "build:server": "cargo build --release",
         "build:css": "rspack build",
         "build:run": "cargo run",
-        "test:format": "prettier --write --ignore-unknown .",
-        "test:stylelint": "stylelint \"styles/**/*.{css,scss}\"",
+        "test:templates:format": "prettier --write --ignore-unknown .",
+        "test:templates:stylelint": "stylelint \"styles/**/*.{css,scss}\"",
+        "test:server": "cargo test",
+        "test:server:format": "cargo fmt -- --check",
         "test": "pnpm run /^test:/",
         "prepare": "husky"
     },
