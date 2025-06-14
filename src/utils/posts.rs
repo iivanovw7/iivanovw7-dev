@@ -1,4 +1,4 @@
-use crate::types::posts::{Post, PostMetadata, PostType};
+use crate::types::posts::{Post, PostEstimation, PostMetadata, PostType};
 use chrono::NaiveDate;
 use std::{
     collections::HashMap,
@@ -26,6 +26,25 @@ pub fn read_post_content(entry: DirEntry) -> Option<String> {
     fs::read_to_string(entry.path()).ok()
 }
 
+pub fn estimate_post(content: &str) -> PostEstimation {
+    let words = content.split_whitespace().count() as u32;
+    let minutes = (words as f64 / 200.0).ceil() as u32;
+    let time = minutes * 60 * 1000;
+
+    let text = match minutes {
+        0 => "less than a minute".into(),
+        1 => "1 minute".into(),
+        _ => format!("{} minutes", minutes),
+    };
+
+    PostEstimation {
+        text,
+        minutes,
+        words,
+        time,
+    }
+}
+
 pub fn parse_post_content(content: &str) -> Option<Post> {
     use gray_matter::engine::YAML;
     use gray_matter::Matter;
@@ -44,6 +63,7 @@ pub fn parse_post_content(content: &str) -> Option<Post> {
     let metadata = post_data.data;
     let content = post_data.content;
     let parser = Parser::new_ext(&content, options);
+    let estimation = estimate_post(&content);
 
     let mut html_output = String::new();
 
@@ -51,7 +71,7 @@ pub fn parse_post_content(content: &str) -> Option<Post> {
 
     let date = parse_date(&metadata.date).format("%B %e, %Y").to_string();
 
-    Some(Post::new(metadata, html_output, date))
+    Some(Post::new(metadata, html_output, date, estimation))
 }
 
 pub fn sort_posts(posts: &mut [Post]) {
@@ -121,4 +141,69 @@ pub fn collect_posts(filter: Vec<PostType>) -> (Vec<Post>, Vec<String>) {
         all_posts,
         all_tags.into_iter().unique().collect::<Vec<String>>(),
     )
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_estimate_post_empty_content() {
+        let content = "";
+        let estimation = estimate_post(content);
+        assert_eq!(estimation.words, 0);
+        assert_eq!(estimation.minutes, 0);
+        assert_eq!(estimation.time, 0);
+        assert_eq!(estimation.text, "less than a minute");
+    }
+
+    #[test]
+    fn test_estimate_post_single_word() {
+        let content = "word";
+        let estimation = estimate_post(content);
+        assert_eq!(estimation.words, 1);
+        assert_eq!(estimation.minutes, 1);
+        assert_eq!(estimation.time, 60000);
+        assert_eq!(estimation.text, "1 minute");
+    }
+
+    #[test]
+    fn test_estimate_post_less_than_one_minute_words() {
+        let content = "word ".repeat(199);
+        let estimation = estimate_post(&content);
+        assert_eq!(estimation.words, 199);
+        assert_eq!(estimation.minutes, 1);
+        assert_eq!(estimation.time, 60000);
+        assert_eq!(estimation.text, "1 minute");
+    }
+
+    #[test]
+    fn test_estimate_post_exactly_one_minute_words() {
+        let content = "word ".repeat(200);
+        let estimation = estimate_post(&content);
+        assert_eq!(estimation.words, 200);
+        assert_eq!(estimation.minutes, 1);
+        assert_eq!(estimation.time, 60000);
+        assert_eq!(estimation.text, "1 minute");
+    }
+
+    #[test]
+    fn test_estimate_post_more_than_one_minute_words() {
+        let content = "word ".repeat(201);
+        let estimation = estimate_post(&content);
+        assert_eq!(estimation.words, 201);
+        assert_eq!(estimation.minutes, 2);
+        assert_eq!(estimation.time, 120000);
+        assert_eq!(estimation.text, "2 minutes");
+    }
+
+    #[test]
+    fn test_estimate_post_multiple_minutes() {
+        let content = "word ".repeat(450);
+        let estimation = estimate_post(&content);
+        assert_eq!(estimation.words, 450);
+        assert_eq!(estimation.minutes, 3);
+        assert_eq!(estimation.time, 180000);
+        assert_eq!(estimation.text, "3 minutes");
+    }
 }

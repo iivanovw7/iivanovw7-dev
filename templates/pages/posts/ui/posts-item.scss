@@ -22,6 +22,11 @@
         }
     }
 
+    &__header {
+        @include justify-align-flex(space-between, flex-start);
+    }
+
+    &__estimation,
     &__date {
         @include mb(2);
 

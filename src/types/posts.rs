@@ -26,18 +26,33 @@ impl PostMetadata {
 pub type PostContent = String;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct PostEstimation {
+    pub text: String,
+    pub minutes: u32,
+    pub words: u32,
+    pub time: u32,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Post {
     pub metadata: PostMetadata,
     pub content: PostContent,
     pub date: String,
+    pub estimation: PostEstimation,
 }
 
 impl Post {
-    pub fn new(metadata: PostMetadata, content: PostContent, date: String) -> Self {
+    pub fn new(
+        metadata: PostMetadata,
+        content: PostContent,
+        date: String,
+        estimation: PostEstimation,
+    ) -> Self {
         Self {
             metadata,
             content,
             date,
+            estimation,
         }
     }
 }
