@@ -1,11 +1,9 @@
 <div class="theme-switch">
-    <input
-        type="checkbox"
-        id="light-switch"
-        name="light-switch"
-        class="theme-switch__input"
-        aria-label="Theme switch"
-    />
+    <input type="checkbox"
+           id="light-switch"
+           name="light-switch"
+           class="theme-switch__input"
+           aria-label="Theme switch" />
     <label class="theme-switch__label" for="light-switch">
         <svg class="theme-switch__icon theme-switch__icon--light">
             <use href="/assets/svg/sprite.svg#sun" />
@@ -16,7 +14,6 @@
         <span class="theme-switch__text">light / dark</span>
     </label>
 </div>
-
 <script>
     const lightSwitch = htmx.find("#light-switch");
 

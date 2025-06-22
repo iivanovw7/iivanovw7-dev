@@ -1,0 +1,109 @@
+{# djlint: off #}
+
+{% import "ui-kit/lazy-background-image.tera" as lazy_background_image_module %}
+{% import "ui-kit/link-icon.tera" as link_icon_module %}
+{% import "ui-kit/button-icon.tera" as button_icon_module %}
+{% import "ui-kit/link.tera" as link_module %}
+
+{% macro lazy_background_image(id, img_url, container_class="", alt_text="") %}
+
+{{
+  lazy_background_image_module::lazy_background_image(
+    id=id,
+    img_url=img_url,
+    container_class=container_class,
+    alt_text=alt_text
+  )
+}}
+
+{% endmacro lazy_background_image %}
+
+{%
+  macro link_icon(
+    id="",
+    variant="primary",
+    disabled=false,
+    size="medium",
+    icon,
+    href="",
+    aria_label="",
+    target="_self",
+    class=""
+  )
+%}
+
+{{
+  link_icon_module::link_icon(
+    id=id,
+    variant=variant,
+    disabled=disabled,
+    size=size,
+    icon=icon,
+    href=href,
+    aria_label=aria_label,
+    target=target,
+    class=class
+  )
+}}
+
+{% endmacro link_icon %}
+
+{% macro theme_switch() %}
+
+{% include "ui-kit/theme-switch.tera" %}
+
+{% endmacro theme_switch %}
+
+{%
+  macro button_icon(
+    id="",
+    icon,
+    aria_label="",
+    variant="primary",
+    size="medium",
+    class=""
+  )
+%}
+
+{{
+  button_icon_module::button_icon(
+    id=id,
+    icon=icon,
+    aria_label=aria_label,
+    variant=variant,
+    size=size,
+    class=class
+  )
+}}
+
+{% endmacro button_icon %}
+
+{%
+  macro link(
+    id="",
+    text="",
+    href="",
+    variant="primary",
+    size="medium",
+    fill="none",
+    active=false,
+    class=""
+  )
+%}
+
+{{
+  link_module::link(
+    id=id,
+    variant=variant,
+    text=text,
+    href=href,
+    size=size,
+    fill=fill,
+    active=active,
+    class=class
+  )
+}}
+
+{% endmacro link %}
+
+{# djlint: on #}

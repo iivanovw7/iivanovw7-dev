@@ -1,0 +1,10 @@
+{% import "ui-kit/index.tera" as ui_kit %}
+<div class="breadcrumbs">
+    {% for crumb in breadcrumbs.crumbs %}
+        {{ ui_kit::link(text=crumb.label, href=crumb.path) }}
+        <span class="breadcrumbs__separator"
+              role="separator"
+              aria-orientation="vertical"></span>
+    {% endfor %}
+    <span class="breadcrumbs__leaf">{{ breadcrumbs.leaf }}</span>
+</div>

@@ -1,54 +1,54 @@
 @use "@styles/abstracts" as *;
 
 .button-icon {
-    @include m(0);
+	@include m(0);
 
-    position: relative;
-    display: inline-flex;
-    flex-shrink: 0;
-    justify-content: space-between;
-    inline-size: max-content;
-    vertical-align: top;
-    text-align: start;
-    text-decoration: none;
-    cursor: pointer;
-    outline: none;
-    transition: $transition-color;
+	position: relative;
+	display: inline-flex;
+	flex-shrink: 0;
+	justify-content: space-between;
+	inline-size: max-content;
+	vertical-align: top;
+	text-align: start;
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+	transition: $transition-color;
 
-    &:focus-visible {
-        @include focus-outline;
-    }
+	&:focus-visible {
+		@include focus-outline;
+	}
 
-    &:disabled,
-    &:hover:disabled,
-    &:focus:disabled {
-        cursor: not-allowed;
-        box-shadow: none;
-    }
+	&:disabled,
+	&:hover:disabled,
+	&:focus:disabled {
+		cursor: not-allowed;
+		box-shadow: none;
+	}
 
-    &--medium {
-        @include sizer(rem(40px));
-        @include p(2);
+	&--medium {
+		@include sizer(rem(40px));
+		@include p(2);
 
-        .button-icon__icon {
-            @include sizer(rem(24px));
+		.button-icon__icon {
+			@include sizer(rem(24px));
 
-            position: absolute;
-            flex-shrink: 0;
-        }
-    }
+			position: absolute;
+			flex-shrink: 0;
+		}
+	}
 
-    &--secondary {
-        color: var(--button-icon-secondary);
+	&--secondary {
+		color: var(--button-icon-secondary);
 
-        &:hover {
-            color: var(--button-icon-secondary-hover);
-        }
+		&:hover {
+			color: var(--button-icon-secondary-hover);
+		}
 
-        &:disabled,
-        &:hover:disabled,
-        &:focus:disabled {
-            color: var(--button-icon-secondary-disabled);
-        }
-    }
+		&:disabled,
+		&:hover:disabled,
+		&:focus:disabled {
+			color: var(--button-icon-secondary-disabled);
+		}
+	}
 }

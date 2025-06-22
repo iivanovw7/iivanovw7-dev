@@ -8,75 +8,75 @@
 $list-of-directions: ("top", "top-right", "right", "bottom-right", "bottom", "bottom-left", "left", "top-left");
 
 $radius-sizes: (
-    0: 0,
-    1: 0.1rem,
-    2: 0.15rem,
-    3: 0.25rem,
-    4: 0.5rem,
+	0: 0,
+	1: 0.1rem,
+	2: 0.15rem,
+	3: 0.25rem,
+	4: 0.5rem,
 );
 
 @mixin border-radius($args...) {
-    $list: list.join($list-of-directions, ("cross-left", "cross-right", "all"));
+	$list: list.join($list-of-directions, ("cross-left", "cross-right", "all"));
 
-    @if list.length($args) == 1 {
-        $value: list.nth($args, 1);
-        @if map.has-key($radius-sizes, $value) {
-            border-radius: map.get($radius-sizes, $value);
-        } @else {
-            border-radius: null($value, space);
-        }
-    } @else if list.length($args) == 2 {
-        $corner: list.nth($args, 1);
-        $value: list.nth($args, 2);
+	@if list.length($args) == 1 {
+		$value: list.nth($args, 1);
+		@if map.has-key($radius-sizes, $value) {
+			border-radius: map.get($radius-sizes, $value);
+		} @else {
+			border-radius: null($value, space);
+		}
+	} @else if list.length($args) == 2 {
+		$corner: list.nth($args, 1);
+		$value: list.nth($args, 2);
 
-        @if list.index($list, $corner) {
-            $radius-value: if(map.has-key($radius-sizes, $value), map.get($radius-sizes, $value), $value);
-            @if $corner == "top" {
-                border-top-left-radius: $radius-value;
-                border-top-right-radius: $radius-value;
-            } @else if $corner == "top-right" {
-                border-top-right-radius: $radius-value;
-            } @else if $corner == "right" {
-                border-top-right-radius: $radius-value;
-                border-bottom-right-radius: $radius-value;
-            } @else if $corner == "bottom-right" {
-                border-bottom-right-radius: $radius-value;
-            } @else if $corner == "bottom" {
-                border-bottom-right-radius: $radius-value;
-                border-bottom-left-radius: $radius-value;
-            } @else if $corner == "bottom-left" {
-                border-bottom-left-radius: $radius-value;
-            } @else if $corner == "left" {
-                border-top-left-radius: $radius-value;
-                border-bottom-left-radius: $radius-value;
-            } @else if $corner == "top-left" {
-                border-top-left-radius: $radius-value;
-            } @else if $corner == "all" {
-                border-radius: $radius-value;
-            } @else if $corner == "cross-left" {
-                border-top-left-radius: $radius-value;
-                border-bottom-right-radius: $radius-value;
-            } @else if $corner == "cross-right" {
-                border-top-right-radius: $radius-value;
-                border-bottom-left-radius: $radius-value;
-            }
-        } @else {
-            @error "Corner value must be one of the followings: #{quote($list)}.";
-        }
-    } @else if list.length($args) == 4 {
-        $processed-args: ();
-        @each $arg in $args {
-            @if map.has-key($radius-sizes, $arg) {
-                $processed-args: list.append($processed-args, map.get($radius-sizes, $arg));
-            } @else {
-                $processed-args: list.append($processed-args, $arg);
-            }
-        }
-        $processed-args: utils.null($processed-args, space, true);
+		@if list.index($list, $corner) {
+			$radius-value: if(map.has-key($radius-sizes, $value), map.get($radius-sizes, $value), $value);
+			@if $corner == "top" {
+				border-top-left-radius: $radius-value;
+				border-top-right-radius: $radius-value;
+			} @else if $corner == "top-right" {
+				border-top-right-radius: $radius-value;
+			} @else if $corner == "right" {
+				border-top-right-radius: $radius-value;
+				border-bottom-right-radius: $radius-value;
+			} @else if $corner == "bottom-right" {
+				border-bottom-right-radius: $radius-value;
+			} @else if $corner == "bottom" {
+				border-bottom-right-radius: $radius-value;
+				border-bottom-left-radius: $radius-value;
+			} @else if $corner == "bottom-left" {
+				border-bottom-left-radius: $radius-value;
+			} @else if $corner == "left" {
+				border-top-left-radius: $radius-value;
+				border-bottom-left-radius: $radius-value;
+			} @else if $corner == "top-left" {
+				border-top-left-radius: $radius-value;
+			} @else if $corner == "all" {
+				border-radius: $radius-value;
+			} @else if $corner == "cross-left" {
+				border-top-left-radius: $radius-value;
+				border-bottom-right-radius: $radius-value;
+			} @else if $corner == "cross-right" {
+				border-top-right-radius: $radius-value;
+				border-bottom-left-radius: $radius-value;
+			}
+		} @else {
+			@error "Corner value must be one of the followings: #{quote($list)}.";
+		}
+	} @else if list.length($args) == 4 {
+		$processed-args: ();
+		@each $arg in $args {
+			@if map.has-key($radius-sizes, $arg) {
+				$processed-args: list.append($processed-args, map.get($radius-sizes, $arg));
+			} @else {
+				$processed-args: list.append($processed-args, $arg);
+			}
+		}
+		$processed-args: utils.null($processed-args, space, true);
 
-        border-radius: list.nth($processed-args, 1)
-            list.nth($processed-args, 2)
-            list.nth($processed-args, 3)
-            list.nth($processed-args, 4);
-    }
+		border-radius: list.nth($processed-args, 1)
+			list.nth($processed-args, 2)
+			list.nth($processed-args, 3)
+			list.nth($processed-args, 4);
+	}
 }

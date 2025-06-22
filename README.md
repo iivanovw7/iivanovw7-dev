@@ -45,6 +45,13 @@ npm install --global pnpm
 nvm use # or nvm install
 ```
 
+-   `Tera` formatting
+
+```bash
+sudo pacman -S python-pipx
+pipx install djlint
+```
+
 ### Scripts
 
 -   Development server

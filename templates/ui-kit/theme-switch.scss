@@ -1,53 +1,53 @@
 @use "@styles/abstracts" as *;
 
 .theme-switch {
-    @include ml(3);
-    @include justify-align-flex;
+	@include ml(3);
+	@include justify-align-flex;
 
-    flex-direction: column;
+	flex-direction: column;
 
-    &:has(:focus-visible) {
-        @include focus-outline;
-    }
+	&:has(:focus-visible) {
+		@include focus-outline;
+	}
 
-    &__text,
-    &__input {
-        @include sr-only;
-    }
+	&__text,
+	&__input {
+		@include sr-only;
+	}
 
-    &__label {
-        @include p(2);
+	&__label {
+		@include p(2);
 
-        position: relative;
-        cursor: pointer;
-    }
+		position: relative;
+		cursor: pointer;
+	}
 
-    &__icon {
-        @include sizer(rem(24px));
+	&__icon {
+		@include sizer(rem(24px));
 
-        color: var(--link-icon-secondary);
-        transition: $transition-color;
+		color: var(--link-icon-secondary);
+		transition: $transition-color;
 
-        &:hover {
-            color: var(--link-icon-secondary-hover);
-        }
+		&:hover {
+			color: var(--link-icon-secondary-hover);
+		}
 
-        &--light {
-            display: block;
+		&--light {
+			display: block;
 
-            /* stylelint-disable-next-line max-nesting-depth */
-            @include if-dark {
-                display: none;
-            }
-        }
+			/* stylelint-disable-next-line max-nesting-depth */
+			@include if-dark {
+				display: none;
+			}
+		}
 
-        &--dark {
-            display: none;
+		&--dark {
+			display: none;
 
-            /* stylelint-disable-next-line max-nesting-depth */
-            @include if-dark {
-                display: block;
-            }
-        }
-    }
+			/* stylelint-disable-next-line max-nesting-depth */
+			@include if-dark {
+				display: block;
+			}
+		}
+	}
 }

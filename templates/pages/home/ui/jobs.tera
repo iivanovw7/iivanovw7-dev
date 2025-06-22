@@ -1,3 +1,4 @@
+{% import "ui-kit/index.tera" as ui_kit %}
 <div class="home-jobs">
     <div class="home-jobs__inner">
         <div class="home-jobs__slides-container">
@@ -16,12 +17,13 @@
                     <span class="home-jobs__path-arrow" />
                 </div>
                 <div class="home-jobs__slider-header-middle">
-                    <!-- prettier-ignore -->
                     {% block logo %}
-                        {% set variant = "secondary" %}
-                        {% set icon = "chevron-right" %}
-                        {% set href = "/" %}
-                        {% include "ui-kit/link-icon.html" %}
+                        {{ ui_kit::link_icon(variant="secondary",
+                                                size="medium",
+                                                icon="chevron-right",
+                                                href="/",
+                                                target="_self")
+                        }}
                     {% endblock logo %}
                     <div class="home-jobs__cli-container">
                         <div class="home-jobs__cli-content">
@@ -33,68 +35,61 @@
                     </div>
                 </div>
                 <div class="home-jobs__slider-header-bottom">
-                    <!-- prettier-ignore -->
                     {% block social_links %}
                         {% for social in social_links %}
-                            {% set variant = "secondary" %}
-                            {% set icon = social.title %}
-                            {% set href = social.link %}
-                            {% set target = "_blank" %}
-                            {% include "ui-kit/link-icon.html" %}
+                            {{ ui_kit::link_icon(variant="secondary",
+                                                        icon=social.title,
+                                                        href=social.link,
+                                                        target="_blank")
+                            }}
                         {% endfor %}
                     {% endblock social_links %}
                 </div>
             </div>
             <div class="home-jobs__slider-container">
-                <!-- prettier-ignore -->
                 {% for job in jobs %}
-                <div class="home-jobs__slider-slide">
-                    <div class="home-jobs__slider-slide-company-container">
-                        <div class="home-jobs__slider-slide-company">
-                            <h3 class="home-jobs__slider-silde-company-title">{{job.company}}</h3>
-                            <span class="home-jobs__slider-slide-company-location">{{job.location}}</span>
+                    <div class="home-jobs__slider-slide">
+                        <div class="home-jobs__slider-slide-company-container">
+                            <div class="home-jobs__slider-slide-company">
+                                <h3 class="home-jobs__slider-silde-company-title">{{ job.company }}</h3>
+                                <span class="home-jobs__slider-slide-company-location">{{ job.location }}</span>
+                            </div>
+                            <img alt="Avatar"
+                                 class="home-jobs__slider-slide-company-logo"
+                                 loading="lazy"
+                                 src="{{ job.company_logo }}" />
                         </div>
-                        <img
-                            alt="Avatar"
-                            class="home-jobs__slider-slide-company-logo"
-                            loading="lazy"
-                            src="{{ job.company_logo }}"
-                        />
-                    </div>
-                    <div class="home-jobs__slider-slide-position-container">
-                        <p class="home-jobs__slider-slide-position">{{job.position}}</p>
-                        <div class="home-jobs__slider-slide-postion-date-container">
-                            <span>{{job.start}}</span>
-                            <span> - </span>
-                            <span>{{job.end}}</span>
+                        <div class="home-jobs__slider-slide-position-container">
+                            <p class="home-jobs__slider-slide-position">{{ job.position }}</p>
+                            <div class="home-jobs__slider-slide-postion-date-container">
+                                <span>{{ job.start }}</span>
+                                <span>-</span>
+                                <span>{{ job.end }}</span>
+                            </div>
                         </div>
+                        <p class="home-jobs__slider-slide-position-description">{{ job.subtitle }}</p>
                     </div>
-                    <p class="home-jobs__slider-slide-position-description">{{job.subtitle}}</p>
-                </div>
                 {% endfor %}
             </div>
         </div>
         <div class="home-jobs__buttons-container">
-            <!-- prettier-ignore -->
             {% block slider_prev_button %}
-                {% set id = "prevButton" %}
-                {% set ariaLabel = "Prev slide" %}
-                {% set variant = "secondary" %}
-                {% set icon = "chevron-left" %}
-                {% include "ui-kit/button-icon.html" %}
+                {{ ui_kit::button_icon(id="prevButton",
+                                aria_label="Prev slide",
+                                variant="secondary",
+                                icon="chevron-left")
+                }}
             {% endblock slider_prev_button %}
             {% block slider_next_button %}
-                {% set id = "nextButton" %}
-                {% set ariaLabel = "Next slide" %}
-                {% set variant = "secondary" %}
-                {% set icon = "chevron-right" %}
-                {% set target = "_blank" %}
-                {% include "ui-kit/button-icon.html" %}
+                {{ ui_kit::button_icon(id="nextButton",
+                                aria_label="Next slide",
+                                variant="secondary",
+                                icon="chevron-right")
+                }}
             {% endblock slider_next_button %}
         </div>
     </div>
 </div>
-
 <script>
     gsap.registerPlugin(Draggable);
     gsap.set(".home-jobs__slider-slide", {

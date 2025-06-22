@@ -9,7 +9,7 @@ pub async fn get(state: State<AppState>) -> impl IntoResponse {
 
     let context = create_context(&state);
 
-    match tera.render("pages/home/home.html", &context) {
+    match tera.render("pages/home/home.tera", &context) {
         Ok(body) => axum::response::Html(body).into_response(),
         Err(error) => template_error(state, error).await.into_response(),
     }

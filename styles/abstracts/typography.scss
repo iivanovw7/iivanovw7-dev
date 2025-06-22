@@ -19,58 +19,58 @@ $font-weight-bold: 600;
 $font-weight-extra-bold: 800;
 
 $text-settings: (
-    "xs": (
-        font-size: 0.75rem,
-        line-height: $base-line-height,
-    ),
-    "sm": (
-        font-size: 0.875rem,
-        line-height: $base-line-height - 0.25,
-    ),
-    "base": (
-        font-size: 1rem,
-        line-height: $base-line-height,
-    ),
-    "md": (
-        font-size: 1.125rem,
-        line-height: $base-line-height * 1.5,
-    ),
-    "lg": (
-        font-size: 1.25rem,
-        line-height: $base-line-height * 1.6,
-    ),
-    "xl": (
-        font-size: 1.5rem,
-        line-height: $base-line-height * 1.7,
-    ),
-    "xxl": (
-        font-size: 1.8rem,
-        line-height: $base-line-height * 1.8,
-    ),
-    "xxxl": (
-        font-size: 2.2rem,
-        line-height: $base-line-height * 2,
-    ),
+	"xs": (
+		font-size: 0.75rem,
+		line-height: $base-line-height,
+	),
+	"sm": (
+		font-size: 0.875rem,
+		line-height: $base-line-height - 0.25,
+	),
+	"base": (
+		font-size: 1rem,
+		line-height: $base-line-height,
+	),
+	"md": (
+		font-size: 1.125rem,
+		line-height: $base-line-height * 1.5,
+	),
+	"lg": (
+		font-size: 1.25rem,
+		line-height: $base-line-height * 1.6,
+	),
+	"xl": (
+		font-size: 1.5rem,
+		line-height: $base-line-height * 1.7,
+	),
+	"xxl": (
+		font-size: 1.8rem,
+		line-height: $base-line-height * 1.8,
+	),
+	"xxxl": (
+		font-size: 2.2rem,
+		line-height: $base-line-height * 2,
+	),
 );
 
 @function text-scale($level) {
-    @return map.get(map.get($text-settings, $level), "font-size");
+	@return map.get(map.get($text-settings, $level), "font-size");
 }
 
 @function line-height($level) {
-    @return map.get(map.get($text-settings, $level), "line-height");
+	@return map.get(map.get($text-settings, $level), "line-height");
 }
 
 @mixin text-setting($level) {
-    font-size: text-scale($level);
-    line-height: line-height($level);
+	font-size: text-scale($level);
+	line-height: line-height($level);
 }
 
 @mixin text-overflow($text-overflow: ellipsis, $add-white-space: true) {
-    overflow: hidden;
-    text-overflow: $text-overflow;
+	overflow: hidden;
+	text-overflow: $text-overflow;
 
-    @if $add-white-space == true {
-        white-space: nowrap;
-    }
+	@if $add-white-space == true {
+		white-space: nowrap;
+	}
 }

@@ -4,13 +4,13 @@
 @use "media" as *;
 
 @mixin adaptive($gutter: 30px) {
-    $actual-breakpoints: map.remove($screens, "zero", "xs");
+	$actual-breakpoints: map.remove($screens, "zero", "xs");
 
-    margin: 0 auto;
+	margin: 0 auto;
 
-    @each $item, $value in $actual-breakpoints {
-        @media (min-width: #{$value}) {
-            max-width: calc(#{$value} - (#{$gutter} * 2));
-        }
-    }
+	@each $item, $value in $actual-breakpoints {
+		@media (min-width: #{$value}) {
+			max-width: calc(#{$value} - (#{$gutter} * 2));
+		}
+	}
 }

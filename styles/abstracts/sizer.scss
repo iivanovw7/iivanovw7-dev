@@ -4,6 +4,6 @@
 @use "sass:list";
 
 @mixin sizer($width, $height: $width) {
-    inline-size: $width;
-    block-size: $height;
+	inline-size: $width;
+	block-size: $height;
 }

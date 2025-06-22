@@ -1,0 +1,124 @@
+{% import "ui-kit/index.tera" as ui_kit %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+              rel="stylesheet" />
+        <link href="/assets/css/{{ css_file }}" rel="stylesheet" />
+        <link href="/assets/css/monokai.min.css" rel="stylesheet" />
+        <link rel="apple-touch-icon"
+              sizes="180x180"
+              href="/assets/apple-touch-icon.png" />
+        <link rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/assets/favicon-32x32.png" />
+        <link rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/assets/favicon-16x16.png" />
+        <link rel="manifest" href="/assets/site.webmanifest" />
+        <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5b21b6" />
+        <meta name="msapplication-TileColor" content="#ffc40d" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content" />
+        <meta content="{{ main.profession }}" name="description" />
+        <meta content="{{ main.author }}" name="author" />
+        <title>
+            {% block title %}{{ title }}{% endblock %}
+        </title>
+        <script src="/htmx.org/dist/htmx.min.js"></script>
+        <script src="/htmx.org/dist/ext/alpine-morph.js"></script>
+        <script src="/gsap/dist/gsap.min.js"></script>
+        <script src="/gsap/dist/Draggable.min.js"></script>
+        <script src="/htmx-ext-class-tools/dist/class-tools.min.js"></script>
+        <script defer src="/assets/js/highlight.min.js"></script>
+        <script defer src="/alpinejs/dist/cdn.min.js"></script>
+        <script defer src="/@alpinejs/morph/dist/cdn.min.js"></script>
+        <script type="text/javascript">
+            let html = document.documentElement;
+
+            if (localStorage["dark-mode"] === "false") {
+                html.setAttribute("data-theme", "light");
+            } else if (localStorage["dark-mode"] === "true") {
+                html.setAttribute("data-theme", "dark");
+            }
+        </script>
+        <style>
+            html[data-theme="light"] {
+                --preloader-overlay: #e7e5e4;
+            }
+
+            html[data-theme="dark"] {
+                --preloader-overlay: #171717;
+            }
+
+            #preloader-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--preloader-overlay, #e7e5e4);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                transition: opacity 0.5s ease-out;
+                opacity: 1;
+            }
+
+            #preloader-overlay.hidden {
+                opacity: 0;
+                pointer-events: none;
+            }
+        </style>
+        <!-- prettier-ignore -->
+        {% block head %}
+        {% endblock head %}
+    </head>
+    <body x-data="{}" x-cloak>
+        <div x-data
+             id="preloader-overlay"
+             x-show="$store.preloader.visible"
+             x-transition.opacity></div>
+        {% include "components/navbar.tera" %}
+        {% block content %}
+        {% endblock content %}
+    </body>
+    <script>
+        document.addEventListener("alpine:init", () => {
+            window.addEventListener("load", () => {
+                Alpine.store("preloader").hide();
+            });
+
+            document.body.addEventListener("htmx:beforeRequest", function (evt) {
+                Alpine.store("preloader").show();
+            });
+
+            document.body.addEventListener("htmx:afterSettle", function (evt) {
+                Alpine.store("preloader").hide();
+            });
+
+            document.body.addEventListener("htmx:responseError", function (evt) {
+                Alpine.store("preloader").hide();
+                console.error("Request Error:", evt.detail.xhr.status, evt.detail.xhr.responseText);
+            });
+        });
+        document.addEventListener("alpine:initializing", () => {
+            Alpine.store("preloader", {
+                visible: true,
+                show() {
+                    this.visible = true;
+                },
+                hide() {
+                    this.visible = false;
+                },
+            });
+        });
+    </script>
+</html>

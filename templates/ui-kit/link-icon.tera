@@ -1,0 +1,14 @@
+{% macro link_icon(id, variant, disabled=false, size, icon, href, aria_label, target, class) %}
+    {% set classes = "link-icon link-icon--" ~ variant ~ " link-icon--" ~ size ~ " " ~ class | trim %}
+    <a id="{{ id }}"
+       aria-label="{{ aria_label }}"
+       class="{{ classes }}"
+       href="{{ href }}"
+       rel="noreferrer"
+       target="{{ target }}"
+       disabled="{{ disabled }}">
+        <svg class="link-icon__icon">
+            <use href="/assets/svg/sprite.svg#{{ icon }}" />
+        </svg>
+    </a>
+{% endmacro link_icon %}

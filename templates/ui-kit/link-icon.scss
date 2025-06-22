@@ -1,50 +1,50 @@
 @use "@styles/abstracts" as *;
 
 .link-icon {
-    display: inline-flex;
-    text-decoration: none;
-    outline: none;
-    transition: $transition-color;
+	display: inline-flex;
+	text-decoration: none;
+	outline: none;
+	transition: $transition-color;
 
-    &:focus-visible {
-        @include focus-outline;
-    }
+	&:focus-visible {
+		@include focus-outline;
+	}
 
-    .link-icon__icon {
-        margin: auto;
-    }
+	.link-icon__icon {
+		margin: auto;
+	}
 
-    &--medium {
-        @include sizer(rem(40px));
-        @include p(2);
+	&--medium {
+		@include sizer(rem(40px));
+		@include p(2);
 
-        .link-icon__icon {
-            @include sizer(rem(24px));
-        }
-    }
+		.link-icon__icon {
+			@include sizer(rem(24px));
+		}
+	}
 
-    &--large {
-        @include sizer(rem(48px));
-        @include p(2);
+	&--large {
+		@include sizer(rem(48px));
+		@include p(2);
 
-        .link-icon__icon {
-            @include sizer(rem(32px));
-        }
-    }
+		.link-icon__icon {
+			@include sizer(rem(32px));
+		}
+	}
 
-    &--primary {
-        color: var(--link-icon-primary);
+	&--primary {
+		color: var(--link-icon-primary);
 
-        &:hover {
-            color: var(--link-icon-primary-hover);
-        }
-    }
+		&:hover {
+			color: var(--link-icon-primary-hover);
+		}
+	}
 
-    &--secondary {
-        color: var(--link-icon-secondary);
+	&--secondary {
+		color: var(--link-icon-secondary);
 
-        &:hover {
-            color: var(--link-icon-secondary-hover);
-        }
-    }
+		&:hover {
+			color: var(--link-icon-secondary-hover);
+		}
+	}
 }

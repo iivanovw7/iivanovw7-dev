@@ -1,0 +1,25 @@
+@use "sass:math";
+
+@use "@styles/abstracts" as *;
+
+.lazy-background-image {
+	@include background-image;
+
+	&__container,
+	&__error,
+	&__placeholder {
+		@include justify-align-flex;
+	}
+
+	&__container {
+		margin: 0;
+		text-align: center;
+
+		@include ratio-box(math.div(4, 3));
+	}
+
+	&__error,
+	&__placeholder {
+		@include m(0, auto);
+	}
+}

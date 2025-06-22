@@ -1,16 +1,16 @@
 @use "@styles/abstracts" as *;
 
 .pages-home {
-    @include justify-align-flex(center, flex-start);
-    @include sizer(100%);
-    @include mx(auto);
-    @include px(3);
+	@include justify-align-flex(center, flex-start);
+	@include sizer(100%);
+	@include mx(auto);
+	@include px(3);
 
-    flex-direction: column;
+	flex-direction: column;
 
-    @include adaptive(rem(36px));
+	@include adaptive(rem(36px));
 
-    @include media-tablet {
-        @include px(5);
-    }
+	@include media-tablet {
+		@include px(5);
+	}
 }

@@ -1,0 +1,7 @@
+<header class="navbar">
+    <div class="navbar__box">{{ ui_kit::link_icon(variant="secondary", size="medium", icon="terminal", href="/") }}</div>
+    <div class="navbar__box">
+        {{ ui_kit::theme_switch() }}
+        {{ ui_kit::link_icon(variant="secondary", size="medium", icon="github", href=main.project, target="_blank") }}
+    </div>
+</header>

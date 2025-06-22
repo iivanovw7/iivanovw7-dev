@@ -40,7 +40,7 @@ pub async fn get(
     context.insert("current_tag", &current_tag);
     context.insert("breadcrumbs", &generate_breadcrumbs(breadcrumbs_config));
 
-    match tera.render("pages/posts/posts.html", &context) {
+    match tera.render("pages/posts/posts.tera", &context) {
         Ok(body) => axum::response::Html(body).into_response(),
         Err(error) => template_error(state, error).await.into_response(),
     }

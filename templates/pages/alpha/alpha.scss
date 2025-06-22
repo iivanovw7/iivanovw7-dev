@@ -3,25 +3,25 @@
 @use "@styles/abstracts" as *;
 
 .pages-alpha {
-    @include justify-align-flex(flex-start, flex-start);
-    @include sizer(100%);
-    @include mx(auto);
-    @include px(3);
+	@include justify-align-flex(flex-start, flex-start);
+	@include sizer(100%);
+	@include mx(auto);
+	@include px(3);
 
-    flex-direction: column;
-    max-inline-size: map.get($screens, lg);
+	flex-direction: column;
+	max-inline-size: map.get($screens, lg);
 
-    @include media(min, md) {
-        @include px(5);
-    }
+	@include media(min, md) {
+		@include px(5);
+	}
 
-    &__box {
-        @include justify-align-flex(center, center);
-        @include sizer(100%);
-        @include mt(2);
+	&__box {
+		@include justify-align-flex(center, center);
+		@include sizer(100%);
+		@include mt(2);
 
-        flex-grow: 1;
-        flex-direction: column;
-        gap: rem(24px);
-    }
+		flex-grow: 1;
+		flex-direction: column;
+		gap: rem(24px);
+	}
 }

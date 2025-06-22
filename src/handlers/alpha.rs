@@ -18,7 +18,7 @@ pub async fn get(state: State<AppState>) -> impl IntoResponse {
 
     context.insert("breadcrumbs", &generate_breadcrumbs(breadcrumbs_config));
 
-    match tera.render("pages/alpha/alpha.html", &context) {
+    match tera.render("pages/alpha/alpha.tera", &context) {
         Ok(body) => axum::response::Html(body).into_response(),
         Err(error) => template_error(state, error).await.into_response(),
     }

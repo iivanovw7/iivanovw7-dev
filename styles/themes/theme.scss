@@ -5,88 +5,88 @@
 @use "palette" as palette;
 
 $theme-variants: (
-    light: (
-        accent-primary: palette.get(purple, 950),
-        text-primary: palette.get(stone, 900),
-        text-secondary: palette.get(stone, 500),
-        text-tertiary: palette.get(stone, 700),
-        text-white: palette.get(stone, 100),
-        background-primary: palette.get(stone, 200),
-        background-secondary: palette.get(stone, 300),
-        background-tertiary: palette.get(stone, 100),
-        focus: palette.get(purple, 900),
-        cursor: "#000",
-        card-border: palette.get(stone, 300),
-        post-border: palette.get(stone, 400),
-        text-border: palette.get(stone, 400),
-        text-link: palette.get(purple, 800),
-        text-link-hover: palette.get(purple, 950),
-        error: palette.get(red, 800),
-        // Scrollbars
-        scrollbar: palette.get(stone, 800),
-        scrollbar-track: palette.get(stone, 600),
-        scrollbar-thumb: palette.get(stone, 600),
-        scrollbar-thumb-border: palette.get(stone, 800),
-        // Link
-        link-primary: palette.get(stone, 900),
-        link-primary-hover: palette.get(purple, 700),
-        link-primary-full: palette.get(stone, 600),
-        link-primary-full-active: palette.get(stone, 200),
-        link-primary-full-background: palette.get(stone, 200),
-        link-primary-full-background-hover: palette.get(stone, 100),
-        link-primary-full-background-active: palette.get(purple, 700),
-        // Icon link
-        link-icon-secondary: palette.get(stone, 600),
-        link-icon-secondary-hover: palette.get(stone, 800),
-        // Icon button
-        button-icon-secondary: palette.get(stone, 700),
-        button-icon-secondary-disabled: palette.get(stone, 500),
-        button-icon-secondary-hover: palette.get(stone, 900),
-    ),
-    dark: (
-        accent-primary: palette.get(purple, 950),
-        text-primary: palette.get(stone, 200),
-        text-secondary: palette.get(stone, 500),
-        text-tertiary: palette.get(stone, 400),
-        text-border: palette.get(stone, 700),
-        text-white: palette.get(stone, 100),
-        text-link: palette.get(purple, 600),
-        text-link-hover: palette.get(purple, 500),
-        background-primary: palette.get(stone, 900),
-        background-secondary: palette.get(stone, 800),
-        background-tertiary: palette.get(stone, 950),
-        focus: palette.get(purple, 600),
-        cursor: "#FFF",
-        card-border: palette.get(stone, 800),
-        post-border: palette.get(stone, 700),
-        error: palette.get(red, 800),
-        // Scrollbars
-        scrollbar: palette.get(stone, 600),
-        scrollbar-track: palette.get(stone, 600),
-        scrollbar-thumb: palette.get(stone, 600),
-        scrollbar-thumb-border: palette.get(stone, 800),
-        // Link
-        link-primary: palette.get(stone, 200),
-        link-primary-hover: palette.get(purple, 600),
-        link-primary-full: palette.get(stone, 200),
-        link-primary-full-active: palette.get(stone, 200),
-        link-primary-full-background: palette.get(stone, 600),
-        link-primary-full-background-hover: palette.get(stone, 500),
-        link-primary-full-background-active: palette.get(purple, 800),
-        // Icon link
-        link-icon-secondary: palette.get(stone, 400),
-        link-icon-secondary-hover: palette.get(stone, 200),
-        // Icon button
-        button-icon-secondary: palette.get(stone, 400),
-        button-icon-secondary-disabled: palette.get(stone, 800),
-        button-icon-secondary-hover: palette.get(stone, 200),
-    ),
+	light: (
+		accent-primary: palette.get(purple, 950),
+		text-primary: palette.get(stone, 900),
+		text-secondary: palette.get(stone, 500),
+		text-tertiary: palette.get(stone, 700),
+		text-white: palette.get(stone, 100),
+		background-primary: palette.get(stone, 200),
+		background-secondary: palette.get(stone, 300),
+		background-tertiary: palette.get(stone, 100),
+		focus: palette.get(purple, 900),
+		cursor: "#000",
+		card-border: palette.get(stone, 300),
+		post-border: palette.get(stone, 400),
+		text-border: palette.get(stone, 400),
+		text-link: palette.get(purple, 800),
+		text-link-hover: palette.get(purple, 950),
+		error: palette.get(red, 800),
+		// Scrollbars
+		scrollbar: palette.get(stone, 800),
+		scrollbar-track: palette.get(stone, 600),
+		scrollbar-thumb: palette.get(stone, 600),
+		scrollbar-thumb-border: palette.get(stone, 800),
+		// Link
+		link-primary: palette.get(stone, 900),
+		link-primary-hover: palette.get(purple, 700),
+		link-primary-full: palette.get(stone, 600),
+		link-primary-full-active: palette.get(stone, 200),
+		link-primary-full-background: palette.get(stone, 200),
+		link-primary-full-background-hover: palette.get(stone, 100),
+		link-primary-full-background-active: palette.get(purple, 700),
+		// Icon link
+		link-icon-secondary: palette.get(stone, 600),
+		link-icon-secondary-hover: palette.get(stone, 800),
+		// Icon button
+		button-icon-secondary: palette.get(stone, 700),
+		button-icon-secondary-disabled: palette.get(stone, 500),
+		button-icon-secondary-hover: palette.get(stone, 900),
+	),
+	dark: (
+		accent-primary: palette.get(purple, 950),
+		text-primary: palette.get(stone, 200),
+		text-secondary: palette.get(stone, 500),
+		text-tertiary: palette.get(stone, 400),
+		text-border: palette.get(stone, 700),
+		text-white: palette.get(stone, 100),
+		text-link: palette.get(purple, 600),
+		text-link-hover: palette.get(purple, 500),
+		background-primary: palette.get(stone, 900),
+		background-secondary: palette.get(stone, 800),
+		background-tertiary: palette.get(stone, 950),
+		focus: palette.get(purple, 600),
+		cursor: "#FFF",
+		card-border: palette.get(stone, 800),
+		post-border: palette.get(stone, 700),
+		error: palette.get(red, 800),
+		// Scrollbars
+		scrollbar: palette.get(stone, 600),
+		scrollbar-track: palette.get(stone, 600),
+		scrollbar-thumb: palette.get(stone, 600),
+		scrollbar-thumb-border: palette.get(stone, 800),
+		// Link
+		link-primary: palette.get(stone, 200),
+		link-primary-hover: palette.get(purple, 600),
+		link-primary-full: palette.get(stone, 200),
+		link-primary-full-active: palette.get(stone, 200),
+		link-primary-full-background: palette.get(stone, 600),
+		link-primary-full-background-hover: palette.get(stone, 500),
+		link-primary-full-background-active: palette.get(purple, 800),
+		// Icon link
+		link-icon-secondary: palette.get(stone, 400),
+		link-icon-secondary-hover: palette.get(stone, 200),
+		// Icon button
+		button-icon-secondary: palette.get(stone, 400),
+		button-icon-secondary-disabled: palette.get(stone, 800),
+		button-icon-secondary-hover: palette.get(stone, 200),
+	),
 );
 
 @each $name, $map in $theme-variants {
-    html[data-theme="#{$name}"] {
-        @each $key, $value in $map {
-            --#{$key}: #{$value};
-        }
-    }
+	html[data-theme="#{$name}"] {
+		@each $key, $value in $map {
+			--#{$key}: #{$value};
+		}
+	}
 }

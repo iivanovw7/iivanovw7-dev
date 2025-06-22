@@ -9,92 +9,92 @@
 @use "z-index" as *;
 
 @mixin vert-align-flex($align: center) {
-    display: flex;
-    align-items: $align;
+	display: flex;
+	align-items: $align;
 }
 
 @mixin justify-align-flex($justify: center, $align: center) {
-    display: flex;
-    align-items: $align;
-    justify-content: $justify;
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
 }
 
 @mixin scrollbars(
-    $size: 8px,
-    $foreground-color: var(--scrollbar),
-    $background-color: color.mix($foreground-color, white, 50%),
-    $thumb-color: var(--scrollbar-thumb),
-    $thumb-border-color: color.mix($thumb-color, white, 50%)
+	$size: 8px,
+	$foreground-color: var(--scrollbar),
+	$background-color: color.mix($foreground-color, white, 50%),
+	$thumb-color: var(--scrollbar-thumb),
+	$thumb-border-color: color.mix($thumb-color, white, 50%)
 ) {
-    & {
-        scrollbar-face-color: $foreground-color;
-        scrollbar-track-color: $background-color;
-        scrollbar-color: $background-color;
-        scrollbar-width: thin;
-    }
+	& {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+		scrollbar-color: $background-color;
+		scrollbar-width: thin;
+	}
 
-    &::-webkit-scrollbar {
-        @include sizer($size);
-    }
+	&::-webkit-scrollbar {
+		@include sizer($size);
+	}
 
-    &::-webkit-scrollbar-thumb {
-        background: $foreground-color;
-        background-color: $thumb-color;
-        border: 3px solid $thumb-border-color;
-        border-radius: 20px;
-    }
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+		background-color: $thumb-color;
+		border: 3px solid $thumb-border-color;
+		border-radius: 20px;
+	}
 
-    &::-webkit-scrollbar-track {
-        background: $background-color;
-        box-shadow: none;
-    }
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+		box-shadow: none;
+	}
 }
 
 @mixin fullscreen-box {
-    @include position(fixed, 0 0 0 0);
-    @include justify-align-flex;
+	@include position(fixed, 0 0 0 0);
+	@include justify-align-flex;
 
-    flex-flow: column nowrap;
-    flex-direction: column;
-    overflow: hidden;
+	flex-flow: column nowrap;
+	flex-direction: column;
+	overflow: hidden;
 
-    &::before {
-        display: flex;
-        flex: 1;
-        width: 100vw;
-        max-height: 25%;
-        content: "";
-    }
+	&::before {
+		display: flex;
+		flex: 1;
+		width: 100vw;
+		max-height: 25%;
+		content: "";
+	}
 
-    &::after {
-        display: flex;
-        flex: 1;
-        width: 100vw;
-        max-height: 25%;
-        content: "";
-    }
+	&::after {
+		display: flex;
+		flex: 1;
+		width: 100vw;
+		max-height: 25%;
+		content: "";
+	}
 }
 
 @mixin fullscreen-box-content {
-    position: relative;
-    flex: 2 0;
-    width: 100vw;
-    text-align: center;
-    user-select: none;
+	position: relative;
+	flex: 2 0;
+	width: 100vw;
+	text-align: center;
+	user-select: none;
 
-    &::after {
-        @include z-index(underlay);
+	&::after {
+		@include z-index(underlay);
 
-        position: fixed;
-        inset: 0;
-        content: "";
-    }
+		position: fixed;
+		inset: 0;
+		content: "";
+	}
 
-    &::before {
-        @include z-index(default);
+	&::before {
+		@include z-index(default);
 
-        position: absolute;
-        inset: -10vw 10vw;
-        content: "";
-    }
+		position: absolute;
+		inset: -10vw 10vw;
+		content: "";
+	}
 }

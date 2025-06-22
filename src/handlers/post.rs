@@ -38,7 +38,7 @@ pub async fn get(Path(post_name): Path<String>, state: State<AppState>) -> impl 
         context.insert("post", &post);
         context.insert("breadcrumbs", &generate_breadcrumbs(breadcrumbs_config));
 
-        match tera.render("pages/post/post.html", &context) {
+        match tera.render("pages/post/post.tera", &context) {
             Ok(body) => axum::response::Html(body).into_response(),
             Err(error) => template_error(state, error).await.into_response(),
         }

@@ -1,0 +1,22 @@
+[djlint]
+indent_css = 4
+indent_html = 4
+indent_js = 4
+indent_json = 4
+indent_less = 4
+indent_scss = 4
+
+indent = 4
+max_line_length = 120
+
+extension = ["tera"]
+
+profile = "jinja"
+
+blank_line_after_tag = true
+
+close_out = true
+close_out_js = true
+close_void = true
+no_leading_space = true
+no_trailing_space = true

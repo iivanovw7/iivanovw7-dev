@@ -1,0 +1,5 @@
+{% extends "layouts/base.tera" %}
+{% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
+{% block content %}
+    <div class="pages-home">{% include "pages/home/ui/jobs.tera" %}</div>
+{% endblock content %}

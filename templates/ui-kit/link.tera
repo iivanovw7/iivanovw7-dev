@@ -1,0 +1,13 @@
+{% macro link(id, text, href, variant, size, class, fill, active) %}
+    {% set classes = "link link--" ~ variant ~ " link--" ~ size ~ " link--" ~ fill ~ " " ~ class | trim %}
+    {% if active %}
+        {% set classes = classes ~ " link--active" %}
+    {% endif %}
+    <a class="{{ classes }}"
+       aria-label="{{ text }}"
+       href="{{ href }}"
+       rel="noreferrer"
+       target="{{ target | default(value='_self') }}">
+        <span class="link__text">{{ text }}</span>
+    </a>
+{% endmacro %}

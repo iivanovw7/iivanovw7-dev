@@ -1,0 +1,11 @@
+{% macro button_icon(id, icon, aria_label, variant, size, class) %}
+    {% set classes = "button-icon button-icon--" ~ variant ~ " button-icon--" ~ size ~ " " ~ class | trim %}
+    <button id="{{ id }}"
+            class="{{ classes }}"
+            type="button"
+            aria-label="{{ aria_label }}">
+        <svg class="button-icon__icon">
+            <use href="/assets/svg/sprite.svg#{{ icon }}" />
+        </svg>
+    </button>
+{% endmacro button_icon %}

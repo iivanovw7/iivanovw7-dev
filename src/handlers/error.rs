@@ -26,7 +26,8 @@ pub async fn not_found_error(state: State<AppState>) -> Response {
 }
 
 pub async fn template_error(state: State<AppState>, error: Error) -> Response {
-    tracing::error!("Template error: {}", error);
+    tracing::error!("Template error: {:?}", error);
+    tracing::error!("Template error message: {}", error);
 
     render_error_page(
         state,
@@ -37,7 +38,8 @@ pub async fn template_error(state: State<AppState>, error: Error) -> Response {
 }
 
 pub async fn internal_error(state: State<AppState>, error: anyhow::Error) -> Response {
-    tracing::error!("Internal error: {}", error);
+    tracing::error!("Internal error: {:?}", error);
+    tracing::error!("Internal error message: {}", error);
 
     render_error_page(
         state,
@@ -63,14 +65,14 @@ async fn render_error_page(
 
     context.insert("error", &error);
 
-    match tera.render("pages/error/error.html", &context) {
+    match tera.render("pages/error/error.tera", &context) {
         Ok(body) => Response::builder()
             .status(status_code)
             .header(axum::http::header::CONTENT_TYPE, mime::TEXT_HTML.as_ref())
             .body(Body::from(body))
             .unwrap(),
         Err(error) => {
-            tracing::error!("Error rendering error page: {}", error);
+            tracing::error!("Error rendering error page: {:?}", error);
 
             Response::builder()
                 .status(StatusCode::INTERNAL_SERVER_ERROR)

@@ -1,0 +1,50 @@
+{% extends "layouts/base.tera" %}
+{% import "ui-kit/index.tera" as ui_kit %}
+{% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
+{% block content %}
+    <main class="pages-post">
+        <header class="pages-post__header">
+            {% include "components/breadcrumbs.tera" %}
+            <h1 class="pages-post__title">{{ post.metadata.title }}</h1>
+            <p class="pages-post__description">{{ post.metadata.description }}</p>
+        </header>
+        <div class="pages-post__sidebar">
+            <dl>
+                <dt class="pages-post__date-label">Published on</dt>
+                <dd class="pages-post__date">
+                    <time datetime="{{ post.date }}">{{ post.date }}</time>
+                </dd>
+            </dl>
+            <span class="pages-post__estimation">{{ post.estimation.text }} read</span>
+        </div>
+        <article class="pages-post__article">
+            <div class="pages-post__content-header">
+                <div class="pages-post__image">
+                    {{ ui_kit::lazy_background_image(id=post.metadata.title, img_url=post.metadata.image) }}
+                </div>
+                <div class="pages-post__controls">
+                    <div class="pages-post__tags">
+                        {% for tag in post.metadata.tags %}
+                            {{ ui_kit::link(href=tag, fill="full", href=("/posts?tag="~tag) , text=tag) }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="content" class="pages-post__content">{{ post.content | safe }}</div>
+        </article>
+    </main>
+    {% include "components/footer.tera" %}
+    <script type="text/javascript">
+    window.onload = () => {
+        let preElements = document.getElementsByTagName("pre") || [];
+
+        for (let preElement of preElements) {
+            let codeElement = preElement.querySelector("code");
+
+            if (codeElement) {
+                hljs.highlightElement(codeElement);
+            }
+        }
+    };
+    </script>
+{% endblock %}

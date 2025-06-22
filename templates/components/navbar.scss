@@ -1,28 +1,28 @@
 @use "@styles/abstracts" as *;
 
 .navbar {
-    @include position(fixed, 0 auto auto 0);
-    @include my(0);
-    @include z-index(overlay-container);
+	@include position(fixed, 0 auto auto 0);
+	@include my(0);
+	@include z-index(overlay-container);
 
-    display: flex;
-    flex-direction: row;
-    inline-size: 100%;
-    height: rem($navbar-height);
-    max-height: rem($navbar-height);
-    background-color: var(--background-primary);
+	display: flex;
+	flex-direction: row;
+	inline-size: 100%;
+	height: rem($navbar-height);
+	max-height: rem($navbar-height);
+	background-color: var(--background-primary);
 
-    &__box {
-        @include sizer(100%);
-        @include mx(auto);
-        @include p(3);
-        @include justify-align-flex(flex-end, center);
+	&__box {
+		@include sizer(100%);
+		@include mx(auto);
+		@include p(3);
+		@include justify-align-flex(flex-end, center);
 
-        flex-direction: row;
-        gap: rem(16px);
+		flex-direction: row;
+		gap: rem(16px);
 
-        @include only(first) {
-            flex-basis: fit-content;
-        }
-    }
+		@include only(first) {
+			flex-basis: fit-content;
+		}
+	}
 }

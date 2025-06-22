@@ -1,57 +1,57 @@
 @use "@styles/abstracts" as *;
 
 .link {
-    @include p(0);
+	@include p(0);
 
-    display: inline;
-    font: inherit;
-    text-align: left;
-    text-decoration: none;
-    cursor: pointer;
-    outline: none;
-    background-color: transparent;
-    border: 0;
-    transition: $transition-color;
+	display: inline;
+	font: inherit;
+	text-align: left;
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+	background-color: transparent;
+	border: 0;
+	transition: $transition-color;
 
-    &:focus-visible {
-        @include focus-outline(outline-offset);
-    }
+	&:focus-visible {
+		@include focus-outline(outline-offset);
+	}
 
-    &--full {
-        @include border-radius(1);
-        @include sizer(auto, rem(24px));
-        @include p(1, 2);
+	&--full {
+		@include border-radius(1);
+		@include sizer(auto, rem(24px));
+		@include p(1, 2);
 
-        transition: $transition-bg-color;
-    }
+		transition: $transition-bg-color;
+	}
 
-    &--full.link--primary:not(.link--active) {
-        color: var(--link-primary-full);
-        background-color: var(--link-primary-full-background);
+	&--full.link--primary:not(.link--active) {
+		color: var(--link-primary-full);
+		background-color: var(--link-primary-full-background);
 
-        &:hover {
-            background-color: var(--link-primary-full-background-hover);
-        }
-    }
+		&:hover {
+			background-color: var(--link-primary-full-background-hover);
+		}
+	}
 
-    &--full.link--primary.link--active {
-        color: var(--link-primary-full-active);
-        background-color: var(--link-primary-full-background-active);
-    }
+	&--full.link--primary.link--active {
+		color: var(--link-primary-full-active);
+		background-color: var(--link-primary-full-background-active);
+	}
 
-    &--primary:not(.link--full) {
-        color: var(--link-primary);
+	&--primary:not(.link--full) {
+		color: var(--link-primary);
 
-        &:hover {
-            color: var(--link-primary-hover);
-        }
-    }
+		&:hover {
+			color: var(--link-primary-hover);
+		}
+	}
 
-    &--secondary:not(.link--full) {
-        color: var(--link-secondary);
+	&--secondary:not(.link--full) {
+		color: var(--link-secondary);
 
-        &:hover {
-            color: var(--link-secondary-hover);
-        }
-    }
+		&:hover {
+			color: var(--link-secondary-hover);
+		}
+	}
 }
