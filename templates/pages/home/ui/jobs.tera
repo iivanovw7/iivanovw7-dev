@@ -22,7 +22,7 @@
                                                 size="medium",
                                                 icon="chevron-right",
                                                 href="/",
-                                                target="_self")
+                                                target="_self") 
                         }}
                     {% endblock logo %}
                     <div class="home-jobs__cli-container">
@@ -40,7 +40,7 @@
                             {{ ui_kit::link_icon(variant="secondary",
                                                         icon=social.title,
                                                         href=social.link,
-                                                        target="_blank")
+                                                        target="_blank") 
                             }}
                         {% endfor %}
                     {% endblock social_links %}
@@ -77,14 +77,14 @@
                 {{ ui_kit::button_icon(id="prevButton",
                                 aria_label="Prev slide",
                                 variant="secondary",
-                                icon="chevron-left")
+                                icon="chevron-left") 
                 }}
             {% endblock slider_prev_button %}
             {% block slider_next_button %}
                 {{ ui_kit::button_icon(id="nextButton",
                                 aria_label="Next slide",
                                 variant="secondary",
-                                icon="chevron-right")
+                                icon="chevron-right") 
                 }}
             {% endblock slider_next_button %}
         </div>
@@ -109,9 +109,9 @@
     let snapProgressDirectional = (value, direction) => {
         let snapped = snapProgress(value);
 
-        return snapped - value < 0 === direction < 0
-            ? snapped
-            : snapProgress(direction < 0 ? value - progressPerItem : value + progressPerItem);
+        return snapped - value < 0 === direction < 0 ?
+            snapped :
+            snapProgress(direction < 0 ? value - progressPerItem : value + progressPerItem);
     };
 
     let slideWidth = 0;
@@ -199,7 +199,7 @@
 
     window.addEventListener("resize", resize);
 
-    htmx.onLoad(function () {
+    htmx.onLoad(function() {
         htmx.on(prevButton, "click", handleClick(-1));
         htmx.on(nextButton, "click", handleClick(1));
     });

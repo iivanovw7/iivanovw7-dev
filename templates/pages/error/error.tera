@@ -13,4 +13,4 @@
             </div>
         </main>
     </section>
-{% endblock %}
+{% endblock content %}

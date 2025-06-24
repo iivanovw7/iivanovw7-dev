@@ -11,7 +11,7 @@
 		"build:css": "rspack build",
 		"build:run": "cargo run",
 		"test:templates:format:js": "prettier --write --ignore-unknown .",
-		"test:templates:format:tera": "djlint --reformat templates/**/*.tera",
+		"test:templates:format:tera": "djlint templates/**/*.tera --reformat --format-js",
 		"test:templates:stylelint": "stylelint \"styles/**/*.{css,scss}\"",
 		"test:server": "cargo test",
 		"test:server:format": "cargo fmt -- --check",

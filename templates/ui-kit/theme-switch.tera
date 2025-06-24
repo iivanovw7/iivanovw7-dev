@@ -18,7 +18,9 @@
     const lightSwitch = htmx.find("#light-switch");
 
     lightSwitch.addEventListener("change", () => {
-        const { checked } = lightSwitch;
+        const {
+            checked
+        } = lightSwitch;
 
         lightSwitch.checked = checked;
         localStorage["dark-mode"] = checked;

@@ -96,15 +96,15 @@
                 Alpine.store("preloader").hide();
             });
 
-            document.body.addEventListener("htmx:beforeRequest", function (evt) {
+            document.body.addEventListener("htmx:beforeRequest", function(evt) {
                 Alpine.store("preloader").show();
             });
 
-            document.body.addEventListener("htmx:afterSettle", function (evt) {
+            document.body.addEventListener("htmx:afterSettle", function(evt) {
                 Alpine.store("preloader").hide();
             });
 
-            document.body.addEventListener("htmx:responseError", function (evt) {
+            document.body.addEventListener("htmx:responseError", function(evt) {
                 Alpine.store("preloader").hide();
                 console.error("Request Error:", evt.detail.xhr.status, evt.detail.xhr.responseText);
             });

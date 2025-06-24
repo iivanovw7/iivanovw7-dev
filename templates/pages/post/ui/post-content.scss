@@ -1,0 +1,158 @@
+@use "@styles/abstracts" as *;
+
+.pages-post-content {
+	width: 100%;
+
+	@include adaptive(rem(54px));
+
+	* {
+		@include text-setting(base);
+		@include border-box;
+	}
+
+	pre {
+		@include py(3);
+
+		width: auto;
+		max-width: 100%;
+	}
+
+	code {
+		@include border-radius(1);
+
+		max-width: calc(100vw - rem(32px));
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@include my(4, 3);
+		@include py(1);
+
+		border-bottom: rem(1px) solid var(--text-border);
+
+		/* stylelint-disable-next-line max-nesting-depth */
+		> * {
+			font-size: inherit;
+			line-height: inherit;
+		}
+	}
+
+	h1 {
+		@include text-setting(xxxl);
+	}
+
+	h2 {
+		@include text-setting(xxl);
+	}
+
+	h3 {
+		@include text-setting(xl);
+	}
+
+	h4 {
+		@include text-setting(lg);
+	}
+
+	h5 {
+		@include text-setting(md);
+	}
+
+	h6 {
+		@include text-setting(base);
+
+		line-height: line-height(md);
+	}
+
+	p {
+		@include my(2);
+		@include text-setting(base);
+	}
+
+	hr {
+		@include my(2);
+
+		color: var(--text-border);
+	}
+
+	del,
+	s {
+		text-decoration: line-through;
+	}
+
+	blockquote {
+		@include m(2, 0, 2, 4);
+		@include pl(2);
+
+		border-left: rem(3px) solid var(--text-border);
+	}
+
+	code:not([class]) {
+		@include border-radius(1);
+		@include px(2);
+
+		padding-top: rem(2px);
+		padding-bottom: 0;
+		color: var(--text-primary);
+		background-color: var(--background-secondary);
+	}
+
+	ol,
+	ul {
+		@include pl(4);
+
+		list-style: none;
+	}
+
+	ol:not(li > ol),
+	ul:not(li > ul) {
+		@include mb(3);
+	}
+
+	ul li,
+	ol li {
+		@include my(2);
+	}
+
+	ul {
+		list-style-position: inside;
+	}
+
+	ul li::before {
+		@include m(1);
+
+		position: relative;
+		color: var(--primary-accent);
+		content: "•";
+	}
+
+	ol {
+		counter-reset: steps;
+	}
+
+	ol li {
+		counter-increment: steps;
+	}
+
+	ol li::before {
+		content: counters(steps, ".") ". ";
+	}
+
+	a {
+		color: var(--text-link);
+		text-decoration: underline;
+		border: none;
+		transition: $transition-color;
+	}
+
+	a:focus-visible {
+		@include focus-outline(outline-offset);
+	}
+
+	a:hover {
+		color: var(--text-link-hover);
+	}
+}

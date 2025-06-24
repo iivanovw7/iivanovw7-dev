@@ -34,4 +34,4 @@
         </section>
     </main>
     {% include "components/footer.tera" %}
-{% endblock %}
+{% endblock content %}

@@ -12,16 +12,11 @@
         </div>
         <div class="pages-posts-item__box">
             <div class="pages-posts-item__image">
-                {{ ui_kit::lazy_background_image(id=post.metadata.title,
-                                img_url=post.metadata.image,)
-                }}
+                {{ ui_kit::lazy_background_image(id=post.metadata.title, img_url=post.metadata.image) }}
             </div>
             <div>
                 <h2 class="pages-posts-item__title">
-                    {{ ui_kit::link(text=post.metadata.title,
-                                        href=("/posts/" ~ post.metadata.file_name)
-                    )
-                    }}
+                    {{ ui_kit::link(text=post.metadata.title, href="/posts/" ~ post.metadata.file_name) }}
                 </h2>
                 <div class="pages-posts-item__tags">
                     {% for tag in post.metadata.tags %}

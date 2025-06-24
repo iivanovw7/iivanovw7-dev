@@ -10,4 +10,4 @@
        target="{{ target | default(value='_self') }}">
         <span class="link__text">{{ text }}</span>
     </a>
-{% endmacro %}
+{% endmacro link %}
