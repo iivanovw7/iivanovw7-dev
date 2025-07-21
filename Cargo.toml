@@ -9,7 +9,6 @@ edition = "2021"
 anyhow = "1.0.79"
 axum = { version = "0.8.3", features = ["multipart"] }
 axum-extra = "0.10.1"
-cargo-watch = "8.5.2"
 chrono = "0.4.40"
 dotenv = "0.15.0"
 envy = "0.4.2"

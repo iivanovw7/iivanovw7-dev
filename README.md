@@ -24,6 +24,8 @@ SERVER="0.0.0.0:9000"
 ```bash
 pacman -S rustup
 rustup default stable
+
+cargo install cargo-watch
 ```
 
 -   Install `rustfmt` and `rust-analyzer`

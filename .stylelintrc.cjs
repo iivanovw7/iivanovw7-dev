@@ -123,6 +123,7 @@ module.exports = {
 		"selector-anb-no-unmatchable": true,
 		"selector-attribute-quotes": "always",
 		"selector-class-pattern":
+			// eslint-disable-next-line max-len
 			"([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*)(?:__([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*))?(?:--([A-Za-z0-9]+(?:-[A-Za-z0-9]+)*))?",
 		"selector-id-pattern": [
 			"^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",

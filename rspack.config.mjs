@@ -1,22 +1,21 @@
 import { defineConfig } from "@rspack/cli";
-import path from "node:path";
 import { rspack } from "@rspack/core";
-import url from "url";
-import * as sass from "sass-embedded";
-import { RspackManifestPlugin } from "rspack-manifest-plugin";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
-
 import autoprefixer from "autoprefixer";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import path from "node:path";
 import postcss100vhFix from "postcss-100vh-fix";
-import postcssPresetEnv from "postcss-preset-env";
 import postcssDarkThemeClass from "postcss-dark-theme-class";
+import postcssPresetEnv from "postcss-preset-env";
+import { RspackManifestPlugin } from "rspack-manifest-plugin";
+import * as sass from "sass-embedded";
+import url from "url";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 const postcssPlugins = [
 	postcssDarkThemeClass({
-		lightSelector: "[data-theme='light']",
 		darkSelector: "[data-theme='dark']",
+		lightSelector: "[data-theme='light']",
 	}),
 	postcss100vhFix,
 	autoprefixer,
@@ -25,38 +24,31 @@ const postcssPlugins = [
 	}),
 ];
 
+// eslint-disable-next-line import/no-default-export
 export default defineConfig((env) => {
 	const isWatch = env.RSPACK_WATCH;
 
 	return {
-		experiments: {
-			css: true,
-			layers: true,
-		},
+		devtool: false,
 		entry: {
 			main: {
 				import: path.resolve(__dirname, "./styles/main.scss"),
 				layer: "styles",
 			},
 		},
-		optimization: {
-			minimize: !isWatch,
+		experiments: {
+			css: true,
+			layers: true,
 		},
-		output: {
-			path: path.resolve(__dirname, "./assets/css"),
-			filename: () => "",
-			assetModuleFilename: "[name].[contenthash].[ext]",
-		},
-		resolve: {
-			alias: {
-				"@styles": path.resolve(__dirname, "styles"),
-				"@templates": path.resolve(__dirname, "templates"),
-			},
-		},
+		mode: isWatch ? "development" : "production",
 		module: {
 			rules: [
 				{
+					generator: {
+						filename: "[name].[contenthash].css",
+					},
 					test: /\.(sass|scss)$/,
+					type: "asset/resource",
 					use: [
 						{
 							loader: "postcss-loader",
@@ -69,44 +61,52 @@ export default defineConfig((env) => {
 						{
 							loader: "sass-loader",
 							options: {
-								api: "modern-compiler",
 								additionalData: `
                                     @use "@styles/abstracts" as *;
                                 `,
+								api: "modern-compiler",
 								implementation: sass,
 							},
 						},
 					],
-					type: "asset/resource",
-					generator: {
-						filename: "[name].[contenthash].css",
-					},
 				},
 			],
 		},
+		optimization: {
+			minimize: !isWatch,
+		},
+		output: {
+			assetModuleFilename: "[name].[contenthash].[ext]",
+			filename: () => "",
+			path: path.resolve(__dirname, "./assets/css"),
+		},
 		plugins: [
 			new CleanWebpackPlugin({
-				verbose: true,
-				cleanOnceBeforeBuildPatterns: ["main.*.css", "main.*.js", "manifest.json"],
 				cleanAfterEveryBuildPatterns: [],
+				cleanOnceBeforeBuildPatterns: ["main.*.css", "main.*.js", "manifest.json"],
+				verbose: true,
 			}),
 			new rspack.CssExtractRspackPlugin({
-				path: path.resolve(__dirname, "./assets/css"),
-				filename: "[name].[contenthash].css",
 				assetModuleFilename: "[name][contenthash][ext]",
+				filename: "[name].[contenthash].css",
+				path: path.resolve(__dirname, "./assets/css"),
 			}),
 			new RspackManifestPlugin({
 				fileName: "manifest.json",
-				publicPath: "/assets/css",
 				map: (file) => {
 					file.path = file.path.replace("/assets/css/", "");
 
 					return file;
 				},
+				publicPath: "/assets/css",
 			}),
 		],
-		mode: isWatch ? "development" : "production",
-		devtool: false,
+		resolve: {
+			alias: {
+				"@styles": path.resolve(__dirname, "styles"),
+				"@templates": path.resolve(__dirname, "templates"),
+			},
+		},
 		watch: isWatch,
 	};
 });

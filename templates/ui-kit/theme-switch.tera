@@ -1,10 +1,10 @@
 <div class="theme-switch">
     <input type="checkbox"
-           id="light-switch"
-           name="light-switch"
+           id="theme-switch"
+           name="theme-switch"
            class="theme-switch__input"
            aria-label="Theme switch" />
-    <label class="theme-switch__label" for="light-switch">
+    <label class="theme-switch__label" for="theme-switch">
         <svg class="theme-switch__icon theme-switch__icon--light">
             <use href="/assets/svg/sprite.svg#sun" />
         </svg>
@@ -15,17 +15,17 @@
     </label>
 </div>
 <script>
-    const lightSwitch = htmx.find("#light-switch");
+    const themeSwitch = htmx.find("#theme-switch");
 
-    lightSwitch.addEventListener("change", () => {
+    themeSwitch.addEventListener("change", () => {
         const {
             checked
-        } = lightSwitch;
+        } = themeSwitch;
 
-        lightSwitch.checked = checked;
+        themeSwitch.checked = checked;
         localStorage["dark-mode"] = checked;
 
-        if (lightSwitch.checked) {
+        if (themeSwitch.checked) {
             html.setAttribute("data-theme", "dark");
             localStorage.setItem("dark-mode", true);
         } else {
@@ -41,7 +41,7 @@
     }
 
     if (themeValue === "dark") {
-        lightSwitch.checked = true;
+        themeSwitch.checked = true;
         html.setAttribute("data-theme", "dark");
         localStorage.setItem("dark-mode", true);
     } else {
