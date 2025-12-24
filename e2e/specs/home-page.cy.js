@@ -6,7 +6,7 @@ describe("[Home] page", () => {
 	});
 
 	it("Should have the correct title", () => {
-		cy.title().should("include", "Igor Ivanov | Frontend developer");
+		cy.title().should("include", "Igor Ivanov | Software developer");
 	});
 
 	it("Should render navbar with controls", () => {

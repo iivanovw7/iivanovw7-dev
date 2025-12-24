@@ -19,7 +19,7 @@ COPY . .
 RUN cargo build --release
 
 # stage 2b, build our css as we don't have a formal preprocessor
-FROM node:bookworm-slim as node_builder
+FROM node:20-bookworm as node_builder
 
 WORKDIR /app
 
@@ -37,7 +37,7 @@ COPY config.toml .
 COPY ./templates ./templates
 
 RUN pnpm install;
-RUN pnpm run build:css 
+RUN pnpm run build:css
 RUN npm install pm2 -g
 
 FROM debian:bookworm-slim AS runtime

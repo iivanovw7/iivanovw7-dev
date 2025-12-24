@@ -1,7 +1,7 @@
 [main]
 author = "iivanovw7.dev"
 name = "Igor Ivanov"
-profession = "Frontend developer"
+profession = "Software developer"
 project = "https://github.com/iivanovw7/iivanovw7-dev"
 
 [social]
@@ -18,7 +18,7 @@ company = "Devexperts"
 company_logo = "/assets/png/dx-logo.png"
 location = "Porto, Portugal"
 start = "Mar 2024"
-position = "Frontend developer"
+position = "Software developer"
 subtitle = "Working with React, TS, and a11y to create user-friendly interfaces for the Capital Markets industry."
 
 [[jobs]]
