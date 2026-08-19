@@ -1,4 +1,4 @@
-{% macro button_icon(id, icon, aria_label, variant, size, class) %}
+{% macro button_icon(id="", icon, aria_label="", variant="primary", size="medium", class="") %}
     {% set classes = "button-icon button-icon--" ~ variant ~ " button-icon--" ~ size ~ " " ~ class | trim %}
     <button id="{{ id }}"
             class="{{ classes }}"

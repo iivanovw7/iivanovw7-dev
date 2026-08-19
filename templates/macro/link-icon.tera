@@ -1,4 +1,14 @@
-{% macro link_icon(id, variant, disabled=false, size, icon, href, aria_label, target, class) %}
+{% macro link_icon(
+    id="",
+    variant="primary",
+    disabled=false,
+    size="medium",
+    icon,
+    href="",
+    aria_label="",
+    target="_self",
+    class=""
+) %}
     {% set classes = "link-icon link-icon--" ~ variant ~ " link-icon--" ~ size ~ " " ~ class | trim %}
     <a id="{{ id }}"
        aria-label="{{ aria_label }}"

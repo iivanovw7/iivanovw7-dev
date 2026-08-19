@@ -1,5 +1,6 @@
 {% extends "layouts/base.tera" %}
-{% import "ui-kit/index.tera" as ui_kit %}
+{% import "macro/link.tera" as link_macro %}
+{% import "macro/lazy-background-image.tera" as lazy_background_image_macro %}
 {% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
 {% block content %}
     <main class="pages-posts">
@@ -18,7 +19,7 @@
                     {% else %}
                         {% set href = "/posts?tag="~tag %}
                     {% endif %}
-                    {{ ui_kit::link(active=active, text=tag, fill="full", href=href) }}
+                    {{ link_macro::link(active=active, text=tag, fill="full", href=href) }}
                 {% endfor %}
             </div>
         </div>

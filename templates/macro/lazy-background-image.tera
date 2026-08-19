@@ -1,5 +1,5 @@
-{% macro lazy_background_image(id, img_url, container_class, alt_text) %}
-    {% set container_classes = "lazy-background-image__container" ~  " " ~ container_class | trim %}
+{% macro lazy_background_image(id, img_url, container_class="", alt_text="") %}
+    {% set container_classes = "lazy-background-image__container" ~ " " ~ container_class | trim %}
     <div id="lazy-background-image-container-{{ id }}"
          class="{{ container_classes }}"
          style="overflow: hidden"

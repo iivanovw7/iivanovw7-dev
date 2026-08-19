@@ -1,5 +1,6 @@
 {% extends "layouts/base.tera" %}
-{% import "ui-kit/index.tera" as ui_kit %}
+{% import "macro/link.tera" as link_macro %}
+{% import "macro/lazy-background-image.tera" as lazy_background_image_macro %}
 {% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
 {% block content %}
     <main class="pages-post">
@@ -20,12 +21,12 @@
         <article class="pages-post__article">
             <div class="pages-post__content-header">
                 <div class="pages-post__image">
-                    {{ ui_kit::lazy_background_image(id=post.metadata.title, img_url=post.metadata.image) }}
+                    {{ lazy_background_image_macro::lazy_background_image(id=post.metadata.title, img_url=post.metadata.image) }}
                 </div>
                 <div class="pages-post__controls">
                     <div class="pages-post__tags">
                         {% for tag in post.metadata.tags %}
-                            {{ ui_kit::link(href=tag, fill="full", href=("/posts?tag="~tag) , text=tag) }}
+                            {{ link_macro::link(href=tag, fill="full", href=("/posts?tag="~tag) , text=tag) }}
                         {% endfor %}
                     </div>
                 </div>

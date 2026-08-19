@@ -19,7 +19,7 @@ COPY . .
 RUN cargo build --release
 
 # stage 2b, build our css as we don't have a formal preprocessor
-FROM node:20-bookworm as node_builder
+FROM node:22.23.2-bookworm as node_builder
 
 WORKDIR /app
 
@@ -33,10 +33,13 @@ COPY rspack.config.mjs .
 COPY .env .
 COPY .nvmrc .
 COPY config.toml .
-
+COPY pnpm-lock.yaml .
+COPY pnpm-workspace.yaml .
 COPY ./templates ./templates
 
-RUN pnpm install;
+RUN pnpm config get onlyBuiltDependencies
+RUN pnpm config list
+RUN pnpm install --frozen-lockfile --ignore-scripts
 RUN pnpm run build:css
 RUN npm install pm2 -g
 
