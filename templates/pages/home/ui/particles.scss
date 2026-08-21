@@ -1,0 +1,10 @@
+@use "@styles/abstracts" as *;
+@use "@styles/themes/palette" as palette;
+
+.home-particles {
+	@include sizer(100svw, 100svh);
+	@include z-index(underlay);
+	@include position(fixed, 0 auto auto 0);
+
+	display: flex;
+}

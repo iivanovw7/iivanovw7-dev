@@ -1,0 +1,151 @@
+<canvas class="home-particles" id="particle-canvas"></canvas>
+<script>
+	(() => {
+		document.addEventListener("alpine:init", () => {
+			let canvas = htmx.find("#particle-canvas");
+			let ctx = canvas.getContext('2d');
+			let width = (canvas.width = window.innerWidth);
+			let height = (canvas.height = window.innerHeight);
+
+			let config = {
+				numParticles: 100,
+				connectDistance: 130,
+				mouseRadius: 160,
+				magnetForce: 0.08,
+				returnForce: 0.05
+			};
+
+			let mouse = {
+				x: -1000,
+				y: -1000,
+				active: false
+			};
+
+			let particles = [];
+
+			class Particle {
+				constructor() {
+					this.x = Math.random() * width;
+					this.y = Math.random() * height;
+					this.baseX = this.x;
+					this.baseY = this.y;
+					this.radius = Math.random() * 2 + 1.5;
+					this.alpha = Math.random() * 0.6 + 0.3;
+				}
+
+				draw() {
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+					ctx.fillStyle = `rgba(100, 100, 100, ${this.alpha})`;
+					ctx.fill();
+				}
+
+				update() {
+					let dx = mouse.x - this.baseX;
+					let dy = mouse.y - this.baseY;
+					let distanceSq = dx * dx + dy * dy;
+
+					if (mouse.active && distanceSq < config.mouseRadius ** 2) {
+						let targetX = this.baseX + dx * 0.5;
+						let targetY = this.baseY + dy * 0.5;
+
+						this.x += (targetX - this.x) * config.magnetForce;
+						this.y += (targetY - this.y) * config.magnetForce;
+					} else {
+						this.x += (this.baseX - this.x) * config.returnForce;
+						this.y += (this.baseY - this.y) * config.returnForce;
+					}
+				}
+			}
+
+			const init = () => {
+				particles.length = 0;
+
+				for (let i = 0; i < config.numParticles; i++) {
+					let particle = new Particle();
+
+					particles.push(particle);
+
+					gsap.to(particle, {
+						baseX: `+=${(Math.random() - 0.5) * 400}`,
+						baseY: `+=${(Math.random() - 0.5) * 400}`,
+						duration: Math.random() * 12 + 8,
+						repeat: -1,
+						yoyo: true,
+						ease: 'sine.inOut',
+					});
+
+					gsap.to(particle, {
+						alpha: Math.random() * 0.7 + 0.2,
+						duration: Math.random() * 4 + 2,
+						repeat: -1,
+						yoyo: true,
+						ease: 'sine.inOut',
+					});
+				}
+			}
+
+			const drawConnections = () => {
+				let maxDistance = config.connectDistance;
+				let maxDistanceSq = maxDistance ** 2;
+
+				ctx.lineWidth = 1;
+
+				for (let i = 0; i < particles.length; i++) {
+					for (let j = i + 1; j < particles.length; j++) {
+						let a = particles[i];
+						let b = particles[j];
+
+						let dx = a.x - b.x;
+						let dy = a.y - b.y;
+						let distanceSq = dx * dx + dy * dy;
+
+						if (distanceSq >= maxDistanceSq) continue;
+
+						let distance = Math.sqrt(distanceSq);
+						let alpha = (1 - distance / maxDistance) * 0.35;
+
+						ctx.beginPath();
+						ctx.moveTo(a.x, a.y);
+						ctx.lineTo(b.x, b.y);
+						ctx.strokeStyle = `rgba(100, 100, 100, ${alpha})`;
+						ctx.stroke();
+					}
+				}
+			}
+
+			const render = () => {
+				ctx.clearRect(0, 0, width, height);
+
+				for (let particle of particles) {
+					particle.update();
+					particle.draw();
+				}
+
+				drawConnections();
+			};
+
+			const handleResize = () => {
+				width = canvas.width = window.innerWidth;
+				height = canvas.height = window.innerHeight;
+				init();
+			}
+
+			window.addEventListener('mousemove', (e) => {
+				mouse.x = e.clientX;
+				mouse.y = e.clientY;
+				mouse.active = true;
+			});
+
+			window.addEventListener('mouseleave', () => {
+				mouse.active = false;
+			});
+
+			window.addEventListener('resize', handleResize);
+
+			init();
+
+			gsap.ticker.add(render);
+		})
+	})();
+</script>

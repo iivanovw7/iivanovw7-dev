@@ -4,8 +4,8 @@ import waitOn from "wait-on";
 
 const processes = {
 	build: null,
-	server: null,
 	exitCode: 1,
+	server: null,
 };
 
 /**
@@ -21,7 +21,8 @@ const processes = {
  *	Starts the server build process and waits for its completion.
  *	Resolves if the build is successful, rejects otherwise.
  *	@async
- *	@returns {Promise<void>} A promise that resolves when the server build completes successfully, or rejects if it fails.
+ *	@returns {Promise<void>} A promise that resolves when the server build completes successfully,
+ *		or rejects if it fails.
  */
 async function startServerBuild() {
 	processes.build = spawn("pnpm", ["run", "build:server"], {
@@ -84,12 +85,12 @@ function stopServer() {
  */
 async function runCypressTests() {
 	await waitOn({
-		resources: ["http://localhost:8080"],
 		delay: 1000,
 		interval: 1000,
-		timeout: 60000,
-		tcpTimeout: 1000,
 		log: true,
+		resources: ["http://localhost:8080"],
+		tcpTimeout: 1000,
+		timeout: 60000,
 	});
 
 	const results = await cypress.run();

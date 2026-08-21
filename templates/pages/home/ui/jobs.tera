@@ -92,116 +92,118 @@
     </div>
 </div>
 <script>
-    gsap.registerPlugin(Draggable);
-    gsap.set(".home-jobs__slider-slide", {
-        xPercent: (i) => i * 100,
-    });
+	(() => {
+		gsap.registerPlugin(Draggable);
+		gsap.set(".home-jobs__slider-slide", {
+			xPercent: (i) => i * 100,
+		});
 
-    let prevButton = htmx.find("#prevButton");
-    let nextButton = htmx.find("#nextButton");
+		let prevButton = htmx.find("#prevButton");
+		let nextButton = htmx.find("#nextButton");
 
-    let slideDelay = 1.5;
-    let slideDuration = 0.3;
-    let slides = gsap.utils.toArray(".home-jobs__slider-slide");
-    let numSlides = slides.length;
-    let progressPerItem = 1 / (numSlides - 1);
-    let snapProgress = gsap.utils.snap(progressPerItem);
+		let slideDelay = 1.5;
+		let slideDuration = 0.3;
+		let slides = gsap.utils.toArray(".home-jobs__slider-slide");
+		let numSlides = slides.length;
+		let progressPerItem = 1 / (numSlides - 1);
+		let snapProgress = gsap.utils.snap(progressPerItem);
 
-    let snapProgressDirectional = (value, direction) => {
-        let snapped = snapProgress(value);
+		let snapProgressDirectional = (value, direction) => {
+			let snapped = snapProgress(value);
 
-        return snapped - value < 0 === direction < 0 ?
-            snapped :
-            snapProgress(direction < 0 ? value - progressPerItem : value + progressPerItem);
-    };
+			return snapped - value < 0 === direction < 0 ?
+				snapped :
+				snapProgress(direction < 0 ? value - progressPerItem : value + progressPerItem);
+		};
 
-    let slideWidth = 0;
-    let totalWidth = 0;
-    let slideAnimation;
+		let slideWidth = 0;
+		let totalWidth = 0;
+		let slideAnimation;
 
-    let animation = gsap.to(slides, {
-        xPercent: "-=" + (numSlides - 1) * 100,
-        duration: 1,
-        ease: "none",
-        paused: true,
-    });
+		let animation = gsap.to(slides, {
+			xPercent: "-=" + (numSlides - 1) * 100,
+			duration: 1,
+			ease: "none",
+			paused: true,
+		});
 
-    let draggable = new Draggable(document.createElement("div"), {
-        type: "x",
-        trigger: ".home-jobs__slider-container",
-        onPress() {
-            gsap.killTweensOf(animation);
-            this.startProgress = animation.progress();
-        },
-        onDrag() {
-            let change = (draggable.startX - draggable.x) / totalWidth;
+		let draggable = new Draggable(document.createElement("div"), {
+			type: "x",
+			trigger: ".home-jobs__slider-container",
+			onPress() {
+				gsap.killTweensOf(animation);
+				this.startProgress = animation.progress();
+			},
+			onDrag() {
+				let change = (draggable.startX - draggable.x) / totalWidth;
 
-            animation.progress(draggable.startProgress + change);
-        },
-        onDragEnd() {
-            let progress = snapProgress(animation.progress() + -Math.sign(this.deltaX) * progressPerItem);
+				animation.progress(draggable.startProgress + change);
+			},
+			onDragEnd() {
+				let progress = snapProgress(animation.progress() + -Math.sign(this.deltaX) * progressPerItem);
 
-            gsap.to(animation, {
-                progress,
-                overwrite: true,
-            });
+				gsap.to(animation, {
+					progress,
+					overwrite: true,
+				});
 
-            updateVisibility(progress);
-        },
-    });
+				updateVisibility(progress);
+			},
+		});
 
-    const updateVisibility = (progress) => {
-        switch (true) {
-            case progress <= 0: {
-                prevButton.setAttribute("disabled", "true");
-                nextButton.removeAttribute("disabled");
+		const updateVisibility = (progress) => {
+			switch (true) {
+				case progress <= 0: {
+					prevButton.setAttribute("disabled", "true");
+					nextButton.removeAttribute("disabled");
 
-                break;
-            }
-            case progress >= 1: {
-                prevButton.removeAttribute("disabled");
-                nextButton.setAttribute("disabled", "true");
+					break;
+				}
+				case progress >= 1: {
+					prevButton.removeAttribute("disabled");
+					nextButton.setAttribute("disabled", "true");
 
-                break;
-            }
-            default: {
-                prevButton.removeAttribute("disabled");
-                nextButton.removeAttribute("disabled");
-            }
-        }
-    };
+					break;
+				}
+				default: {
+					prevButton.removeAttribute("disabled");
+					nextButton.removeAttribute("disabled");
+				}
+			}
+		};
 
-    const handleClick = (direction) => {
-        return (eventData) => {
-            eventData.stopPropagation();
-            eventData.preventDefault();
+		const handleClick = (direction) => {
+			return (eventData) => {
+				eventData.stopPropagation();
+				eventData.preventDefault();
 
-            let progress = snapProgress(animation.progress() + direction * progressPerItem);
+				let progress = snapProgress(animation.progress() + direction * progressPerItem);
 
-            if (progress >= 0 && progress <= 1) {
-                updateVisibility(progress);
+				if (progress >= 0 && progress <= 1) {
+					updateVisibility(progress);
 
-                slideAnimation = gsap.to(animation, {
-                    progress,
-                    duration: slideDuration,
-                    overwrite: true,
-                });
-            }
-        };
-    };
+					slideAnimation = gsap.to(animation, {
+						progress,
+						duration: slideDuration,
+						overwrite: true,
+					});
+				}
+			};
+		};
 
-    const resize = () => {
-        slideWidth = slides[0].offsetWidth;
-        totalWidth = slideWidth * numSlides;
-    };
+		const handleResize = () => {
+			slideWidth = slides[0].offsetWidth;
+			totalWidth = slideWidth * numSlides;
+		};
 
-    resize();
-    updateVisibility(0);
+		handleResize();
+		updateVisibility(0);
 
-    window.addEventListener("resize", resize);
+		window.addEventListener("resize", handleResize);
 
-    htmx.onLoad(function() {
-        htmx.on(prevButton, "click", handleClick(-1));
-        htmx.on(nextButton, "click", handleClick(1));
-    });
+		htmx.onLoad(function() {
+			htmx.on(prevButton, "click", handleClick(-1));
+			htmx.on(nextButton, "click", handleClick(1));
+		});
+	})();
 </script>

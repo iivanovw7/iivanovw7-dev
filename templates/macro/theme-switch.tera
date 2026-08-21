@@ -16,38 +16,40 @@
         </label>
     </div>
     <script>
-        const themeSwitch = htmx.find("#theme-switch");
+        (() => {
+            const themeSwitch = htmx.find("#theme-switch");
 
-        themeSwitch.addEventListener("change", () => {
-            const {
-                checked
-            } = themeSwitch;
+            themeSwitch.addEventListener("change", () => {
+                const {
+                    checked
+                } = themeSwitch;
 
-            themeSwitch.checked = checked;
-            localStorage["dark-mode"] = checked;
+                themeSwitch.checked = checked;
+                localStorage["dark-mode"] = checked;
 
-            if (themeSwitch.checked) {
+                if (themeSwitch.checked) {
+                    html.setAttribute("data-theme", "dark");
+                    localStorage.setItem("dark-mode", true);
+                } else {
+                    html.setAttribute("data-theme", "light");
+                    localStorage.setItem("dark-mode", false);
+                }
+            });
+
+            let themeValue = window.matchMedia("(prefers-color-scheme: dark)") ? "dark" : "light";
+
+            if (localStorage.getItem("dark-mode") !== null) {
+                themeValue = localStorage.getItem("dark-mode") === "true" ? "dark" : "light";
+            }
+
+            if (themeValue === "dark") {
+                themeSwitch.checked = true;
                 html.setAttribute("data-theme", "dark");
                 localStorage.setItem("dark-mode", true);
             } else {
                 html.setAttribute("data-theme", "light");
                 localStorage.setItem("dark-mode", false);
             }
-        });
-
-        let themeValue = window.matchMedia("(prefers-color-scheme: dark)") ? "dark" : "light";
-
-        if (localStorage.getItem("dark-mode") !== null) {
-            themeValue = localStorage.getItem("dark-mode") === "true" ? "dark" : "light";
-        }
-
-        if (themeValue === "dark") {
-            themeSwitch.checked = true;
-            html.setAttribute("data-theme", "dark");
-            localStorage.setItem("dark-mode", true);
-        } else {
-            html.setAttribute("data-theme", "light");
-            localStorage.setItem("dark-mode", false);
-        }
+        })();
     </script>
 {% endmacro them_switch %}
