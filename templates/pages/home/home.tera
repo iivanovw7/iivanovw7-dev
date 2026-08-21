@@ -2,4 +2,5 @@
 {% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
 {% block content %}
     <div class="pages-home">{% include "pages/home/ui/jobs.tera" %}</div>
+    {% include "pages/home/ui/particles.tera" %}
 {% endblock content %}
