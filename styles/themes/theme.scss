@@ -42,6 +42,7 @@ $theme-variants: (
 		button-icon-secondary: palette.get(stone, 700),
 		button-icon-secondary-disabled: palette.get(stone, 500),
 		button-icon-secondary-hover: palette.get(stone, 900),
+		particles-base-color: palette.get(stone, 400),
 	),
 	dark: (
 		accent-primary: palette.get(purple, 950),
@@ -80,6 +81,7 @@ $theme-variants: (
 		button-icon-secondary: palette.get(stone, 400),
 		button-icon-secondary-disabled: palette.get(stone, 800),
 		button-icon-secondary-hover: palette.get(stone, 200),
+		particles-base-color: palette.get(stone, 600),
 	),
 );
 
