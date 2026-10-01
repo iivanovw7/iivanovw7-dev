@@ -56,17 +56,16 @@ pub fn parse_post_content(content: &str) -> Option<Post> {
     options.insert(Options::ENABLE_STRIKETHROUGH);
 
     let matter = Matter::<YAML>::new();
-    let post_data = matter
-        .parse_with_struct::<PostMetadata>(content)
-        .expect("Unable to parse md frontmatter");
 
-    let metadata = post_data.data;
+    let post_data = matter.parse::<PostMetadata>(content).ok()?;
+
+    let metadata = post_data.data?;
     let content = post_data.content;
+
     let parser = Parser::new_ext(&content, options);
     let estimation = estimate_post(&content);
 
     let mut html_output = String::new();
-
     html::push_html(&mut html_output, parser);
 
     let date = parse_date(&metadata.date).format("%B %e, %Y").to_string();

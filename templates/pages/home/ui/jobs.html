@@ -1,5 +1,3 @@
-{% import "macro/button-icon.tera" as button_icon_macro %}
-{% import "macro/link-icon.tera" as link_icon_macro %}
 <div class="home-jobs">
     <div class="home-jobs__inner">
         <div class="home-jobs__slides-container">
@@ -19,11 +17,11 @@
                 </div>
                 <div class="home-jobs__slider-header-middle">
                     {% block logo %}
-                        {{ link_icon_macro::link_icon(variant="secondary",
-                            size="medium",
-                            icon="chevron-right",
-                            href="/",
-                            target="_self")
+                        {{ <link_icon variant="secondary"
+                            size="medium"
+                            icon="chevron-right"
+                            href="/"
+                            target="_self" />
                         }}
                     {% endblock logo %}
                     <div class="home-jobs__cli-container">
@@ -38,10 +36,10 @@
                 <div class="home-jobs__slider-header-bottom">
                     {% block social_links %}
                         {% for social in social_links %}
-                            {{ link_icon_macro::link_icon(variant="secondary",
-                                icon=social.title,
-                                href=social.link,
-                                target="_blank")
+                            {{ <link_icon variant="secondary"
+                                icon={social.title}
+                                href={social.link}
+                                target="_blank" />
                             }}
                         {% endfor %}
                     {% endblock social_links %}
@@ -75,17 +73,17 @@
         </div>
         <div class="home-jobs__buttons-container">
             {% block slider_prev_button %}
-                {{ button_icon_macro::button_icon(id="prevButton",
-                    aria_label="Prev slide",
-                    variant="secondary",
-                    icon="chevron-left")
+                {{ <button_icon id="prevButton"
+                    aria_label="Prev slide"
+                    variant="secondary"
+                    icon="chevron-left" />
                 }}
             {% endblock slider_prev_button %}
             {% block slider_next_button %}
-                {{ button_icon_macro::button_icon(id="nextButton",
-                    aria_label="Next slide",
-                    variant="secondary",
-                    icon="chevron-right")
+                {{ <button_icon id="nextButton"
+                    aria_label="Next slide"
+                    variant="secondary"
+                    icon="chevron-right" />
                 }}
             {% endblock slider_next_button %}
         </div>

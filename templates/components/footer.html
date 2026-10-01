@@ -1,10 +1,9 @@
-{% import "macro/link.tera" as link_macro %}
 <footer class="footer">
     <div class="footer__content">
         <div>
             © <span x-data="{date: new Date()}" x-text="date.getFullYear()" />
         </div>
         <span>•</span>
-        {{ link_macro::link(text=main.author, href="/") }}
+        {{ <link text={main.author} href="/" /> }}
     </div>
 </footer>

@@ -1,0 +1,23 @@
+{% component link(
+    id: string = "",
+    text: string = "",
+    href: string = "",
+    variant: string = "primary",
+    size: string = "medium",
+    fill: string = "none",
+    active: bool = false,
+    class: string = "",
+    target: string = "_self"
+) %}
+{% set classes = "link link--" ~ variant ~ " link--" ~ size ~ " link--" ~ fill ~ " " ~ class | trim %}
+{% if active %}
+    {% set classes = classes ~ " link--active" %}
+{% endif %}
+<a class="{{ classes }}"
+   aria-label="{{ text }}"
+   href="{{ href }}"
+   rel="noreferrer"
+   target="{{ target }}">
+    <span class="link__text">{{ text }}</span>
+</a>
+{% endcomponent link %}

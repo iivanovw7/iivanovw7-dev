@@ -1,6 +1,3 @@
-{% import "macro/link-icon.tera" as link_icon_macro %}
-{% import "macro/link.tera" as link_macro %}
-{% import "macro/theme-switch.tera" as theme_switch_macro %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -86,7 +83,7 @@
              id="preloader-overlay"
              x-show="$store.preloader.visible"
              x-transition.opacity></div>
-        {% include "components/navbar.tera" %}
+        {% include "components/navbar.html" %}
         {% block content %}
         {% endblock content %}
     </body>

@@ -18,7 +18,7 @@
 		"test:format:fmt": "cargo fmt -- --check",
 		"test:format:eslint": "eslint \"**/*.{js,jsx}\"",
 		"test:format:prettier": "prettier --write --ignore-unknown .",
-		"test:format:djlint": "djlint templates/**/*.tera --reformat --format-js",
+		"test:format:djlint": "djlint templates/**/*.html --reformat --format-js",
 		"test:format:stylelint": "stylelint \"styles/**/*.{css,scss}\"",
 		"prepare": "husky"
 	},

@@ -4,7 +4,7 @@
 
 -   [axum](https://docs.rs/axum/latest/axum)
 -   [askama](https://docs.rs/askama/latest/askama)
--   [tera](https://keats.github.io/tera/docs/#introduction)
+-   [tera](https://keats.github.io/tera)
 
 ### Requirements
 

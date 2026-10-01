@@ -1,0 +1,24 @@
+{% component link_icon(
+    id: string = "",
+    variant: string = "primary",
+    disabled: bool = false,
+    size: string = "medium",
+    icon: string,
+    href: string = "",
+    aria_label: string = "",
+    target: string = "_self",
+    class: string = ""
+) %}
+{% set classes = "link-icon link-icon--" ~ variant ~ " link-icon--" ~ size ~ " " ~ class | trim %}
+<a id="{{ id }}"
+   aria-label="{{ aria_label }}"
+   class="{{ classes }}"
+   href="{{ href }}"
+   rel="noreferrer"
+   target="{{ target }}"
+   disabled="{{ disabled }}">
+    <svg class="link-icon__icon">
+        <use href="/assets/svg/sprite.svg#{{ icon }}" />
+    </svg>
+</a>
+{% endcomponent link_icon %}

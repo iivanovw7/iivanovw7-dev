@@ -65,7 +65,7 @@ async fn render_error_page(
 
     context.insert("error", &error);
 
-    match tera.render("pages/error/error.tera", &context) {
+    match tera.render("pages/error/error.html", &context) {
         Ok(body) => Response::builder()
             .status(status_code)
             .header(axum::http::header::CONTENT_TYPE, mime::TEXT_HTML.as_ref())

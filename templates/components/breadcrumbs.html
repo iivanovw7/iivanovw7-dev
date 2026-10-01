@@ -1,7 +1,6 @@
-{% import "macro/link.tera" as link_macro %}
 <div class="breadcrumbs">
     {% for crumb in breadcrumbs.crumbs %}
-        {{ link_macro::link(text=crumb.label, href=crumb.path) }}
+        {{ <link text={crumb.label} href={crumb.path} /> }}
         <span class="breadcrumbs__separator"
               role="separator"
               aria-orientation="vertical"></span>

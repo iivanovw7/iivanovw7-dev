@@ -5,4 +5,5 @@
 
 pnpm-lock.yaml
 
-**/index.tera
+**/index.html
+templates/**/*.html

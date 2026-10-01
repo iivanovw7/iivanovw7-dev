@@ -9,12 +9,11 @@ use crate::types::config::{Config, Env, RawConfig, SocialConfig, SocialConfigIte
 
 lazy_static! {
     pub static ref TERA: Tera = {
-        match Tera::new("templates/**/*") {
-            Ok(t) => t,
-            Err(e) => {
-                panic!("Failed to create Tera instance: {}", e);
-            }
+        let mut tera = Tera::new();
+        if let Err(e) = tera.load_from_glob("templates/**/*") {
+            panic!("Failed to load templates: {}", e);
         }
+        tera
     };
 }
 
@@ -100,5 +99,102 @@ mod tests {
         assert_eq!(links[3].link, "https://t.me/test");
         assert_eq!(links[4].title, "twitter");
         assert_eq!(links[4].link, "https://twitter.com/test");
+    }
+
+    #[test]
+    fn it_initializes_tera() {
+        let _ = &*TERA;
+    }
+
+    #[test]
+    fn it_renders_all_pages() {
+        use crate::types::config::{AppState, BreadcrumbsConfig};
+        use crate::types::posts::PostType;
+        use crate::utils::breadcrumbs::generate_breadcrumbs;
+        use crate::utils::context::create_context;
+        use crate::utils::posts::collect_posts;
+        use axum::extract::State;
+        use serde_json::json;
+        use std::sync::Arc;
+
+        let state = State(AppState {
+            config: Arc::new(CONFIG.clone()),
+            tera: Arc::new(TERA.clone()),
+        });
+
+        // 1. Home page
+        let ctx = create_context(&state);
+        let home_rendered = TERA.render("pages/home/home.html", &ctx);
+        assert!(
+            home_rendered.is_ok(),
+            "Failed to render home: {:?}",
+            home_rendered.err()
+        );
+
+        // 2. Alpha page
+        let mut alpha_ctx = create_context(&state);
+        let breadcrumbs_config = BreadcrumbsConfig {
+            path: "/samples/alpha".to_string(),
+            leaf: None,
+        };
+        alpha_ctx.insert("breadcrumbs", &generate_breadcrumbs(breadcrumbs_config));
+        let alpha_rendered = TERA.render("pages/alpha/alpha.html", &alpha_ctx);
+        assert!(
+            alpha_rendered.is_ok(),
+            "Failed to render alpha: {:?}",
+            alpha_rendered.err()
+        );
+
+        // 3. Posts page
+        let (all_posts, all_tags) = collect_posts(vec![PostType::Project, PostType::Note]);
+        let mut posts_ctx = create_context(&state);
+        let breadcrumbs_config = BreadcrumbsConfig {
+            path: "/posts".to_string(),
+            leaf: None,
+        };
+        let current_tag: Option<String> = None;
+        posts_ctx.insert("posts", &all_posts);
+        posts_ctx.insert("tags", &all_tags);
+        posts_ctx.insert("current_tag", &current_tag);
+        posts_ctx.insert("breadcrumbs", &generate_breadcrumbs(breadcrumbs_config));
+        let posts_rendered = TERA.render("pages/posts/posts.html", &posts_ctx);
+        assert!(
+            posts_rendered.is_ok(),
+            "Failed to render posts: {:?}",
+            posts_rendered.err()
+        );
+
+        // 4. Post page
+        if let Some(post) = all_posts.first() {
+            let mut post_ctx = create_context(&state);
+            let breadcrumbs_config = BreadcrumbsConfig {
+                path: format!("/posts/{}", post.metadata.file_name),
+                leaf: Some(post.metadata.title.clone()),
+            };
+            post_ctx.insert("posts", &all_posts);
+            post_ctx.insert("tags", &all_tags);
+            post_ctx.insert("post", post);
+            post_ctx.insert("breadcrumbs", &generate_breadcrumbs(breadcrumbs_config));
+            let post_rendered = TERA.render("pages/post/post.html", &post_ctx);
+            assert!(
+                post_rendered.is_ok(),
+                "Failed to render post: {:?}",
+                post_rendered.err()
+            );
+        }
+
+        // 5. Error page
+        let mut error_ctx = create_context(&state);
+        let error = json!({
+            "code": "404",
+            "message": "Not found",
+        });
+        error_ctx.insert("error", &error);
+        let error_rendered = TERA.render("pages/error/error.html", &error_ctx);
+        assert!(
+            error_rendered.is_ok(),
+            "Failed to render error: {:?}",
+            error_rendered.err()
+        );
     }
 }

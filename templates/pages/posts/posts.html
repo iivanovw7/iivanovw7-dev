@@ -1,11 +1,9 @@
-{% extends "layouts/base.tera" %}
-{% import "macro/link.tera" as link_macro %}
-{% import "macro/lazy-background-image.tera" as lazy_background_image_macro %}
+{% extends "layouts/base.html" %}
 {% block title %}{{ main.name }} | {{ main.profession }}{% endblock %}
 {% block content %}
     <main class="pages-posts">
         <div class="pages-posts__header">
-            {% include "components/breadcrumbs.tera" %}
+            {% include "components/breadcrumbs.html" %}
             <h1 class="pages-posts__title">Latest notes</h1>
             <p class="pages-posts__subtitle">List of notes and projects</p>
         </div>
@@ -19,7 +17,7 @@
                     {% else %}
                         {% set href = "/posts?tag="~tag %}
                     {% endif %}
-                    {{ link_macro::link(active=active, text=tag, fill="full", href=href) }}
+                    {{ <link active={active} text={tag} fill="full" href={href} /> }}
                 {% endfor %}
             </div>
         </div>
@@ -28,11 +26,11 @@
                 {% block posts_list %}
                     {% for post in posts %}
                         {% set current_tag = current_tag %}
-                        {% include "pages/posts/ui/posts-item.tera" %}
+                        {% include "pages/posts/ui/posts-item.html" %}
                     {% endfor %}
                 {% endblock posts_list %}
             </ul>
         </section>
     </main>
-    {% include "components/footer.tera" %}
+    {% include "components/footer.html" %}
 {% endblock content %}

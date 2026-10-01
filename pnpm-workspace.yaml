@@ -1,3 +1,5 @@
+allowBuilds:
+    chromedriver: false
 onlyBuiltDependencies:
     - chromedriver
     - cypress

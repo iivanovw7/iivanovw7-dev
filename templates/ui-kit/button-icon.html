@@ -1,0 +1,11 @@
+{% component button_icon(id: string = "", icon: string, aria_label: string = "", variant: string = "primary", size: string = "medium", class: string = "") %}
+{% set classes = "button-icon button-icon--" ~ variant ~ " button-icon--" ~ size ~ " " ~ class | trim %}
+<button id="{{ id }}"
+        class="{{ classes }}"
+        type="button"
+        aria-label="{{ aria_label }}">
+    <svg class="button-icon__icon">
+        <use href="/assets/svg/sprite.svg#{{ icon }}" />
+    </svg>
+</button>
+{% endcomponent button_icon %}
