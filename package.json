@@ -4,7 +4,8 @@
 	"description": "Personal website",
 	"type": "module",
 	"scripts": {
-		"dev": "cargo watch -x run",
+		"dev": "pnpm exec run-p dev:server dev:css",
+		"dev:server": "cargo watch -w src -w templates -w config.toml -i \"templates/**/*.scss\" -x run",
 		"dev:css": "rspack --watch",
 		"build": "pnpm build:css && pnpm build:server",
 		"build:server": "cargo build --release",
@@ -76,10 +77,5 @@
 		"stylelint-order": "6.0.4",
 		"stylelint-scss": "6.8.1",
 		"wait-on": "8.0.3"
-	},
-	"config": {
-		"commitizen": {
-			"path": "./node_modules/cz-conventional-changelog"
-		}
 	}
 }
