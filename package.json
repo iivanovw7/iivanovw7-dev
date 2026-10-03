@@ -4,7 +4,7 @@
 	"description": "Personal website",
 	"type": "module",
 	"scripts": {
-		"dev": "pnpm exec run-p dev:server dev:css",
+		"dev": "pnpm dlx concurrently \"pnpm:dev:*\"",
 		"dev:server": "cargo watch -w src -w templates -w config.toml -i \"templates/**/*.scss\" -x run",
 		"dev:css": "rspack --watch",
 		"build": "pnpm build:css && pnpm build:server",
