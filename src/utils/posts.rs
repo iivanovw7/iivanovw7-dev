@@ -54,6 +54,8 @@ pub fn parse_post_content(content: &str) -> Option<Post> {
 
     options.insert(Options::ENABLE_HEADING_ATTRIBUTES);
     options.insert(Options::ENABLE_STRIKETHROUGH);
+    options.insert(Options::ENABLE_TABLES);
+    options.insert(Options::ENABLE_TASKLISTS);
 
     let matter = Matter::<YAML>::new();
 
