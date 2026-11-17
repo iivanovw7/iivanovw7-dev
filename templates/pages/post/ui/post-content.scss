@@ -107,24 +107,26 @@
 		list-style: none;
 	}
 
-	ol:not(li > ol),
-	ul:not(li > ul) {
+	ol:not(li > ol, li > ul),
+	ul:not(li > ul, li > ol) {
 		@include mb(3);
 	}
 
-	ul li,
-	ol li {
+	ul > li,
+	ol > li {
 		@include my(2);
-	}
-
-	ul {
-		list-style-position: inside;
-	}
-
-	ul li::before {
-		@include m(1);
 
 		position: relative;
+	}
+
+	ul > li {
+		padding-left: rem(20px);
+	}
+
+	ul > li::before {
+		position: absolute;
+		top: 0;
+		left: 0;
 		color: var(--primary-accent);
 		content: "•";
 	}
@@ -133,12 +135,24 @@
 		counter-reset: steps;
 	}
 
-	ol li {
+	ol > li {
+		padding-left: rem(36px);
 		counter-increment: steps;
 	}
 
-	ol li::before {
+	ol > li::before {
+		position: absolute;
+		top: 0;
+		left: 0;
 		content: counters(steps, ".") ". ";
+	}
+
+	li > p:first-child {
+		margin-top: 0;
+	}
+
+	li > p:last-child {
+		margin-bottom: 0;
 	}
 
 	a {
@@ -154,5 +168,57 @@
 
 	a:hover {
 		color: var(--text-link-hover);
+	}
+
+	table {
+		@include my(4);
+		@include border-radius(1);
+
+		width: 100%;
+		border-collapse: collapse;
+		border-spacing: 0;
+		overflow-x: auto;
+		display: block;
+
+		th,
+		td {
+			@include px(3);
+			@include py(2);
+
+			border: rem(1px) solid var(--text-border);
+			text-align: left;
+		}
+
+		th {
+			background-color: var(--background-secondary);
+			font-weight: bold;
+		}
+
+		tr:nth-child(even) {
+			background-color: var(--background-secondary);
+		}
+	}
+
+	ul.contains-task-list {
+		list-style: none;
+		padding-left: 0;
+
+		li.task-list-item {
+			@include my(2);
+
+			display: flex;
+			align-items: center;
+			padding-left: 0;
+
+			&::before {
+				content: none;
+			}
+
+			input[type="checkbox"] {
+				@include mr(2);
+
+				accent-color: var(--primary-accent);
+			}
+		}
 	}
 }
